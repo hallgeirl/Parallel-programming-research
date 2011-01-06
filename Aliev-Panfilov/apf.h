@@ -11,7 +11,6 @@ static const int WAIT = 1;
 static const int WAIT = 0;
 #endif
 
-
 // External functions
 void splot(DOUBLE **E, DOUBLE T, int niter, int m, int n, int WAIT);
 // Uses gettimeofday() to collect timings on the host side

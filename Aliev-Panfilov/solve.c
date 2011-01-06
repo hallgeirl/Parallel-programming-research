@@ -5,7 +5,9 @@
  * Modified and  restructured by Scott B. Baden, UCSD
  *
  */
+#define _XOPEN_SOURCE 600
 #include <pthread.h>
+#include <semaphore.h>
 #include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -65,6 +67,7 @@ void solve_pde(void* _args)
                 );
         }
     }
+    pthread_exit(NULL);
 }
 
 int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty) 
@@ -117,6 +120,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
     // This is different from the number of iterations
     while (t < T) 
     {
+        //printf("Iteration %d\n", niter);
         #ifdef DEBUG
         printMat(E_prev, m, n);
         repNorms(E_prev, t, dt, m, n, niter);
@@ -154,21 +158,23 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
             for (int tj = 0; tj < tx; tj++)
             {
                 //Create thread and execute solver for sub-problem
-                pthread_create(&threads[ti*tx+tj], NULL, &solve_pde, (void*)&thread_args[ti*tx+tj]);
+                pthread_create(&threads[ti*tx+tj], NULL, &solve_pde, &thread_args[ti*tx+tj]);
             }
         }
         
+        //pthread_barrier_wait(&barrier);
+        //pthread_join(threads[0], NULL);
         //Join the threads
         for (int ti = 0; ti < ty; ti++)
         {
             for (int tj = 0; tj < tx; tj++)
             {
-                //Create thread and execute solver for sub-problem
                 pthread_join(threads[ti*tx+tj], NULL);
-                //solve_pde(E, E_prev, offset_x, offset_y, bx, by, m, n, alpha);
             }
         }
 
+        //sem_wait(&sem);
+        
         if (do_stats) {
             repNorms(E, t, dt, m, n, niter);
         }

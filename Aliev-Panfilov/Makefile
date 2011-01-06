@@ -19,6 +19,10 @@ OPTIMIZATION += -ftree-vectorizer-verbose=5 -ftree-vectorize -msse2 -ffast-math
 C++FLAGS += $(ARITH) -fopenmp
 CFLAGS += $(ARITH) -fopenmp
 
+ifdef debug
+CFLAGS += -DDEBUG
+endif
+
 #DEBUG += -DDEBUG
 
 #Uncomment the next line  if you want to add symbol table
@@ -31,7 +35,7 @@ app:		apf
 OBJECTS = apf.o solve.o splot.o cmdline.o printMat.o Timer.o
 
 apf:	        $(OBJECTS) 
-		$(CLINK) $(LDFLAGS) -fopenmp -o $@ $(OBJECTS)  $(LDLIBS)
+		$(CLINK) $(LDFLAGS) -o $@ $(OBJECTS)  $(LDLIBS)
 
 clean:	
 	$(RM) *.o apf;

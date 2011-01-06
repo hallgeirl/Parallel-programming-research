@@ -9,10 +9,10 @@
 
 RM		= rm -f
 LN		= ln -s
-ECHO		= echo
+ECHO	= echo
 
 
-C++ 		= g++
+C++ 	= g++
 CC		= gcc
 AR		= ar
 RANLIB		= ranlib
@@ -29,7 +29,7 @@ C++FLAGS        += $(INCLUDES) $(ARCH_FLAGS) $(WARNINGS) $(OPTIMIZATION) \
                   $(XTRAFLAGS) $(DEBUG)
 
 CFLAGS		+= $(INCLUDES) $(ARCH_FLAGS) $(WARNINGS) $(OPTIMIZATION) \
-                  $(XTRAFLAGS) $(DEBUG)
+                  $(XTRAFLAGS) $(DEBUG) --std=c99
 
 FFLAGS		= $(ARCH_FLAGS) -O2 -fno-second-underscore -ff90 -fugly-complex
 
@@ -40,7 +40,7 @@ ARFLAGS		= ru
 
 
 LDFLAGS		= $(WARNINGS) $(OPTIMIZATION) $(DEBUG)
-LDLIBS		= -lm -lpthread
+LDLIBS		= -lm -pthread
 
 
 ARCH_HAS_X	= arch_has_X

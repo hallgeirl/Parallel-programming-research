@@ -135,17 +135,6 @@ int main(int argc, char** argv) {
 
     printTOD("Run begins");
 
-    int nx = (m + 1) / tx, ny = (n + 1) / ty;
-    // The thread geometry must evenly divide N
-    if ((nx * tx != (m + 1)) || (ny * ty != (n + 1)) ) 
-    {
-        printf("Thread geometry: %d x %d\n", tx, ty);
-        printf("The length of the thread geometry axis ");
-        printf("[ %d x %d]\n", tx, ty);
-        printf("  must divide N [%d] evenly\n",m + 1);
-        exit(-1);
-    }
-
     // Allocate contiguous memory for solution arrays
     // The computational box is defined on [1:m+1,1:n+1]
     // We pad the arrays in order to facilitate differencing on the 
@@ -156,16 +145,7 @@ int main(int argc, char** argv) {
 
     init(E, E_prev, R, m, n);
     
-    #ifdef DEBUG
-    printMatLocal(E_prev, m, n);
-    repNorms(E_prev, -1, dt, m, n, -1);
-    if (plot_freq) 
-    {
-        splot(E_prev, -1, -1, m + 1, n + 1, WAIT);
-    }
-    #endif
-
-    DOUBLE dx = 1.0 / n;
+    double dx = 1.0 / n;
 
     // For time integration, these values shouldn't change 
     double rp= kk * (b + 1) * (b + 1) / 4;
@@ -173,6 +153,15 @@ int main(int argc, char** argv) {
     double dtr= 1 / (epsilon + ((M1 / M2) * rp));
     double dt = (dte < dtr) ? 0.95 * dte : 0.95 * dtr;
     DOUBLE alpha = d * dt / (dx * dx);
+
+    #ifdef DEBUG
+    printMat(E_prev, m, n);
+    repNorms(E_prev, -1, dt, m, n, -1);
+    if (plot_freq) 
+    {
+        splot(E_prev, -1, -1, m + 1, n + 1, WAIT);
+    }
+    #endif
 
     #ifdef FLOAT
     printf("Using SINGLE precision arithmetic (element size: %d)\n", sizeof(DOUBLE));
@@ -183,12 +172,12 @@ int main(int argc, char** argv) {
     printf("dt=%f, T = %lf\n", dt, T);
     printf("m x n = %d x %d\n", m, n);
     printf("Thread geometry: %d x %d\n", tx, ty);
-    printf("Cache blocking factors: %d x %d\n", bx, by);
+    //printf("Cache blocking factors: %d x %d\n", bx, by);
     printf("\n");
 
     // Start the timer
     double t0 = -getTime();
-    int niter = solve(&E, &E_prev, R, m, n, T, alpha, dt, do_stats, plot_freq, bx, by);
+    int niter = solve(&E, &E_prev, R, m, n, T, alpha, dt, do_stats, plot_freq, tx, ty);
     t0 += getTime();
 
     printTOD("Run completes");

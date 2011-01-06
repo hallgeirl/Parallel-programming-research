@@ -5,28 +5,118 @@
  * Modified and  restructured by Scott B. Baden, UCSD
  *
  */
+#include <pthread.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <math.h>
-#include <omp.h>
+//#include <omp.h>
 #include "time.h"
 #include "apf.h"
 #include "types.h"
 
-int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by) 
+typedef struct thread_args_s
+{
+    DOUBLE *** E; DOUBLE *** E_prev; DOUBLE ** R;
+    DOUBLE alpha;
+    int offset_x; int offset_y;
+    int bx; int by; 
+    DOUBLE dt;
+} thread_args_t;
+
+//Solves the PDE part for one block of the array
+//void solve_pde(DOUBLE ** E, DOUBLE ** E_prev, int offset_x, int offset_y, int bx, int by, int m, int n, DOUBLE alpha)
+void solve_pde(void* _args)
+{
+    thread_args_t* args = (thread_args_t*) _args;
+    DOUBLE ** E = *args->E;
+    DOUBLE ** E_prev = *args->E_prev;
+    DOUBLE ** R = args->R;
+    DOUBLE alpha = args->alpha;
+    int bx = args->bx,  by = args->by;
+    int offset_x = args->offset_x,  offset_y = args->offset_y;
+    DOUBLE dt = args->dt;
+    
+    for (int i = offset_y; i < offset_y + by; i++)
+    {
+        #pragma ivdep
+        for (int j = offset_x; j < offset_x + bx; j++)
+        {
+            E[i][j] = E_prev[i][j] + alpha * (E_prev[i][j + 1]+
+                                      E_prev[i][j - 1]-
+                                      4 * E_prev[i][j]+
+                                      E_prev[i + 1][j]+
+                                      E_prev[i - 1][j]);
+        }
+    }
+
+    for (int i = offset_y; i < offset_y + by; i++)
+    {
+        #pragma ivdep
+        for (int j = offset_x; j < offset_x + bx; j++)
+        {
+            E[i][j] += -dt * (kk * E[i][j]*(E[i][j]-a)*(E[i][j] - 1) + E[i][j]*R[i][j]);
+            R[i][j] +=
+                dt * (
+                    epsilon + M1 * R[i][j] /
+                    (E[i][j] + M2)) *
+                    (-R[i][j] - kk * E[i][j] * (E[i][j] - b - 1)
+                );
+        }
+    }
+}
+
+int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty) 
 {
     // Simulated time is different from the integer timestep number
     DOUBLE t = 0.0;
     // Integer timestep number
     int niter=0;
+    
+    //These values are used to determine the block size for the last threads, so cache the results for performance.
+    int m_mod_ty = (m+1) % ty;
+    int n_mod_tx = (n+1) % tx;
 
     DOUBLE **E = *_E, **E_prev = *_E_prev;
+
+    //Allocate threads
+    pthread_t *threads = (pthread_t*)malloc(sizeof(pthread_t)*tx*ty);
+    
+    //The arguments are fixed for each iteration, so initialize them only once
+    thread_args_t *thread_args = (thread_args_t*)malloc(sizeof(thread_args_t)*tx*ty);
+    for (int ti = 0; ti < ty; ti++)
+    {
+        int offset_y = ti*(m+1)/ty + 1, by = (m+1)/ty;
+        
+        //Let the last thread take care of any leftovers
+        if (ti == ty-1) by += m_mod_ty;
+          
+        for (int tj = 0; tj < tx; tj++)
+        {
+            //Determine boundaries and block size
+            int offset_x = tj*(n+1)/tx + 1, bx = (n+1)/tx;
+            //Let the last thread take care of any leftovers
+            if (tj == tx-1) bx += n_mod_tx;
+
+            thread_args[ti*tx+tj].E = &E; 
+            thread_args[ti*tx+tj].E_prev = &E_prev;
+            thread_args[ti*tx+tj].R = R;
+            thread_args[ti*tx+tj].alpha = alpha;
+            thread_args[ti*tx+tj].offset_x = offset_x;
+            thread_args[ti*tx+tj].offset_y = offset_y;
+            thread_args[ti*tx+tj].bx = bx;
+            thread_args[ti*tx+tj].by = by;
+            thread_args[ti*tx+tj].dt = dt;
+            
+        }
+    }
 
     // We continue to sweep over the mesh until the simulation has reached
     // the desired simulation Time
     // This is different from the number of iterations
-    while (t < T) {
+    while (t < T) 
+    {
         #ifdef DEBUG
         printMat(E_prev, m, n);
         repNorms(E_prev, t, dt, m, n, niter);
@@ -58,44 +148,24 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
             E_prev[m + 2][i] = E_prev[m][i];
         }
 
-
-        // Solve for the excitation, a PDE
-        // Also make sure that each CPU works on a block on a time instead of a larger unit of data.
-        #pragma omp parallel for private(i,j, ii, jj)
-        for (jj = 1; jj <= m + 1; jj += by) {
-            for (ii = 1; ii <= n + 1; ii += bx) {
-
-                for (j = jj; j < jj+by && j <= m+1; j++) {
-                    #pragma ivdep
-                    for (i = ii; i < ii+bx && i <= n+1; i++) {
-                        E[j][i] = E_prev[j][i] + alpha * (E_prev[j][i + 1]+
-                                                  E_prev[j][i - 1]-
-                                                  4 * E_prev[j][i]+
-                                                  E_prev[j + 1][i]+
-                                                  E_prev[j - 1][i]);
-                    }
-                }
+        //Main loop
+        for (int ti = 0; ti < ty; ti++)
+        {
+            for (int tj = 0; tj < tx; tj++)
+            {
+                //Create thread and execute solver for sub-problem
+                pthread_create(&threads[ti*tx+tj], NULL, &solve_pde, (void*)&thread_args[ti*tx+tj]);
             }
         }
-
-        /*
-        * Solve the ODE, advancing excitation and recovery variables
-        * to the next timtestep
-        */
-        #pragma omp parallel for private(i, j)
-        for (j = 1; j <= m + 1; j++) 
+        
+        //Join the threads
+        for (int ti = 0; ti < ty; ti++)
         {
-            for (i = 1; i <= n + 1; i++) 
+            for (int tj = 0; tj < tx; tj++)
             {
-                E[j][i] *=
-                  1 - dt * (kk * (E[j][i] - a) * (E[j][i] - 1) + R[j][i]);
-
-                R[j][i] +=
-                    dt * (
-                        epsilon + M1 * R[j][i] /
-                        (E[j][i] + M2)) *
-                        (-R[j][i] - kk * E[j][i] * (E[j][i] - b - 1)
-                    );
+                //Create thread and execute solver for sub-problem
+                pthread_join(threads[ti*tx+tj], NULL);
+                //solve_pde(E, E_prev, offset_x, offset_y, bx, by, m, n, alpha);
             }
         }
 

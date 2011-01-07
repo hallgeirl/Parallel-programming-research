@@ -13,10 +13,12 @@ include arch.gnu
 # http://gcc.gnu.org/onlinedocs/gcc-4.4.2/gcc/Debugging-Options.html#Debugging-Options
 #
 
-ifeq($CC,icc)
-CFLAGS += -openmp
+ifeq ($(CC),"icc")
+#CFLAGS += -openmp
+LDFLAGS += -openmp
 else
-CFLAGS += -fopenmp 
+#CFLAGS += -fopenmp 
+LDFLAGS += -fopenmp
 endif
 
 CFLAGS += $(ARITH) -Wall -O3

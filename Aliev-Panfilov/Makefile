@@ -13,7 +13,7 @@ include arch.gnu
 # http://gcc.gnu.org/onlinedocs/gcc-4.4.2/gcc/Debugging-Options.html#Debugging-Options
 #
 
-ifeq ($(CC),"icc")
+ifeq ($(CC),icc)
 #CFLAGS += -openmp
 LDFLAGS += -openmp
 else

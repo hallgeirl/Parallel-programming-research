@@ -39,11 +39,12 @@ void solve_pde(void* _args)
     int bx = args->bx,  by = args->by;
     int offset_x = args->offset_x,  offset_y = args->offset_y;
     DOUBLE dt = args->dt;
+    int i,j;
     
-    for (int i = offset_y; i < offset_y + by; i++)
+    for (i = offset_y; i < offset_y + by; i++)
     {
         #pragma ivdep
-        for (int j = offset_x; j < offset_x + bx; j++)
+        for (j = offset_x; j < offset_x + bx; j++)
         {
             E[i][j] = E_prev[i][j] + alpha * (E_prev[i][j + 1]+
                                       E_prev[i][j - 1]-
@@ -53,10 +54,10 @@ void solve_pde(void* _args)
         }
     }
 
-    for (int i = offset_y; i < offset_y + by; i++)
+    for (i = offset_y; i < offset_y + by; i++)
     {
         #pragma ivdep
-        for (int j = offset_x; j < offset_x + bx; j++)
+        for (j = offset_x; j < offset_x + bx; j++)
         {
             E[i][j] += -dt * (kk * E[i][j]*(E[i][j]-a)*(E[i][j] - 1) + E[i][j]*R[i][j]);
             R[i][j] +=
@@ -80,6 +81,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
     //These values are used to determine the block size for the last threads, so cache the results for performance.
     int m_mod_ty = (m+1) % ty;
     int n_mod_tx = (n+1) % tx;
+    int ti, tj;
 
     DOUBLE **E = *_E, **E_prev = *_E_prev;
 
@@ -88,14 +90,14 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
     
     //The arguments are fixed for each iteration, so initialize them only once
     thread_args_t *thread_args = (thread_args_t*)malloc(sizeof(thread_args_t)*tx*ty);
-    for (int ti = 0; ti < ty; ti++)
+    for (ti = 0; ti < ty; ti++)
     {
         int offset_y = ti*(m+1)/ty + 1, by = (m+1)/ty;
         
         //Let the last thread take care of any leftovers
         if (ti == ty-1) by += m_mod_ty;
           
-        for (int tj = 0; tj < tx; tj++)
+        for (tj = 0; tj < tx; tj++)
         {
             //Determine boundaries and block size
             int offset_x = tj*(n+1)/tx + 1, bx = (n+1)/tx;
@@ -153,9 +155,9 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
         }
 
         //Main loop
-        for (int ti = 0; ti < ty; ti++)
+        for (ti = 0; ti < ty; ti++)
         {
-            for (int tj = 0; tj < tx; tj++)
+            for (tj = 0; tj < tx; tj++)
             {
                 //Create thread and execute solver for sub-problem
                 pthread_create(&threads[ti*tx+tj], NULL, &solve_pde, &thread_args[ti*tx+tj]);
@@ -165,9 +167,9 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
         //pthread_barrier_wait(&barrier);
         //pthread_join(threads[0], NULL);
         //Join the threads
-        for (int ti = 0; ti < ty; ti++)
+        for (ti = 0; ti < ty; ti++)
         {
-            for (int tj = 0; tj < tx; tj++)
+            for (tj = 0; tj < tx; tj++)
             {
                 pthread_join(threads[ti*tx+tj], NULL);
             }

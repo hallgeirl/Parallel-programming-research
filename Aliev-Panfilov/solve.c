@@ -30,9 +30,7 @@ typedef struct thread_args_s
 } thread_args_t;
 
 pthread_barrier_t barr;
-int state = 0;
-int done_count = 0;
-int swap = 0;
+int threadcount;
 
 pthread_cond_t ready = PTHREAD_COND_INITIALIZER;
 pthread_cond_t done = PTHREAD_COND_INITIALIZER;
@@ -127,7 +125,7 @@ void solve_block(void* _args)
         done_count++;
         
         //Are we done? If so, signal the main thread to continue.
-        if (done_count == 4)
+        if (done_count == threadcount)
         {
             #ifdef DEBUG
             printf("Thread %d broadcasts done.\n", thread_id);
@@ -153,7 +151,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
     int ti, tj;
 
     DOUBLE **E = *_E, **E_prev = *_E_prev;
-
+    threadcount = tx*ty;
     pthread_barrier_init(&barr, NULL, tx*ty);
     
     //Allocate threads

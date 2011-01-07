@@ -13,7 +13,7 @@ ECHO		= echo
 
 
 C++ 		= g++
-CC		= gcc
+#CC		= gcc
 AR		= ar
 RANLIB		= ranlib
 C++LINK		= $(C++)

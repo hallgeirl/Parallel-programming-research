@@ -134,7 +134,7 @@ int main(int argc, char** argv) {
     m = n;
 
     printTOD("Run begins");
-    printf("Max number of threads: %d\n", omp_get_max_threads());
+    //printf("Max number of threads: %d\n", omp_get_max_threads());
     // Allocate contiguous memory for solution arrays
     // The computational box is defined on [1:m+1,1:n+1]
     // We pad the arrays in order to facilitate differencing on the 

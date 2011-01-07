@@ -14,10 +14,10 @@ include arch.gnu
 #
 
 ifeq ($(CC),icc)
-#CFLAGS += -openmp
+CFLAGS += -openmp
 LDFLAGS += -openmp
 else
-#CFLAGS += -fopenmp 
+CFLAGS += -fopenmp 
 LDFLAGS += -fopenmp
 endif
 

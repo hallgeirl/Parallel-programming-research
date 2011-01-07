@@ -14,10 +14,10 @@ include arch.gnu
 # See the gcc manual for the other levels of output: levels 1-7
 # http://gcc.gnu.org/onlinedocs/gcc-4.4.2/gcc/Debugging-Options.html#Debugging-Options
 #
-OPTIMIZATION += -ftree-vectorizer-verbose=5 -ftree-vectorize -msse2 -ffast-math
+OPTIMIZATION += -ftree-vectorize -msse2 -ffast-math
 
 C++FLAGS += $(ARITH) -fopenmp
-CFLAGS += $(ARITH) -fopenmp
+CFLAGS += $(ARITH) -fopenmp -Wall
 
 ifdef debug
 CFLAGS += -DDEBUG

@@ -173,8 +173,6 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
             }
         }
 
-        //sem_wait(&sem);
-        
         if (do_stats) {
             repNorms(E, t, dt, m, n, niter);
         }

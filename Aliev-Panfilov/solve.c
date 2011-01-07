@@ -31,6 +31,9 @@ typedef struct thread_args_s
 
 pthread_barrier_t barr;
 int threadcount;
+int state = 0;
+//int done = 0;
+int done_count;
 
 pthread_cond_t ready = PTHREAD_COND_INITIALIZER;
 pthread_cond_t done = PTHREAD_COND_INITIALIZER;

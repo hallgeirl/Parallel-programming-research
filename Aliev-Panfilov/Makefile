@@ -1,5 +1,3 @@
-PUB     = /class/public/cse260fa10
-#include $(PUB)/Arch/arch.gnu
 include arch.gnu
 
 #include ./arch.mac
@@ -14,24 +12,25 @@ include arch.gnu
 # See the gcc manual for the other levels of output: levels 1-7
 # http://gcc.gnu.org/onlinedocs/gcc-4.4.2/gcc/Debugging-Options.html#Debugging-Options
 #
-OPTIMIZATION += -ftree-vectorizer-verbose=5 -ftree-vectorize -msse2 -ffast-math
 
-C++FLAGS += $(ARITH) -fopenmp
-CFLAGS += $(ARITH) -fopenmp
+ifeq($CC,icc)
+CFLAGS += -openmp
+else
+CFLAGS += -fopenmp 
+endif
 
-#DEBUG += -DDEBUG
+CFLAGS += $(ARITH) -Wall -O3
 
-#Uncomment the next line  if you want to add symbol table
-# information for gdb
-#DEBUG += -g
-
+ifdef debug
+CFLAGS += -DDEBUG -g
+endif
 
 app:		apf
 
 OBJECTS = apf.o solve.o splot.o cmdline.o printMat.o Timer.o
 
 apf:	        $(OBJECTS) 
-		$(CLINK) $(LDFLAGS) -fopenmp -o $@ $(OBJECTS)  $(LDLIBS)
+		$(CLINK) $(LDFLAGS) -o $@ $(OBJECTS)  $(LDLIBS)
 
 clean:	
 	$(RM) *.o apf;

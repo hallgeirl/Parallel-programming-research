@@ -23,12 +23,11 @@ CLINK		= $(CC)
 
 ARCH_FLAGS      = -DLINUX 
 WARNINGS        = 
-OPTIMIZATION    =  -O3
 
-C++FLAGS        += $(INCLUDES) $(ARCH_FLAGS) $(WARNINGS) $(OPTIMIZATION) \
+C++FLAGS        += $(INCLUDES) $(ARCH_FLAGS) $(WARNINGS) \
                   $(XTRAFLAGS) $(DEBUG)
 
-CFLAGS		+= $(INCLUDES) $(ARCH_FLAGS) $(WARNINGS) $(OPTIMIZATION) \
+CFLAGS		+= $(INCLUDES) $(ARCH_FLAGS) $(WARNINGS) \
                   $(XTRAFLAGS) $(DEBUG)
 
 FFLAGS		= $(ARCH_FLAGS) -O2 -fno-second-underscore -ff90 -fugly-complex

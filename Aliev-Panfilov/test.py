@@ -11,10 +11,9 @@ def runTests(ns, ts, geoms, reps, results, precision):
     else:
         precision = ""
 
-    os.system("make clean > /dev/null 2> /dev/null")
-    os.system("make > /dev/null")
+    os.system("make clean > /dev/null")
+    os.system("make > /dev/null 2> /dev/null")
     
-
     for (x,y) in geoms:
         for n in ns:
             for t in ts:
@@ -53,13 +52,17 @@ def main(args):
     print "Running tests..."
     plot_inctime = open(filename + "plotdata.dat", "w")
     plot_inctime.write("# time running_time\n")
-    for (n,t) in nts:
-        x = n+1
-        y = 30
-        runTests([n], [t], [(x, y)], testruns, results, precision)
-        plot_inctime.write("# n=" + str(n) + " t=" + str(t) + "\n")
-        key = (n, t, x, y)
-        plot_inctime.write("\"" + str(x) + "x" + str(y) + "\""  + " " + str(results[key]) + "\n")
+    for threads in [1,2,4]:
+        os.putenv("OMP_NUM_THREADS", str(threads))
+        print str(threads) + " threads"
+        plot_inctime.write("# " + str(threads) + " threads")
+        for (n,t) in nts:
+            x = n+1
+            y = 30
+            runTests([n], [t], [(x, y)], testruns, results, precision)
+            plot_inctime.write("# n=" + str(n) + " t=" + str(t) + "\n")
+            key = (n, t, x, y)
+            plot_inctime.write("\"" + str(x) + "x" + str(y) + "\""  + " " + str(results[key]) + "\n")
     plot_inctime.close()   
 
     print "Results: " + str(results)

@@ -61,21 +61,10 @@ void solve_block(void* _args)
     while (true)
     {
         //Wait for border padding
-        pthread_mutex_lock(&ready_mutex);
-        #ifdef DEBUG
-        printf("Thread %d waits for ready.\n", thread_id);
-        #endif
-        while (state == 0)
-            pthread_cond_wait(&ready, &ready_mutex);
-            
+	pthread_barrier_wait(&barr);
         DOUBLE ** E = *args->E;
         DOUBLE ** E_prev = *args->E_prev;
-
-        #ifdef DEBUG
-        printf("Thread %d got ready.\n", thread_id);
-        #endif
-        pthread_mutex_unlock(&ready_mutex);
-        
+       
         for (i = offset_y; i < offset_y + by; i++)
         {
             #pragma ivdep
@@ -112,30 +101,6 @@ void solve_block(void* _args)
         #ifdef DEBUG
         printf("Thread %d past barrier.\n", thread_id);
         #endif
-        
-        pthread_mutex_lock(&done_mutex);
-        
-        //Let the first thread entering this lock reset the state variable
-        if (done_count == 0)
-        {
-            #ifdef DEBUG
-            printf("Thread %d sets state to 0.\n", thread_id);
-            #endif
-            state = 0;
-        }
-        
-        //Increment count    
-        done_count++;
-        
-        //Are we done? If so, signal the main thread to continue.
-        if (done_count == threadcount)
-        {
-            #ifdef DEBUG
-            printf("Thread %d broadcasts done.\n", thread_id);
-            #endif
-            pthread_cond_broadcast(&done);
-        }
-        pthread_mutex_unlock(&done_mutex);
     }
     printf("Thread %d exits.\n", thread_id);
     pthread_exit(NULL);
@@ -155,7 +120,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
 
     DOUBLE **E = *_E, **E_prev = *_E_prev;
     threadcount = tx*ty;
-    pthread_barrier_init(&barr, NULL, tx*ty);
+    pthread_barrier_init(&barr, NULL, tx*ty+1);
     
     //Allocate threads
     pthread_t *threads = (pthread_t*)malloc(sizeof(pthread_t)*tx*ty);
@@ -221,7 +186,6 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
         *
         */
         int i, j;
-
         #pragma ivdep
         for (j = 1; j <= m + 1; j++) {
             E_prev[j][0] = E_prev[j][2];
@@ -233,47 +197,8 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
             E_prev[0][i] = E_prev[2][i];
             E_prev[m + 2][i] = E_prev[m][i];
         }
+	pthread_barrier_wait(&barr);
 
-        //Wake up threads to do one iteration worth of work
-        pthread_mutex_lock(&ready_mutex);
-        #ifdef DEBUG
-        printf("Main thread inited ghost cells, sets state to 1 and broadcasts ready.\n");
-        #endif
-        state = 1;
-        pthread_cond_broadcast(&ready);
-        pthread_mutex_unlock(&ready_mutex);
-
-        //Wait for threads to finish
-        pthread_mutex_lock(&done_mutex);
-        #ifdef DEBUG
-        printf("Main waits for done signal.\n");
-        #endif
-        while (done_count < tx*ty)
-            pthread_cond_wait(&done, &done_mutex);
-        #ifdef DEBUG
-        printf("Main received done signal, sets done_count to 0.\n");
-        #endif
-        done_count = 0;
-        pthread_mutex_unlock(&done_mutex);
-
-        //Main loop
-        /*for (ti = 0; ti < ty; ti++)
-        {
-            for (tj = 0; tj < tx; tj++)
-            {
-                //Create thread and execute solver for sub-problem
-                pthread_create(&threads[ti*tx+tj], NULL, &solve_block, &thread_args[ti*tx+tj]);
-            }
-        }*/
-        
-        //Join the threads
-        /*for (ti = 0; ti < ty; ti++)
-        {
-            for (tj = 0; tj < tx; tj++)
-            {
-                pthread_join(threads[ti*tx+tj], NULL);
-            }
-        }*/
 
         if (do_stats) {
             repNorms(E, t, dt, m, n, niter);
@@ -287,16 +212,13 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
             }
         }
 
+	pthread_barrier_wait(&barr);
+
         // Swap current and previous
         DOUBLE **tmp = E;
         E = E_prev;
         E_prev = tmp;
         
-        //Tell the threads that the arrays are swapped
-        /*pthread_mutex_lock(&swapped_mutex);
-        swap = 1;
-        pthread_cond_broadcast(&swapped);
-        pthread_mutex_unlock(&swapped_mutex);*/
     }
 
     // Store them into the pointers passed in

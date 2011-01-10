@@ -52,11 +52,12 @@ def main(args):
     print "Running tests..."
     plot_inctime = open(filename + "plotdata.dat", "w")
     plot_inctime.write("# time running_time\n")
-    for threads in [1,2,4]:
-        os.putenv("OMP_NUM_THREADS", str(threads))
-        print str(threads) + " threads"
-        plot_inctime.write("# " + str(threads) + " threads")
-        for (n,t) in nts:
+    for (n,t) in nts:
+        for threads in [1,2,4]:
+            os.putenv("OMP_NUM_THREADS", str(threads))
+            print str(threads) + " threads"
+            plot_inctime.write("# " + str(threads) + " threads")
+
             x = n+1
             y = 30
             runTests([n], [t], [(x, y)], testruns, results, precision)

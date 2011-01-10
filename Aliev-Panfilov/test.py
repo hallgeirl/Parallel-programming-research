@@ -11,7 +11,7 @@ def runTests(ns, ts, geoms, reps, results, precision):
     else:
         precision = ""
 
-    os.system("make clean > /dev/null")
+    os.system("make clean > /dev/null 2> /dev/null")
     os.system("make > /dev/null")
     
 
@@ -41,7 +41,7 @@ def main(args):
     results = {}
     filename = args[0]
     precision = args[1]
-    testruns = 10
+    testruns = 5
     
     geomset = [(1,1), (1, 2), (1,4), (2,2)]
     nts = [(100, 5500), (200, 1500), (500, 90), (1000, 6), (2000, 0.4)];

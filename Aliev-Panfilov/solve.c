@@ -85,6 +85,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
         #pragma omp parallel for private(i, j)
         for (j = 1; j <= m + 1; j++) 
         {
+            #pragma ivdep
             for (i = 1; i <= n + 1; i++) 
             {
                 E[j][i] *=

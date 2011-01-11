@@ -75,23 +75,6 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
                                                   E_prev[j - 1][i]);
                     }
                 }
-                
-                for (j = jj; j < jj+by && j <= m+1; j++)
-                {
-                    #pragma ivdep
-                    for (i = ii; i < ii+bx && i <= n+1; i++)
-                    {
-                        E[j][i] *=
-                          1 - dt * (kk * (E[j][i] - a) * (E[j][i] - 1) + R[j][i]);
-
-                        R[j][i] +=
-                            dt * (
-                                epsilon + M1 * R[j][i] /
-                                (E[j][i] + M2)) *
-                                (-R[j][i] - kk * E[j][i] * (E[j][i] - b - 1)
-                            );
-                    }
-                }
             }
         }
 
@@ -99,8 +82,22 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
         * Solve the ODE, advancing excitation and recovery variables
         * to the next timtestep
         */
-//        #pragma omp parallel for private(i, j)
+        #pragma omp parallel for private(i, j)
+        for (j = 1; j <= m + 1; j++) 
+        {
+            for (i = 1; i <= n + 1; i++) 
+            {
+                E[j][i] *=
+                  1 - dt * (kk * (E[j][i] - a) * (E[j][i] - 1) + R[j][i]);
 
+                R[j][i] +=
+                    dt * (
+                        epsilon + M1 * R[j][i] /
+                        (E[j][i] + M2)) *
+                        (-R[j][i] - kk * E[j][i] * (E[j][i] - b - 1)
+                    );
+            }
+        }
 
         if (do_stats) {
             repNorms(E, t, dt, m, n, niter);

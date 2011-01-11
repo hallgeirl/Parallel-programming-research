@@ -3,7 +3,8 @@
  * Based on code orginally provided by Xing Cai, Simula Research Laboratory
  *
  * Modified and  restructured by Scott B. Baden, UCSD
- *
+ * 
+ * Modified further by Hallgeir Lien
  */
 #define _XOPEN_SOURCE 600
 #include <pthread.h>
@@ -32,19 +33,15 @@ typedef struct thread_args_s
 pthread_barrier_t barr;
 int threadcount;
 int state = 0;
-//int done = 0;
 int done_count;
 
 pthread_cond_t ready = PTHREAD_COND_INITIALIZER;
 pthread_cond_t done = PTHREAD_COND_INITIALIZER;
-pthread_cond_t swapped = PTHREAD_COND_INITIALIZER;
 
 pthread_mutex_t ready_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t done_mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t swapped_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-//Solves the PDE part for one block of the array
-//void solve_pde(DOUBLE ** E, DOUBLE ** E_prev, int offset_x, int offset_y, int bx, int by, int m, int n, DOUBLE alpha)
+//Solves the PDE and ODE part for one block of the array.
 void solve_block(void* _args)
 {
     thread_args_t* args = (thread_args_t*) _args;
@@ -56,8 +53,7 @@ void solve_block(void* _args)
     int offset_x = args->offset_x,  offset_y = args->offset_y;
     DOUBLE dt = args->dt;
     int i,j;
-    //printf("Thread %d says hello.\n", thread_id);
-
+    
     while (true)
     {
         //Wait for border padding
@@ -186,7 +182,12 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
             thread_args[ti*tx+tj].bx = bx;
             thread_args[ti*tx+tj].by = by;
             thread_args[ti*tx+tj].dt = dt;
-            
+
+/*            //Set CPU affinity*/
+/*            cpu_set_t cpuset;*/
+/*            CPU_ZERO(&cpuset);*/
+/*            CPU_SET((ti*tx+tj)%2, &cpuset);*/
+/*            pthread_setaffinity_np(threads[ti*tx+tj], sizeof(cpu_set_t), &cpuset);*/
             
             //Start the thread
             pthread_create(&threads[ti*tx+tj], NULL, &solve_block, &thread_args[ti*tx+tj]);

@@ -43,7 +43,7 @@ def main(args):
     precision = args[1]
     testruns = 10
     
-    geomset = [(1,1), (1, 2), (1,4), (2,2)]
+    geomset = [(1,1), (1, 2), (1,4), (2,2), (1,8), (2,4)]
     nts = [(100, 5500), (200, 1500), (500, 90), (1000, 6), (2000, 0.4), (5000, 0.01)];
     if precision == "float":
         filename += "_float_"

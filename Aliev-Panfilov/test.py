@@ -40,9 +40,10 @@ def main(args):
     results = {}
     filename = args[0]
     precision = args[1]
-    testruns = 3
+    testruns = 10
     
-    nts = [(100, 5500), (200, 1500), (500, 90), (1000, 6), (2000, 0.4)];
+    nts = [(100, 5500), (200, 1500), (500, 90), (1000, 6), (2000, 0.4), (5000, 0.01)];
+
     if precision == "float":
         filename += "_float_"
     elif precision == "double":
@@ -53,7 +54,7 @@ def main(args):
     plot_inctime = open(filename + "plotdata.dat", "w")
     plot_inctime.write("# time running_time\n")
     for (n,t) in nts:
-        for threads in [1,2,4]:
+        for threads in [1,2,4,8]:
             os.putenv("OMP_NUM_THREADS", str(threads))
             print str(threads) + " threads"
             plot_inctime.write("# " + str(threads) + " threads")

@@ -54,12 +54,18 @@ void solve_block(void* _args)
     DOUBLE dt = args->dt;
     int i,j;
     
+    #ifdef DEBUG
+    printf("Thread %d params: bx=%d by=%d offx=%d offy=%d\n", thread_id, bx, by, offset_x, offset_y);
+    fflush(stdout);
+    #endif
+    
     while (true)
     {
         //Wait for border padding
         pthread_mutex_lock(&ready_mutex);
         #ifdef DEBUG
         printf("Thread %d waits for ready.\n", thread_id);
+        fflush(stdout);
         #endif
         while (state == 0)
             pthread_cond_wait(&ready, &ready_mutex);
@@ -69,6 +75,7 @@ void solve_block(void* _args)
 
         #ifdef DEBUG
         printf("Thread %d got ready.\n", thread_id);
+        fflush(stdout);
         #endif
         pthread_mutex_unlock(&ready_mutex);
         
@@ -103,10 +110,12 @@ void solve_block(void* _args)
         //Barrier to make sure no thread waits for ready signal
         #ifdef DEBUG
         printf("Thread %d waits at barrier.\n", thread_id);
+        fflush(stdout);
         #endif
         pthread_barrier_wait(&barr);
         #ifdef DEBUG
         printf("Thread %d past barrier.\n", thread_id);
+        fflush(stdout);
         #endif
         
         pthread_mutex_lock(&done_mutex);
@@ -147,6 +156,8 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
     //These values are used to determine the block size for the last threads, so cache the results for performance.
     int m_mod_ty = (m+1) % ty;
     int n_mod_tx = (n+1) % tx;
+    int blocks_x = (n+1) / tx;
+    int blocks_y = (m+1) / ty;
     int ti, tj;
 
     DOUBLE **E = *_E, **E_prev = *_E_prev;
@@ -160,7 +171,8 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
     thread_args_t *thread_args = (thread_args_t*)malloc(sizeof(thread_args_t)*tx*ty);
     for (ti = 0; ti < ty; ti++)
     {
-        int offset_y = ti*(m+1)/ty + 1, by = (m+1)/ty;
+        int offset_y = ti*(blocks_y) + 1, 
+            by = (m+1)/ty;
         
         //Let the last thread take care of any leftovers
         if (ti == ty-1) by += m_mod_ty;
@@ -168,7 +180,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
         for (tj = 0; tj < tx; tj++)
         {
             //Determine boundaries and block size
-            int offset_x = tj*(n+1)/tx + 1, bx = (n+1)/tx;
+            int offset_x = tj*(blocks_x) + 1, bx = (n+1)/tx;
             //Let the last thread take care of any leftovers
             if (tj == tx-1) bx += n_mod_tx;
 

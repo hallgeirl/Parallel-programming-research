@@ -25,14 +25,20 @@ def runTests(ns, ts, geoms, reps, results, precision):
                     print "  Test run #:\t" + str(rep+1)
                     p = os.popen("./apf -n " + str(n) + " -t " + str(t) + " -x " + str(x) + " -y " + str(y))
                     key = (n, t, x, y)
-                    for line in p.readlines():
+                    found = False
+                    lines = p.readlines()
+                    for line in lines:
                         if r.match(line):
+                            found = True
                             time = float(r.findall(line)[0])
                             print "  Time: \t" + str(time) + " seconds."
                             if (key in results and time < results[key]) or key not in results:
                                 print "  <<New best time>>"
                                 results[key] = time
                             print ""
+                    if not found:
+                        print "Some error occured. Program output: "
+                        print lines
         
 
 def main(args):

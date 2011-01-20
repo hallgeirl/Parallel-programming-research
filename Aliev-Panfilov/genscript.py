@@ -4,44 +4,6 @@ import sys
 import os
 import re
 
-def runTests(ns, ts, geoms, reps, results, precision):
-    r = re.compile("Running Time: ([0-9]+\.[0-9]+)")
-
-    if precision == "float":
-        precision = " float=1"
-    else:
-        precision = ""
-
-    os.system("make clean > /dev/null")
-    os.system("make > /dev/null 2> /dev/null")
-    
-
-    for (x,y) in geoms:
-        for n in ns:
-            for t in ts:
-                print "n = " + str(n) + ", t = " + str(t)
-                print "Thread geometry: " + str(x) + "x" + str(y)
-
-                for rep in xrange(reps):
-                    print "  Test run #:\t" + str(rep+1)
-                    p = os.popen("./apf -n " + str(n) + " -t " + str(t) + " -x " + str(x) + " -y " + str(y))
-                    key = (n, t, x, y)
-                    found = False
-                    lines = p.readlines()
-                    for line in lines:
-                        if r.match(line):
-                            found = True
-                            time = float(r.findall(line)[0])
-                            print "  Time: \t" + str(time) + " seconds."
-                            if (key in results and time < results[key]) or key not in results:
-                                print "  <<New best time>>"
-                                results[key] = time
-                            print ""
-                    if not found:
-                        print "Some error occured. Program output: "
-                        print lines
-        
-
 def main(args):
     testruns = 3
     
@@ -66,8 +28,13 @@ def main(args):
             f = open("run_" + ("openmp" if omp else "pthreads") + "_" + str(threads) + ".sh", "w")
             f.write(header)
             f.write("#PBS -l nodes=1:ppn=" + str(threads) + "\n")
-            f.write(omp_tail if omp else pthreads_tail)
-            f.write(("export OMP_NUM_THREADS=" + str(threads) + "\n") if omp else "num_threads=16\n")
+            if omp:
+                f.write(omp_tail)
+                f.write("export OMP_NUM_THREADS=" + str(threads) + "\n")
+            else:
+                f.write(pthreads_tail)
+                f.write("num_threads=16\n")
+                
             f.write(common_tail)
             
             # Jobs

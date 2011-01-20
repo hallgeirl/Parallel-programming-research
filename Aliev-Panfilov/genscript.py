@@ -25,7 +25,13 @@ def main(args):
     # Generate scripts for both pthreads and openmp
     for omp in [True, False]:
         for threads in [1,2,4,8,16,32]:
-            f = open("run_" + ("openmp" if omp else "pthreads") + "_" + str(threads) + ".sh", "w")
+            filename = "run_"
+            if omp:
+                filename += "openmp"
+            else:
+                filename += "pthreads"
+            filename += "_" + str(threads) + ".sh"
+            f = open(filename, "w")
             f.write(header)
             f.write("#PBS -l nodes=1:ppn=" + str(threads) + "\n")
             if omp:

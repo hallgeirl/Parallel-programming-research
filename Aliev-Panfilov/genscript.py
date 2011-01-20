@@ -51,7 +51,7 @@ def main(args):
                         f.write(" -i " + str(n+1) + " -j 30 ")
                     else:
                         f.write(" -x 1 -y " + str(threads))
-                    f.write("\n")
+                    f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")
                         
 if __name__ == "__main__":
     main(sys.argv[1:])

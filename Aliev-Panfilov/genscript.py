@@ -12,7 +12,7 @@ def main(args):
         os.mkdir("output")
         
     # Common header. All scripts use the same.
-    header = "#!/bin/bash\n#PBS -A csd156\n#PBS -q large\n#PBS -o output/$PBS_JOBNAME_$PBS_JOBID\n"
+    header = "#!/bin/bash\n#PBS -A csd156\n#PBS -q large\n"
     
     # Tails (that comes after the #PBS statements)
     common_tail = "cd $PBS_O_WORKDIR\nexport LD_PRELOAD=/opt/ScaleMP/libvsmpclib/0.1/lib64/libvsmpclib.so\nexport PATH=/opt/ScaleMP/numabind/bin:$PATH\n"

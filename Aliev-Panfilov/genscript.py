@@ -41,20 +41,19 @@ def main(args):
                 f.write("export OMP_NUM_THREADS=" + str(threads) + "\n")
                 f.write(omp_tail)
             else:
-                f.write("num_threads=16\n")
+                f.write("num_threads=" + str(threads) + "\n")
                 f.write(pthreads_tail)
             f.write(common_tail)
                 
             # Jobs
             for n,t in nts:
-                f.write("echo \"n=" + str(n) + ", t=" + str(t) + "\n")
+                f.write("echo \"n=" + str(n) + ", t=" + str(t) + "\"\n")
                 for foo in xrange(testruns):
                     if omp:
                         f.write("./apf -n " + str(n) + " -t " + str(t))
                         f.write(" -i " + str(n+1) + " -j 30 ")
                     else:
-                        f.write("taskset -c $cpu_start-$cpu_end ./apf")
-                        f.write(" -x 1 -y " + str(threads))
+                        f.write("taskset -c $cpu_start-$cpu_end ./apf -n " + str(n) + " -t " + str(t) + " -x 1 -y " + str(threads))
                     f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")
     os.system("chmod +x run*.sh")
 if __name__ == "__main__":

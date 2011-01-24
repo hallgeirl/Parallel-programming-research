@@ -56,6 +56,6 @@ def main(args):
                         f.write("taskset -c $cpu_start-$cpu_end ./apf")
                         f.write(" -x 1 -y " + str(threads))
                     f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")
-                        
+    os.system("chmod +x run*.sh")
 if __name__ == "__main__":
     main(sys.argv[1:])

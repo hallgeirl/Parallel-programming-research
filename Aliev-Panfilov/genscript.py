@@ -41,8 +41,8 @@ def main(args):
                 f.write("export OMP_NUM_THREADS=" + str(threads) + "\n")
                 f.write(omp_tail)
             else:
-                f.write(pthreads_tail)
                 f.write("num_threads=16\n")
+                f.write(pthreads_tail)
             f.write(common_tail)
                 
             # Jobs

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #Generates run.sh scripts.
-import sys
+import sys, math
 import os
 import re
 
@@ -51,7 +51,7 @@ def main(args):
                 for foo in xrange(testruns):
                     if omp:
                         f.write("./apf -n " + str(n) + " -t " + str(t))
-                        f.write(" -i " + str(n+1) + " -j 30 ")
+                        f.write(" -i " + str(n+1) + " -j " + str(int(math.ceil(float(n+1)/float(threads)))))
                     else:
                         f.write("taskset -c $cpu_start-$cpu_end ./apf -n " + str(n) + " -t " + str(t) + " -x 1 -y " + str(threads))
                     f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")

@@ -17,7 +17,7 @@ def main(args):
     
     # Tails (that comes after the #PBS statements)
     omp_tail = "export KMP_AFFINITY=compact,verbose,0,`numabind --offset=16`\n"
-    pthreads_tail = "cpu_start=`numabind --offset=$num_threads`\ncpu_end=`echo \"$cpu_start + $num_threads - 1\" | bc`\ntaskset -c $cpu_start-$cpu_end ./pthread.ex\n"
+    pthreads_tail = "cpu_start=`numabind --offset=$num_threads`\ncpu_end=`echo \"$cpu_start + $num_threads - 1\" | bc`\n"
 
     common_tail = "cd $PBS_O_WORKDIR\n"
 
@@ -49,10 +49,11 @@ def main(args):
             for n,t in nts:
                 f.write("echo \"n=" + str(n) + ", t=" + str(t) + "\n")
                 for foo in xrange(testruns):
-                    f.write("./apf -n " + str(n) + " -t " + str(t))
                     if omp:
+                        f.write("./apf -n " + str(n) + " -t " + str(t))
                         f.write(" -i " + str(n+1) + " -j 30 ")
                     else:
+                        f.write("taskset -c $cpu_start-$cpu_end ./apf")
                         f.write(" -x 1 -y " + str(threads))
                     f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")
                         

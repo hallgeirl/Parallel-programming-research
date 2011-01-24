@@ -5,7 +5,7 @@ import os
 import re
 
 def main(args):
-    testruns = 3
+    testruns = 10
     
     # Create output directory if it doesn't exist
     if not os.path.exists("output"):

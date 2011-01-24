@@ -47,6 +47,7 @@ def main(args):
                 
             # Jobs
             for n,t in nts:
+                f.write("echo \"n=" + str(n) + ", t=" + str(t) + "\n")
                 for foo in xrange(testruns):
                     f.write("./apf -n " + str(n) + " -t " + str(t))
                     if omp:

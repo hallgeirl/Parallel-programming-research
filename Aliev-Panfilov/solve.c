@@ -56,6 +56,8 @@ pthread_mutex_t done_mutex = PTHREAD_MUTEX_INITIALIZER;
 //Solves the PDE and ODE part for one block of the array.
 void * solve_block(void* _args)
 {
+    #define MT_PRINT(s) printf("Thread %d\t%s\n", thread_id, s); fflush(stdout); 
+    
     thread_args_t* args = (thread_args_t*) _args;
 
     int thread_id = args->thread_id;
@@ -139,7 +141,6 @@ void * solve_block(void* _args)
                                           E_prev[i - 1][j]);
             }
         }
-
         
         //and the borders.
         //Left and right borders
@@ -317,6 +318,8 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
  
     //The arguments are fixed for each iteration, so initialize them only once
     thread_args = (thread_args_t*)malloc(sizeof(thread_args_t)*tx*ty);
+    thread_init_args_t* thread_init_args = (thread_init_args_t*)malloc(sizeof(thread_init_args_t)*tx*ty); 
+    
     for (ti = 0; ti < ty; ti++)
     {
         for (tj = 0; tj < tx; tj++)
@@ -327,14 +330,14 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
             ta->alpha = alpha; ta->dt = dt;
             ta->tx = tx; ta->ty = ty;
 
-            thread_init_args_t init_args;
-            init_args.R =  R;  init_args.E_prev = E_prev;
-            init_args.m =  m;  init_args.n      = n;
-            init_args.tx = tx; init_args.ty     = ty;
-            init_args.args = ta;
+            thread_init_args_t *init_args = &thread_init_args[ti*tx+tj];
+            init_args->R =  R;  init_args->E_prev = E_prev;
+            init_args->m =  m;  init_args->n      = n;
+            init_args->tx = tx; init_args->ty     = ty;
+            init_args->args = ta;
 
             //Start the initialization thread
-            pthread_create(&threads[ti*tx+tj], NULL, &init_thread, &init_args);
+            pthread_create(&threads[ti*tx+tj], NULL, &init_thread, init_args);
         }
     }
     
@@ -348,8 +351,8 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
             pthread_create(&threads[ti*tx+tj], NULL, &solve_block, &thread_args[ti*tx+tj]);
         }
     }
-    
     free(init_threads);
+    free(thread_init_args);
 
     // We continue to sweep over the mesh until the simulation has reached
     // the desired simulation Time

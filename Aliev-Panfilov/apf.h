@@ -22,6 +22,4 @@ void repNorms(DOUBLE **E, DOUBLE t, DOUBLE dt, int m,int n, int niter);
 
 DOUBLE **alloc2D(int m, int n);
 
-#define DEBUG_PRINT(s, t) (printf("Thread %d\t%s", s, t); fflush(stdout);)
-
 #endif

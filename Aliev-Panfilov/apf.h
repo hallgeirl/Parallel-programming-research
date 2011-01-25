@@ -20,4 +20,6 @@ void printMat(DOUBLE **U, int m, int n);
 void printMatLocal(DOUBLE **U, int m, int n);
 void repNorms(DOUBLE **E, DOUBLE t, DOUBLE dt, int m,int n, int niter);
 
+DOUBLE **alloc2D(int m, int n);
+
 #endif

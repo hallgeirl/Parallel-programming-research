@@ -53,10 +53,11 @@ pthread_cond_t done = PTHREAD_COND_INITIALIZER;
 pthread_mutex_t ready_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t done_mutex = PTHREAD_MUTEX_INITIALIZER;
 
+#define MT_PRINT(...) printf("Thread %d\t", thread_id); printf(__VA_ARGS__); printf("\n"); fflush(stdout); 
+
 //Solves the PDE and ODE part for one block of the array.
 void * solve_block(void* _args)
 {
-    #define MT_PRINT(s) printf("Thread %d\t%s\n", thread_id, s); fflush(stdout); 
     
     thread_args_t* args = (thread_args_t*) _args;
 
@@ -128,6 +129,7 @@ void * solve_block(void* _args)
                 right[i] = E_prev[i][bx-3];
         }
 
+        MT_PRINT("PING")
         //Solve the PDE. First the inner area.
         for (i = 1; i < by-1; i++)
         {
@@ -141,6 +143,7 @@ void * solve_block(void* _args)
                                           E_prev[i - 1][j]);
             }
         }
+        MT_PRINT("PONG")
         
         //and the borders.
         //Left and right borders
@@ -159,7 +162,7 @@ void * solve_block(void* _args)
                                       (i > 0 ? E_prev[i - 1][bx-1] : top[bx-1]) +
                                       (i < by-1 ? E_prev[i + 1][bx-1] : bottom[bx-1]));
         }
-        
+        /*MT_PRINT("PONG2")
         #pragma ivdep
         for (j = 0; j < bx; j++)
         {
@@ -169,15 +172,15 @@ void * solve_block(void* _args)
                                       E_prev[1][j] +
                                       top[j]);
                                       
-            E[by-1][j] = E_prev[by-1][bx-1] + alpha * ((j < bx-1 ? E_prev[by-1][j+1] : right[by-1]) +
+            E[by-1][j] = E_prev[by-1][j] + alpha * ((j < bx-1 ? E_prev[by-1][j+1] : right[by-1]) +
                                       (j > 0 ? E_prev[by-1][j-1] : left[by-1]) -
                                       4 * E_prev[by-1][j]+
                                       bottom[j] +
-                                      E_prev[bx-1][j-1]);
-        }
-        
+                                      E_prev[by-2][j]);
+        }*/
+        MT_PRINT("PONG3")
         //Solve the ODE for one time step
-        for (i = 1; i < by-1; i++)
+        for (i = 0; i < by; i++)
         {
             #pragma ivdep
             for (j = 0; j < bx; j++)
@@ -191,6 +194,7 @@ void * solve_block(void* _args)
                     );
             }
         }
+        MT_PRINT("PONG4")
         
         //Barrier to make sure no thread waits for ready signal
         #ifdef DEBUG
@@ -246,6 +250,7 @@ void * solve_block(void* _args)
         }
         pthread_mutex_unlock(&done_mutex);
     }
+
     if (tj == 0) free(left);
     if (tj == tx-1) free(right);
     
@@ -256,11 +261,14 @@ void * solve_block(void* _args)
 void * init_thread(void * _args)
 {
     thread_init_args_t * args = (thread_init_args_t*)_args;
+    int thread_id = args->args->thread_id;
+    #ifdef DEBUG
+    MT_PRINT("Initializing thread...");
+    #endif
     int i, j;
     int ti = args->args->thread_y, tj = args->args->thread_x;
     int n = args->n, m = args->m;
     int tx = args->tx, ty = args->ty;
-    
     //These values are used to determine the block size for the last threads, so cache the results for performance.
     int blocks_x = (n+1) / tx;
     int blocks_y = (m+1) / ty;
@@ -269,32 +277,38 @@ void * init_thread(void * _args)
     int offset_x = tj*(blocks_x) + 1, bx = (n+1)/tx;
     int offset_y = ti*(blocks_y) + 1, by = (m+1)/ty;
 
-    args->args->E = alloc2D(by-1, bx-1);
-    args->args->E_prev = alloc2D(by-1, bx-1);
-    args->args->R = alloc2D(by-1, bx-1);
+    //Let the last thread take care of any leftovers
+    if (tj == tx-1) bx += (n+1) % tx;
+    if (ti == ty-1) by += (m+1) % ty;
+
+    #ifdef DEBUG
+    MT_PRINT("Parameters: ti=%d, tj=%d, offset_x=%d, offset_y=%d, bx=%d, by=%d", ti, tj, offset_x, offset_y, bx, by);
+    #endif
 
     args->args->edgeTop = (DOUBLE*)malloc(sizeof(DOUBLE)*bx);
     args->args->edgeBottom = (DOUBLE*)malloc(sizeof(DOUBLE)*bx);
     args->args->edgeLeft = (DOUBLE*)malloc(sizeof(DOUBLE)*by);
     args->args->edgeRight = (DOUBLE*)malloc(sizeof(DOUBLE)*by);
 
-    //Let the last thread take care of any leftovers
-    if (tj == tx-1) bx += (n+1) % tx;
-    if (ti == ty-1) by += (m+1) % ty;
-
     args->args->bx = bx;
     args->args->by = by;
     
+    
+    args->args->E = alloc2D(by-1, bx-1);
+    args->args->E_prev = alloc2D(by-1, bx-1);
+    args->args->R = alloc2D(by-1, bx-1);
+    
     //Copy data from the global array to the local one
-    for (i = 0; i < bx; i++)
+    for (i = 0; i < by; i++)
     {
         #pragma ivdep
-        for (j = 0; j < by; j++)
+        for (j = 0; j < bx; j++)
         {
             args->args->E_prev[i][j] = args->E_prev[offset_y+i][offset_x+j];
             args->args->R[i][j] = args->R[offset_y+i][offset_x+j];
         }
     }
+    MT_PRINT("Initialization done.");
     
     return 0;
 }

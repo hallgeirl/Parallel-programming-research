@@ -181,11 +181,6 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
                    **E_prev_local = blocks[k]->E_prev;
             int bx = blocks[k]->bx, by = blocks[k]->by;
 
-            printf("Alpha=%6.50f\n", alpha);
-            /*sleep(k);
-            printMat(E_local, by, bx);
-            printf("\n");
-*/
             for (i = 1; i < by+1; i++) {
                 #pragma ivdep
                 for (j = 1; j < bx+1; j++) {
@@ -196,9 +191,6 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
                               E_prev_local[i - 1][j]);
                 }
             }
-/*            sleep(k);
-            printMat(E_local, by, bx);
-            printf("\n");*/
         }
         
         /*
@@ -222,13 +214,13 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
 
                     R_local[i][j] +=
                         dt * (
-                            epsilon + M1 * R[i][j] /
+                            epsilon + M1 * R_local[i][j] /
                             (E_local[i][j] + M2)) *
                             (-R_local[i][j] - kk * E_local[i][j] * (E_local[i][j] - b - 1)
                         );
                 }
             }
-            
+           
             /*sleep(k);
             printf("block data: \n");
             printMat(E_local, by, bx);

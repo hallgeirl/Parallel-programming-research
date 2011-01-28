@@ -158,15 +158,6 @@ int main(int argc, char** argv) {
     DOUBLE dt = (DOUBLE) ddt;
     DOUBLE alpha = d * dt / (dx * dx);
 
-    printf("dx=%6.50f\n", dx);
-    printf("rp=%6.50f\n", rp);
-    printf("d=%6.50f\n", d);
-    printf("kk=%6.50f\n", kk);
-    printf("dte=%6.50f\n", dte);
-    printf("dtr=%6.50f\n", dtr);
-    printf("ddt=%6.50f\n", ddt);
-    printf("dt=%6.50f\n", dt);
-
     #ifdef DEBUG
     printMat(E_prev, m, n);
     repNorms(E_prev, -1, dt, m, n, -1);

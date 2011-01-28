@@ -48,7 +48,7 @@ int solve(block_t ** blocks, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, in
         //Transfer ghost cells
         if (enableGhostCells)
         {
-            #pragma omp parallel for schedule(static, 1) private(i,j,k,tx,ty) shared(blocks) 
+            #pragma omp parallel for schedule(static, 1) private(i,j,k)
             for (k = 0; k < ty*tx; k++)
             {
                 block_t* b = blocks[k];
@@ -117,7 +117,7 @@ int solve(block_t ** blocks, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, in
         }
 
         // Solve for the excitation, a PDE
-        #pragma omp parallel for schedule(static, 1) private(i,j,k,tx,ty) shared(blocks) 
+        #pragma omp parallel for schedule(static, 1) private(i,j,k)
         for (k = 0; k < tx*ty; k++) {
             DOUBLE **E_local = blocks[k]->E,
                    **E_prev_local = blocks[k]->E_prev;
@@ -139,7 +139,7 @@ int solve(block_t ** blocks, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, in
         * Solve the ODE, advancing excitation and recovery variables
         * to the next timtestep
         */
-        #pragma omp parallel for schedule(static, 1) private(i,j,k) shared(blocks) 
+        #pragma omp parallel for schedule(static, 1) private(i,j,k)
         for (k = 0; k < tx*ty; k++) 
         {
             DOUBLE **E_local = blocks[k]->E,

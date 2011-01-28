@@ -185,7 +185,7 @@ int main(int argc, char** argv) {
 
     int i,j,k;
     
-    #pragma omp parallel for schedule(static, 1) private(k,i,j) shared(blocks, E_prev, R) // We want each thread to do one block only.
+    #pragma omp parallel for schedule(static, 1) private(k,i,j) // We want each thread to do one block only.
     for (k = 0; k < ty*tx; k++)
     {
         int ti = k/tx, tj = k%tx;
@@ -226,7 +226,7 @@ int main(int argc, char** argv) {
 
 
     //Copy the data back to the original arrays
-    #pragma omp parallel for schedule(static, 1) private(k,i,j) shared(blocks, E_prev, R) // We want each thread to do one block only.
+    #pragma omp parallel for schedule(static, 1) private(k,i,j) // We want each thread to do one block only.
     for (k = 0; k < ty*tx; k++)
     {
         int ti = k/tx, tj = k%tx;

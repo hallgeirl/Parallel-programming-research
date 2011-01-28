@@ -10,6 +10,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include <string.h>
 #include <math.h>
 #include <omp.h>
@@ -21,7 +22,7 @@
 // Allocate a 2D array
 DOUBLE **alloc2D(int m, int n) {
     DOUBLE **E;
-    int nx = n + 1, ny = m + 1;
+    int nx = n, ny = m;
     E = (DOUBLE **)malloc(sizeof(DOUBLE*) * ny + sizeof(DOUBLE) * nx * ny);
     assert(E);
     int j;
@@ -105,9 +106,9 @@ void printTOD(const char* mesg)
 
 
 // External functions
-void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* bx, int* by, int* do_stats, int* plot_freq);
+void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int *iterations, bool *enableGhostCells, int* do_stats, int* plot_freq);
 
-int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by);
+int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by, bool enableGhostCells, int iterations);
 
 // Main program
 int main(int argc, char** argv) {
@@ -129,8 +130,10 @@ int main(int argc, char** argv) {
     int plot_freq = 0;
     int tx = 1, ty = 1;
     int bx = m / 4, by = n / 4;
+    bool enableGhostCells = true;
+    int iterations = -1;
 
-    cmdLine(argc, argv, &T, &n, &tx, &ty, &bx, &by, &do_stats, &plot_freq);
+    cmdLine(argc, argv, &T, &n, &tx, &ty, &iterations, &enableGhostCells, &do_stats, &plot_freq);
     m = n;
 
     printTOD("Run begins");
@@ -139,14 +142,33 @@ int main(int argc, char** argv) {
     // The computational box is defined on [1:m+1,1:n+1]
     // We pad the arrays in order to facilitate differencing on the 
     // boundaries of the computation box
-    E = alloc2D(m + 2, n + 2);
-    E_prev = alloc2D(m + 2, n + 2);
-    R = alloc2D(m + 2, n + 2);
+    E = alloc2D(m + 3, n + 3);
+    E_prev = alloc2D(m + 3, n + 3);
+    R = alloc2D(m + 3, n + 3);
 
     init(E, E_prev, R, m, n);
     
+    DOUBLE dx = 1.0 / n;
+
+    // For time integration, these values shouldn't change 
+    double rp= kk * (b + 1) * (b + 1) / 4;
+    double dte= (dx * dx) / (d * 4 + ((dx * dx)) * (rp + kk));
+    double dtr= 1 / (epsilon + ((M1 / M2) * rp));
+    double ddt = (dte<dtr) ? 0.95*dte : 0.95*dtr;
+    DOUBLE dt = (DOUBLE) ddt;
+    DOUBLE alpha = d * dt / (dx * dx);
+
+    printf("dx=%6.50f\n", dx);
+    printf("rp=%6.50f\n", rp);
+    printf("d=%6.50f\n", d);
+    printf("kk=%6.50f\n", kk);
+    printf("dte=%6.50f\n", dte);
+    printf("dtr=%6.50f\n", dtr);
+    printf("ddt=%6.50f\n", ddt);
+    printf("dt=%6.50f\n", dt);
+
     #ifdef DEBUG
-    printMatLocal(E_prev, m, n);
+    printMat(E_prev, m, n);
     repNorms(E_prev, -1, dt, m, n, -1);
     if (plot_freq) 
     {
@@ -154,14 +176,6 @@ int main(int argc, char** argv) {
     }
     #endif
 
-    DOUBLE dx = 1.0 / n;
-
-    // For time integration, these values shouldn't change 
-    double rp= kk * (b + 1) * (b + 1) / 4;
-    double dte= (dx * dx) / (d * 4 + ((dx * dx)) * (rp + kk));
-    double dtr= 1 / (epsilon + ((M1 / M2) * rp));
-    double dt = (dte < dtr) ? 0.95 * dte : 0.95 * dtr;
-    DOUBLE alpha = d * dt / (dx * dx);
 
     #ifdef FLOAT
     printf("Using SINGLE precision arithmetic (element size: %d)\n", sizeof(DOUBLE));
@@ -177,7 +191,7 @@ int main(int argc, char** argv) {
 
     // Start the timer
     double t0 = -getTime();
-    int niter = solve(&E, &E_prev, R, m, n, T, alpha, dt, do_stats, plot_freq, bx, by);
+    int niter = solve(&E, &E_prev, R, m, n, T, alpha, dt, do_stats, plot_freq, tx, ty, enableGhostCells, iterations);
     t0 += getTime();
 
     printTOD("Run completes");

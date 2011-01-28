@@ -1,11 +1,12 @@
 //#include <assert.h>
+#include <stdbool.h>
 #include <getopt.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "types.h"
 
-void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* bx, int* by, int* do_stats, int* plot_freq){
+void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int *iterations, bool *enableGhostCells, int* do_stats, int* plot_freq){
 /// Command line arguments
  // Default value of the domain sizes
  static struct option long_options[] = {
@@ -22,7 +23,7 @@ void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* b
  int ac;
  for(ac=1;ac<argc;ac++) {
     int c;
-    while ((c=getopt_long(argc,argv,"n:x:y:i:j:t:sp:",long_options,NULL)) != -1){
+    while ((c=getopt_long(argc,argv,"n:x:y:i:gt:sp:",long_options,NULL)) != -1){
         switch (c) {
 
 	    // Size of the computational box
@@ -40,16 +41,16 @@ void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* b
                 *ty = atoi(optarg);
                 break;
 
-	    // X blocking factor
+	    // X processor geometry
             case 'i':
-                *bx = atoi(optarg);
+                *iterations = atoi(optarg);
                 break;
-
-	    // Y processor geometry
-            case 'j':
-                *by = atoi(optarg);
+                
+            //Disable ghost cell handling
+            case 'g':
+                *enableGhostCells = true;
                 break;
-
+                
 	    // Length of simulation, in simulated time units
             case 't':
                 *T = atof(optarg);

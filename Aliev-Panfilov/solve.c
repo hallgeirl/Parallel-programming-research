@@ -16,58 +16,13 @@
 #include "apf.h"
 #include "types.h"
 
-typedef struct block_s
-{
-    DOUBLE** E, ** E_prev, ** R;
-    int by, bx;
-    int ti, tj;
-} block_t;
-
-int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty, bool enableGhostCells, int iterations) 
+int solve(block_t ** blocks, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty, bool enableGhostCells, int iterations) 
 {
     // Simulated time is different from the integer timestep number
     DOUBLE t = 0.0;
     // Integer timestep number
     int niter=0;
     int i, j, k;//, ti, tj;
-
-    DOUBLE **E = *_E, **E_prev = *_E_prev;
-
-    //Initialize blocks
-    block_t ** blocks = (block_t**)malloc(sizeof(block_t*)*tx*ty);
-
-    #pragma omp parallel for schedule(static, 1) // We want each thread to do one block only.
-    for (k = 0; k < ty*tx; k++)
-    {
-        int ti = k/tx, tj = k%tx;
-        
-        //Allocate a block
-        block_t* block = malloc(sizeof(block_t));
-        
-        block->ti = ti; block->tj = tj;
-        block->by = ((m+1)/ty) + (ti == ty-1 ? (m+1) % ty : 0);
-        block->bx = ((n+1)/tx) + (tj == tx-1 ? (n+1) % tx : 0);
-        block->E = alloc2D(block->by+2, block->bx+2);
-        block->E_prev = alloc2D(block->by+2, block->bx+2);
-        block->R = alloc2D(block->by+2, block->bx+2);
-        
-        int bx = (n+1)/tx;
-        int by = (m+1)/ty;
-
-        //Copy data from the large array
-        for (i = 1; i < block->by+1; i++)
-        {
-            for (j = 1; j < block->bx+1; j++)
-            {
-                block->E_prev[i][j] = E_prev[i+ti*by][j+tj*bx];
-                block->R[i][j] = R[i+ti*by][j+tj*bx];
-            }
-        }
-        blocks[k] = block;
-        
-        printf("Thread %d ti=%d tj=%d bx=%d by=%d\n", k, block->ti, block->tj, block->bx, block->by);
-    }
-
 
     // We continue to sweep over the mesh until the simulation has reached
     // the desired simulation Time
@@ -160,22 +115,9 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
                 }
             }
         }
-        
-        /*#pragma ivdep
-        for (j = 1; j <= m + 1; j++) {
-            E_prev[j][0] = E_prev[j][2];
-            E_prev[j][n + 2] = E_prev[j][n];
-        }
-
-        #pragma ivdep
-        for (i = 1; i <= n + 1; i++) {
-            E_prev[0][i] = E_prev[2][i];
-            E_prev[m + 2][i] = E_prev[m][i];
-        }*/
-
 
         // Solve for the excitation, a PDE
-        //#pragma omp parallel for schedule(static, 1)
+        #pragma omp parallel for schedule(static, 1)
         for (k = 0; k < tx*ty; k++) {
             DOUBLE **E_local = blocks[k]->E,
                    **E_prev_local = blocks[k]->E_prev;
@@ -220,11 +162,6 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
                         );
                 }
             }
-           
-            /*sleep(k);
-            printf("block data: \n");
-            printMat(E_local, by, bx);
-            printf("\n");*/
             
             //Swap arrays
             DOUBLE** tmp = blocks[k]->E;
@@ -233,7 +170,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
         }
         
       
-        
+        /*
         if (do_stats) {
             repNorms(E, t, dt, m, n, niter);
         }
@@ -244,38 +181,9 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
             {
                 splot(E, t, niter, m + 1, n + 1, WAIT);
             }
-        }
-
-
-
-
-        // Swap current and previous
- /*       DOUBLE **tmp = E;
-        E = E_prev;
-        E_prev = tmp;*/
+        }*/
     }
-
-    //Copy the data back to the original arrays
-    #pragma omp parallel for schedule(static, 1) // We want each thread to do one block only.
-    for (k = 0; k < ty*tx; k++)
-    {
-        int ti = k/tx, tj = k%tx;
-        block_t *block = blocks[k];
-        
-        for (i = 1; i < block->by+1; i++)
-        {
-            for (j = 1; j < block->bx+1; j++)
-            {
-                E_prev[i+ti*((m+1)/ty)][j+tj*((n+1)/tx)] = block->E_prev[i][j];
-            }
-        }
-    }
-    //printMat(E_prev, m+1, n+1);
     
-
-    // Store them into the pointers passed in
-    *_E = E;
-    *_E_prev = E_prev;
 
     return niter;
 }

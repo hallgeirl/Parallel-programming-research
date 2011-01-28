@@ -11,6 +11,13 @@ static const int WAIT = 1;
 static const int WAIT = 0;
 #endif
 
+typedef struct
+{
+    DOUBLE** E, ** E_prev, ** R;
+    int by, bx;
+    int ti, tj;
+} block_t;
+
 // External functions
 void splot(DOUBLE **E, DOUBLE T, int niter, int m, int n, int WAIT);
 // Uses gettimeofday() to collect timings on the host side
@@ -21,6 +28,7 @@ void printMatLocal(DOUBLE **U, int m, int n);
 void repNorms(DOUBLE **E, DOUBLE t, DOUBLE dt, int m,int n, int niter);
 
 DOUBLE** alloc2D(int m, int n);
+
 
 
 #endif

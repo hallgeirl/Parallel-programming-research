@@ -189,20 +189,15 @@ int main(int argc, char** argv) {
     for (k = 0; k < ty*tx; k++)
     {
         int ti = k/tx, tj = k%tx;
-        printf("check1"); fflush(stdout);
+
         //Allocate a block
         block_t* block = malloc(sizeof(block_t));
-        printf("check2"); fflush(stdout);
         block->ti = ti; block->tj = tj;
         block->by = ((m+1)/ty) + (ti == ty-1 ? (m+1) % ty : 0);
         block->bx = ((n+1)/tx) + (tj == tx-1 ? (n+1) % tx : 0);
-        printf("check3"); fflush(stdout);
         block->E = alloc2D(block->by+2, block->bx+2);
-        printf("check4"); fflush(stdout);
         block->E_prev = alloc2D(block->by+2, block->bx+2);
-        printf("check5"); fflush(stdout);
         block->R = alloc2D(block->by+2, block->bx+2);
-        printf("check6"); fflush(stdout);
         int bx = (n+1)/tx;
         int by = (m+1)/ty;
 
@@ -215,7 +210,6 @@ int main(int argc, char** argv) {
                 block->R[i][j] = R[i+ti*by][j+tj*bx];
             }
         }
-        printf("check7"); fflush(stdout);
         
         blocks[k] = block;
         
@@ -232,7 +226,7 @@ int main(int argc, char** argv) {
 
 
     //Copy the data back to the original arrays
-    #pragma omp parallel for schedule(static, 1) // We want each thread to do one block only.
+    #pragma omp parallel for schedule(static, 1) private(k,i,j) shared(blocks, E_prev, R) // We want each thread to do one block only.
     for (k = 0; k < ty*tx; k++)
     {
         int ti = k/tx, tj = k%tx;

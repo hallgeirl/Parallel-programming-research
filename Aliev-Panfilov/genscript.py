@@ -5,7 +5,7 @@ import os
 import re
 
 def main(args):
-    testruns = 5
+    testruns = 3
     
     # Create output directory if it doesn't exist
     if not os.path.exists("output"):
@@ -22,7 +22,7 @@ def main(args):
     common_tail = "cd $PBS_O_WORKDIR\n"
 
     #nts = [(100, 5500), (200, 1500), (500, 90), (1000, 6), (2000, 0.4), (5000, 0.01)];
-    nts = [(20000, 0.000001)];
+    nts = [(2000, 0.4)];
 
     # Generate scripts for both pthreads and openmp
     for omp in [True, False]:

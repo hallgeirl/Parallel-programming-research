@@ -217,6 +217,9 @@ int main(int argc, char** argv) {
         printf("Thread %d ti=%d tj=%d bx=%d by=%d\n", k, block->ti, block->tj, block->bx, block->by);
     }
 
+    printf("Running solver...\n");
+    fflush(stdout);
+
     // Start the timer
     double t0 = -getTime();
     int niter = solve(blocks, m, n, T, alpha, dt, do_stats, plot_freq, tx, ty, enableGhostCells, iterations);

@@ -19,12 +19,18 @@
 
 // Utilities
 // Allocate a 2D array
-DOUBLE **alloc2D(int m, int n, int *pitch) {
+DOUBLE **alloc2D(int m, int n, int *pitch, int *shifted) {
     DOUBLE **E;
     int leftover = n % (4096/sizeof(DOUBLE));
     *pitch = n + (((4096/sizeof(DOUBLE))-leftover) % (4096/sizeof(DOUBLE)));
-    E = (DOUBLE **)malloc(sizeof(DOUBLE*) * m + sizeof(DOUBLE) * (*pitch) * m);
+    E = (DOUBLE **)malloc(sizeof(DOUBLE*) * m + sizeof(DOUBLE) * (*pitch) * m + 4096);
     assert(E);
+    
+    //Align to page boundary
+    int lowerBits = ((int)E & 4095);
+    *shifted = (4096-lowerBits)/sizeof(DOUBLE);
+    E += (*shifted);
+    
     int i;
     for (i = 0; i < m; i++)
     {
@@ -123,6 +129,7 @@ int main(int argc, char** argv) {
     *      and is used in time integration
     */
     DOUBLE **E, **R, **E_prev;
+    int E_shifted, E_prevShifted, R_shifted;
     DOUBLE mx, l2norm;
 
     // Command line arguments
@@ -145,9 +152,9 @@ int main(int argc, char** argv) {
     // The computational box is defined on [1:m+1,1:n+1]
     // We pad the arrays in order to facilitate differencing on the 
     // boundaries of the computation box
-    E = alloc2D(m + 3, n + 3, &pitch);
-    E_prev = alloc2D(m + 3, n + 3, &pitch);
-    R = alloc2D(m + 3, n + 3, &pitch);
+    E = alloc2D(m + 3, n + 3, &pitch, &E_shifted);
+    E_prev = alloc2D(m + 3, n + 3, &pitch, &E_prevShifted);
+    R = alloc2D(m + 3, n + 3, &pitch, &R_shifted);
 
     init(E, E_prev, R, m, n);
     
@@ -197,9 +204,9 @@ int main(int argc, char** argv) {
     scanf("%d", &resp);
     }
 
-    free (E);
-    free (E_prev);
-    free (R);
+    free (E-E_shifted);
+    free (E_prev-E_prevShifted);
+    free (R-R_shifted);
 
     return 0;
 }

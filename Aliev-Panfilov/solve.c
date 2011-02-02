@@ -38,7 +38,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
     // This is different from the number of iterations
     while ((iters < 0 && t < T) || niter < iters) {
         #ifdef DEBUG
-        printMat(E_prev, m, n);
+        //printMat(E_prev, m+3, n+3);
         repNorms(E_prev, t, dt, m, n, niter);
         if (plot_freq) {
             splot(E_prev, t, niter, m + 1, n + 1, WAIT);
@@ -53,17 +53,11 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
         * padding region, set up for differencing computational box's boundary
         *
         */
-        #pragma ivdep
+        /*#pragma ivdep
         for (j = 1; j <= m + 1; j++) {
             E_prev[j][0] = E_prev[j][2];
             E_prev[j][n + 2] = E_prev[j][n];
-        }
-
-        #pragma ivdep
-        for (i = 1; i <= n + 1; i++) {
-            E_prev[0][i] = E_prev[2][i];
-            E_prev[m + 2][i] = E_prev[m][i];
-        }
+        }*/
 
 
         // Solve for the excitation, a PDE
@@ -72,9 +66,19 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
         #pragma omp parallel for private(i,j) schedule(static, 1)
         for (ti = 0; ti < ty; ti++)
         {
-            //printf("scheduling thread %d\n", ti);
+            //Let top and bottom thread copy top and bottom ghost cells
+            if (ti == 0)
+                memcpy(&E_prev[0][0], &E_prev[2][0], sizeof(DOUBLE)*(n+3));
+            else if (ti == ty-1)
+                memcpy(&E_prev[m+2][0], &E_prev[m][0], sizeof(DOUBLE)*(n+3));
+        
             int ii = ((m+1)/ty)*ti + 1;
-            for (i = ii; i < ii+chunksizes[ti]; i++) {
+            for (i = ii; i < ii+chunksizes[ti]; i++) 
+            {
+                //Copy left and right ghost cells
+                E_prev[i][0] = E_prev[i][2];
+                E_prev[i][n + 2] = E_prev[i][n];
+
                 #pragma ivdep
                 for (j = 1; j <= m+1; j++) {
                     E[i][j] = E_prev[i][j] + alpha * (E_prev[i][j + 1]+
@@ -86,23 +90,11 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
             }
         }
         
-        /*#pragma omp parallel for private(i,j, ii, jj)
-        for (jj = 1; jj <= m + 1; jj += by) {
-            for (ii = 1; ii <= n + 1; ii += bx) {
-
-                for (j = jj; j < jj+by && j <= m+1; j++) {
-                    #pragma ivdep
-                    for (i = ii; i < ii+bx && i <= n+1; i++) {
-                        E[j][i] = E_prev[j][i] + alpha * (E_prev[j][i + 1]+
-                                                  E_prev[j][i - 1]-
-                                                  4 * E_prev[j][i]+
-                                                  E_prev[j + 1][i]+
-                                                  E_prev[j - 1][i]);
-                    }
-                }
-            }
-        }*/
-
+        #ifdef DEBUG
+        printMat(E_prev, m+3, n+3);
+        printf("\n");
+        #endif
+        
         /*
         * Solve the ODE, advancing excitation and recovery variables
         * to the next timtestep

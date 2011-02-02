@@ -14,7 +14,7 @@
 #include "apf.h"
 #include "types.h"
 
-int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by) 
+int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, int iters, DOUBLE alpha, DOUBLE dt, int tx, int ty, int do_stats, int plot_freq) 
 {
     // Simulated time is different from the integer timestep number
     DOUBLE t = 0.0;
@@ -22,11 +22,21 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
     int niter=0;
 
     DOUBLE **E = *_E, **E_prev = *_E_prev;
+    int *chunksizes = malloc(sizeof(int)*ty);
+    int i, j, ti;
+    
+    for (i = 0; i < ty; i++)
+    {
+        chunksizes[i] = (m+1)/ty;
+        if (i == ty-1) chunksizes[i] += (m+1)%ty;
+        printf("Thread %i workload: %i\n", i, chunksizes[i]);
+    }
+    
 
     // We continue to sweep over the mesh until the simulation has reached
     // the desired simulation Time
     // This is different from the number of iterations
-    while (t < T) {
+    while ((iters < 0 && t < T) || niter < iters) {
         #ifdef DEBUG
         printMat(E_prev, m, n);
         repNorms(E_prev, t, dt, m, n, niter);
@@ -43,9 +53,6 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
         * padding region, set up for differencing computational box's boundary
         *
         */
-        int i, j;
-        int ii, jj;// for blocking.
-
         #pragma ivdep
         for (j = 1; j <= m + 1; j++) {
             E_prev[j][0] = E_prev[j][2];
@@ -61,7 +68,25 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
 
         // Solve for the excitation, a PDE
         // Also make sure that each CPU works on a block on a time instead of a larger unit of data.
-        #pragma omp parallel for private(i,j, ii, jj)
+        
+        #pragma omp parallel for private(i,j) schedule(static, 1)
+        for (ti = 0; ti < ty; ti++)
+        {
+            //printf("scheduling thread %d\n", ti);
+            int ii = ((m+1)/ty)*ti + 1;
+            for (i = ii; i < ii+chunksizes[ti]; i++) {
+                #pragma ivdep
+                for (j = 1; j <= m+1; j++) {
+                    E[i][j] = E_prev[i][j] + alpha * (E_prev[i][j + 1]+
+                                          E_prev[i][j - 1]-
+                                          4 * E_prev[i][j]+
+                                          E_prev[i + 1][j]+
+                                          E_prev[i - 1][j]);
+                }
+            }
+        }
+        
+        /*#pragma omp parallel for private(i,j, ii, jj)
         for (jj = 1; jj <= m + 1; jj += by) {
             for (ii = 1; ii <= n + 1; ii += bx) {
 
@@ -76,7 +101,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
                     }
                 }
             }
-        }
+        }*/
 
         /*
         * Solve the ODE, advancing excitation and recovery variables

@@ -19,14 +19,18 @@
 
 // Utilities
 // Allocate a 2D array
-DOUBLE **alloc2D(int m, int n) {
+DOUBLE **alloc2D(int m, int n, int *pitch) {
     DOUBLE **E;
-    int nx = n + 1, ny = m + 1;
-    E = (DOUBLE **)malloc(sizeof(DOUBLE*) * ny + sizeof(DOUBLE) * nx * ny);
+    int leftover = n % (4096/sizeof(DOUBLE));
+    *pitch = n + (((4096/sizeof(DOUBLE))-leftover) % (4096/sizeof(DOUBLE)));
+    E = (DOUBLE **)malloc(sizeof(DOUBLE*) * m + sizeof(DOUBLE) * (*pitch) * m);
     assert(E);
-    int j;
-    for (j = 0; j < ny; j++)
-        E[j] = (DOUBLE *)(E + ny) + j * nx;
+    int i;
+    for (i = 0; i < m; i++)
+    {
+        E[i] = (DOUBLE *)(E + m) + i * (*pitch);
+    }
+        
     return E;
 }
     
@@ -105,9 +109,9 @@ void printTOD(const char* mesg)
 
 
 // External functions
-void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* bx, int* by, int* do_stats, int* plot_freq);
+void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int *iters, int* do_stats, int* plot_freq);
 
-int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by);
+int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, int iters, DOUBLE alpha, DOUBLE dt, int tx, int ty, int do_stats, int plot_freq);
 
 // Main program
 int main(int argc, char** argv) {
@@ -125,12 +129,14 @@ int main(int argc, char** argv) {
     // Default value of the domain sizes
     double T = 1500.0;
     int m = 100, n = 100;
+    int iters = -1;
     int do_stats = 0;
     int plot_freq = 0;
     int tx = 1, ty = 1;
     int bx = m / 4, by = n / 4;
+    int pitch;
 
-    cmdLine(argc, argv, &T, &n, &tx, &ty, &bx, &by, &do_stats, &plot_freq);
+    cmdLine(argc, argv, &T, &n, &tx, &ty, &iters, &do_stats, &plot_freq);
     m = n;
 
     printTOD("Run begins");
@@ -139,21 +145,12 @@ int main(int argc, char** argv) {
     // The computational box is defined on [1:m+1,1:n+1]
     // We pad the arrays in order to facilitate differencing on the 
     // boundaries of the computation box
-    E = alloc2D(m + 2, n + 2);
-    E_prev = alloc2D(m + 2, n + 2);
-    R = alloc2D(m + 2, n + 2);
+    E = alloc2D(m + 3, n + 3, &pitch);
+    E_prev = alloc2D(m + 3, n + 3, &pitch);
+    R = alloc2D(m + 3, n + 3, &pitch);
 
     init(E, E_prev, R, m, n);
     
-    #ifdef DEBUG
-    printMatLocal(E_prev, m, n);
-    repNorms(E_prev, -1, dt, m, n, -1);
-    if (plot_freq) 
-    {
-        splot(E_prev, -1, -1, m + 1, n + 1, WAIT);
-    }
-    #endif
-
     DOUBLE dx = 1.0 / n;
 
     // For time integration, these values shouldn't change 
@@ -162,6 +159,15 @@ int main(int argc, char** argv) {
     double dtr= 1 / (epsilon + ((M1 / M2) * rp));
     double dt = (dte < dtr) ? 0.95 * dte : 0.95 * dtr;
     DOUBLE alpha = d * dt / (dx * dx);
+
+    #ifdef DEBUG
+    printMat(E_prev, m, n);
+    repNorms(E_prev, -1, dt, m, n, -1);
+    if (plot_freq) 
+    {
+        splot(E_prev, -1, -1, m + 1, n + 1, WAIT);
+    }
+    #endif
 
     #ifdef FLOAT
     printf("Using SINGLE precision arithmetic (element size: %d)\n", sizeof(DOUBLE));
@@ -177,7 +183,7 @@ int main(int argc, char** argv) {
 
     // Start the timer
     double t0 = -getTime();
-    int niter = solve(&E, &E_prev, R, m, n, T, alpha, dt, do_stats, plot_freq, bx, by);
+    int niter = solve(&E, &E_prev, R, m, n, T, iters, alpha, dt, tx, ty, do_stats, plot_freq);
     t0 += getTime();
 
     printTOD("Run completes");

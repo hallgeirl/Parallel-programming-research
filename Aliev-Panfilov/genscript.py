@@ -26,7 +26,7 @@ def main(args):
 
     # Generate scripts for both pthreads and openmp
     for omp in [True, False]:
-        for threads in [1,2,4,8,16,32]:
+        for threads in [1,2,4,8,16,32,64,128]:
             filename = "run_"
             if omp:
                 filename += "openmp"

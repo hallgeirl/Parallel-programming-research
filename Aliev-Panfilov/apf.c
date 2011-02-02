@@ -19,7 +19,7 @@
 
 // Utilities
 // Allocate a 2D array
-DOUBLE **alloc2D(int m, int n, int *pitch, int *shifted) {
+DOUBLE **alloc2D(int m, int n, int *pitch) {
     DOUBLE **E;
     int leftover = n % (4096/sizeof(DOUBLE));
     *pitch = n + (((4096/sizeof(DOUBLE))-leftover) % (4096/sizeof(DOUBLE)));
@@ -27,14 +27,16 @@ DOUBLE **alloc2D(int m, int n, int *pitch, int *shifted) {
     assert(E);
     
     //Align to page boundary
-    int lowerBits = ((int)E & 4095);
-    *shifted = (4096-lowerBits)/sizeof(DOUBLE);
-    E += (*shifted);
+    int lowerBits = ((int)(E+m) & 4095);
+    int shifted = (4096-lowerBits); //Shift the whole array by this much to align each row to the 4096 border
     
     int i;
     for (i = 0; i < m; i++)
     {
-        E[i] = (DOUBLE *)(E + m) + i * (*pitch);
+        E[i] = (DOUBLE *)(((DOUBLE**)(((char*)E)+shifted)) + m) + i * (*pitch);
+        #ifdef DEBUG
+        printf("E[%i] mod 4096: %d\n", i, ((int)E[i] & 4095));
+        #endif
     }
         
     return E;
@@ -129,7 +131,6 @@ int main(int argc, char** argv) {
     *      and is used in time integration
     */
     DOUBLE **E, **R, **E_prev;
-    int E_shifted, E_prevShifted, R_shifted;
     DOUBLE mx, l2norm;
 
     // Command line arguments
@@ -152,9 +153,9 @@ int main(int argc, char** argv) {
     // The computational box is defined on [1:m+1,1:n+1]
     // We pad the arrays in order to facilitate differencing on the 
     // boundaries of the computation box
-    E = alloc2D(m + 3, n + 3, &pitch, &E_shifted);
-    E_prev = alloc2D(m + 3, n + 3, &pitch, &E_prevShifted);
-    R = alloc2D(m + 3, n + 3, &pitch, &R_shifted);
+    E = alloc2D(m + 3, n + 3, &pitch);
+    E_prev = alloc2D(m + 3, n + 3, &pitch);
+    R = alloc2D(m + 3, n + 3, &pitch);
 
     init(E, E_prev, R, m, n);
     
@@ -204,9 +205,9 @@ int main(int argc, char** argv) {
     scanf("%d", &resp);
     }
 
-    free (E-E_shifted);
-    free (E_prev-E_prevShifted);
-    free (R-R_shifted);
+    free (E);
+    free (E_prev);
+    free (R);
 
     return 0;
 }

@@ -21,8 +21,7 @@ def main(args):
 
     common_tail = "cd $PBS_O_WORKDIR\n"
 
-    nts = [(1000, 6), (2000, 0.4), (5000, 0.01)];
-    #nts = [(2000, 0.4)];
+    nts = [(1024, 512), (2048, 128), (4096, 32), (8192, 8), (16384, 2)];
 
     # Generate scripts for both pthreads and openmp
     for omp in [True, False]:
@@ -47,13 +46,13 @@ def main(args):
                 
             # Jobs
             for n,t in nts:
-                f.write("echo \"n=" + str(n) + ", t=" + str(t) + "\"\n")
+                f.write("echo \"n=" + str(n) + ", i=" + str(t) + "\"\n")
                 for foo in xrange(testruns):
                     if omp:
-                        f.write("./apf -n " + str(n) + " -t " + str(t))
+                        f.write("./apf -n " + str(n) + " -i " + str(t))
                         f.write(" -y " + str(threads) + " -x 1")
                     else:
-                        f.write("taskset -c $cpu_start-$cpu_end ./apf -n " + str(n) + " -t " + str(t) + " -x 1 -y " + str(threads))
+                        f.write("taskset -c $cpu_start-$cpu_end ./apf -n " + str(n) + " -i " + str(t) + " -x 1 -y " + str(threads))
                     f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")
     os.system("chmod +x run*.sh")
 if __name__ == "__main__":

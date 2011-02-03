@@ -5,7 +5,7 @@ import os
 import re
 
 def main(args):
-    testruns = 3
+    testruns = 5
     
     # Create output directory if it doesn't exist
     if not os.path.exists("output"):
@@ -43,10 +43,11 @@ def main(args):
                 f.write("num_threads=" + str(threads) + "\n")
                 f.write(pthreads_tail)
             f.write(common_tail)
-                
+            
+            f.write("echo \"section strong_scaling\"\n")
             # Jobs
             for n,t in nts:
-                f.write("echo \"n=" + str(n) + ", i=" + str(t) + "\"\n")
+                f.write("echo \"n=" + str(n) + " i=" + str(t) + "\"\n")
                 for foo in xrange(testruns):
                     if omp:
                         f.write("./apf -n " + str(n) + " -i " + str(t))
@@ -54,6 +55,20 @@ def main(args):
                     else:
                         f.write("taskset -c $cpu_start-$cpu_end ./apf -n " + str(n) + " -i " + str(t) + " -x 1 -y " + str(threads))
                     f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")
+
+            # Weak scaling runs. Keeping problem size constant per thread.
+            f.write("echo \"section weak_scaling\"\n")
+            for n,t in nts:
+                n_tot = int((n/2)*math.sqrt(threads))
+                f.write("echo \"n_tot=" + str(n_tot) + " n_per_cpu=" + str(n/2) + " i=" + str(t) + "\"\n")
+                for foo in xrange(testruns):
+                    if omp:
+                        f.write("./apf -n " + str(n_tot) + " -i " + str(t))
+                        f.write(" -y " + str(threads) + " -x 1")
+                    else:
+                        f.write("taskset -c $cpu_start-$cpu_end ./apf -n " + str(n_tot) + " -i " + str(t) + " -x 1 -y " + str(threads))
+                    f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")
+
     os.system("chmod +x run*.sh")
 if __name__ == "__main__":
     main(sys.argv[1:])

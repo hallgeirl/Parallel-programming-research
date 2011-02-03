@@ -34,7 +34,8 @@ def main(args):
             filename += "_" + str(threads) + ".sh"
             f = open(filename, "w")
             f.write(header1)
-            f.write("#PBS -l nodes=1:ppn=" + str(threads) + "\n")
+            f.write("#PBS -l walltime=04:00:00,nodes=1:ppn=" + 
+str(threads) + "\n")
             f.write(header2)
             if omp:
                 f.write("export OMP_NUM_THREADS=" + str(threads) + "\n")

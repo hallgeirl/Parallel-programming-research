@@ -7,18 +7,23 @@ echo " "
 
 for s in ${scripts}; do
     echo Waiting for dash to be free...
-    while true; do
-        if ! qstat |grep large > /dev/null; then
-            break;
-        fi
-        sleep 10
-    done
+#    while true; do
+#        if ! qstat |grep large > /dev/null; then
+#            break;
+#        fi
+#        sleep 10
+#    done
 
-    echo Running job ${s}
-    exec qsub ${s}
+ #   echo Running job ${s}
+#    exec qsub ${s}
 done
 
-dirname=`date +%Y.%m.%d_%H.%M.%S`
+if [ -z $1 ]; then
+    dirname=`date +%Y.%m.%d_%H.%M.%S`
+else
+    dirname=$1
+fi
+
 echo Moving output files to output/${dirname}/
 mkdir output/${dirname}
 mkdir output/${dirname}/stderr

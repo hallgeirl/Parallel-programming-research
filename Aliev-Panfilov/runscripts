@@ -16,6 +16,7 @@ for s in ${scripts}; do
 
     echo Running job ${s}
     exec qsub ${s}
+    sleep 10
 done
 
 if [ -z $1 ]; then

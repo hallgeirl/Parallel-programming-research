@@ -138,7 +138,8 @@ void * solve_block(void* _args)
         niter++;
         
         //Wait until all are initialized and we are sure that the arrays are swapped
-        //pthread_barrier_wait(&barr);
+        pthread_barrier_wait(&barr);
+        
         //Copy ghost cells
         if (ti == 0)
             memcpy(E_prev[0], E_prev[2], sizeof(DOUBLE)*(bx+2));

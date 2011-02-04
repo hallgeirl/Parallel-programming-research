@@ -20,7 +20,7 @@ endif
 CFLAGS += $(ARITH) -Wall -O3
 
 ifdef debug
-CFLAGS += -DDEBUG -g
+CFLAGS += -DDEBUG=${debug} -g
 endif
 
 app:		apf

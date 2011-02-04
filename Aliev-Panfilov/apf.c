@@ -21,12 +21,12 @@
 // Allocate a 2D array
 DOUBLE **alloc2D(int m, int n) {
     DOUBLE **E;
-    int nx = n + 1, ny = m + 1;
-    E = (DOUBLE **)malloc(sizeof(DOUBLE*) * ny + sizeof(DOUBLE) * nx * ny);
+
+    E = (DOUBLE **)malloc(sizeof(DOUBLE*) * m + sizeof(DOUBLE) * n * m);
     assert(E);
     int j;
-    for (j = 0; j < ny; j++)
-        E[j] = (DOUBLE *)(E + ny) + j * nx;
+    for (j = 0; j < m; j++)
+        E[j] = (DOUBLE *)(E + m) + j * n;
     return E;
 }
     
@@ -105,9 +105,9 @@ void printTOD(const char* mesg)
 
 
 // External functions
-void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* bx, int* by, int* do_stats, int* plot_freq);
+void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* iterations, int* do_stats, int* plot_freq);
 
-int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by);
+int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, int iterations, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty);
 
 // Main program
 int main(int argc, char** argv) {
@@ -128,9 +128,9 @@ int main(int argc, char** argv) {
     int do_stats = 0;
     int plot_freq = 0;
     int tx = 1, ty = 1;
-    int bx = m / 4, by = n / 4;
+    int iterations = -1;
 
-    cmdLine(argc, argv, &T, &n, &tx, &ty, &bx, &by, &do_stats, &plot_freq);
+    cmdLine(argc, argv, &T, &n, &tx, &ty, &iterations, &do_stats, &plot_freq);
     m = n;
 
     printTOD("Run begins");
@@ -139,9 +139,9 @@ int main(int argc, char** argv) {
     // The computational box is defined on [1:m+1,1:n+1]
     // We pad the arrays in order to facilitate differencing on the 
     // boundaries of the computation box
-    E = alloc2D(m + 2, n + 2);
-    E_prev = alloc2D(m + 2, n + 2);
-    R = alloc2D(m + 2, n + 2);
+    E = alloc2D(m + 3, n + 3);
+    E_prev = alloc2D(m + 3, n + 3);
+    R = alloc2D(m + 3, n + 3);
 
     init(E, E_prev, R, m, n);
     
@@ -177,7 +177,7 @@ int main(int argc, char** argv) {
 
     // Start the timer
     double t0 = -getTime();
-    int niter = solve(&E, &E_prev, R, m, n, T, alpha, dt, do_stats, plot_freq, tx, ty);
+    int niter = solve(&E, &E_prev, R, m, n, T, iterations, alpha, dt, do_stats, plot_freq, tx, ty);
     t0 += getTime();
 
     printTOD("Run completes");

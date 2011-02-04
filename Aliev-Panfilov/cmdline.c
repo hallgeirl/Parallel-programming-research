@@ -5,15 +5,14 @@
 #include <string.h>
 #include "types.h"
 
-void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* bx, int* by, int* do_stats, int* plot_freq){
+void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int *iterations, int* do_stats, int* plot_freq){
 /// Command line arguments
  // Default value of the domain sizes
  static struct option long_options[] = {
         {"n", required_argument, 0, 'n'},
         {"tx", required_argument, 0, 'x'},
         {"ty", required_argument, 0, 'y'},
-        {"bx", required_argument, 0, 'i'},
-        {"by", required_argument, 0, 'j'},
+        {"iterations", required_argument, 0, 'i'},
         {"tfinal", required_argument, 0, 't'},
         {"stats", no_argument, 0, 's'},
         {"plot", required_argument, 0, 'p'}
@@ -22,7 +21,7 @@ void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* b
  int ac;
  for(ac=1;ac<argc;ac++) {
     int c;
-    while ((c=getopt_long(argc,argv,"n:x:y:i:j:t:sp:",long_options,NULL)) != -1){
+    while ((c=getopt_long(argc,argv,"n:x:y:i:t:sp:",long_options,NULL)) != -1){
         switch (c) {
 
 	    // Size of the computational box
@@ -42,12 +41,7 @@ void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* b
 
 	    // X blocking factor
             case 'i':
-                *bx = atoi(optarg);
-                break;
-
-	    // Y processor geometry
-            case 'j':
-                *by = atoi(optarg);
+                *iterations = atoi(optarg);
                 break;
 
 	    // Length of simulation, in simulated time units

@@ -20,31 +20,34 @@
 #include "apf.h"
 #include "types.h"
 
-pthread_t *threads;
+#define STATE_NOTREADY 0
+#define STATE_WORKING 1
+#define STATE_DONE 2
+#define STATE_COPIED = 3
 
 typedef struct thread_args_s
 {
     int thread_id, thread_x, thread_y;
-    DOUBLE ** E; DOUBLE ** E_prev; DOUBLE ** R;            //Local arrays for this thread
-    DOUBLE * edgeTop, * edgeBottom, * edgeLeft, * edgeRight; //Border elements
+    DOUBLE **E_prev_global, **R_global;  //Global arrays, for initialization
+    DOUBLE ***E_prev;                    //For ghost cells
+    int iterations;
+    //DOUBLE * edgeTop, * edgeBottom, * edgeLeft, * edgeRight; //Border elements
     DOUBLE alpha;
-    //int offset_x; int offset_y; //Might not be needed anymore...
-    int bx, by, tx, ty; 
+    int tx, ty, m, n, bx, by; 
     DOUBLE dt;
+    DOUBLE T;
 } thread_args_t;
-thread_args_t * thread_args;
 
-typedef struct thread_init_args_s
-{
-    thread_args_t * args;
-    DOUBLE ** E_prev;
-    DOUBLE ** R;
-    int n, m, tx, ty;
-} thread_init_args_t;
+//int m, n, tx, ty, iterations;
+//DOUBLE **E_prev_global, **R_global;
+
+
+pthread_t *threads;
+thread_args_t ** thread_args; // Need this to be global in order for threads to access neighboring blocks.
 
 pthread_barrier_t barr;
 int threadcount;
-int state = 0;
+int state = STATE_NOTREADY;
 int done_count;
 
 pthread_cond_t ready = PTHREAD_COND_INITIALIZER;
@@ -58,83 +61,132 @@ pthread_mutex_t done_mutex = PTHREAD_MUTEX_INITIALIZER;
 //Solves the PDE and ODE part for one block of the array.
 void * solve_block(void* _args)
 {
-    
     thread_args_t* args = (thread_args_t*) _args;
 
     int thread_id = args->thread_id;
-    DOUBLE ** R = args->R;
+    DOUBLE ** E, **E_prev, **R;
     DOUBLE alpha = args->alpha;
-    int bx = args->bx,  by = args->by;
-    //int offset_x = args->offset_x,  offset_y = args->offset_y;
     DOUBLE dt = args->dt;
+    DOUBLE T = args->T;
+    int iterations = args->iterations;
     int i,j, tj = args->thread_x, ti = args->thread_y, tx = args->tx, ty = args->ty;
-    
+    int n = args->n, m = args->m;
+    double t = 0;
+    int niter = 0;
+
+    //Initialize the blocks
+    //Block sizes
+    int bx = (n+1) / tx;
+    int by = (m+1) / ty;
+    args->bx = bx; args->by = by;
+
+    //Offsets into the global array (for initialization and copying back)
+    int offset_x = tj*bx + 1;
+    int offset_y = ti*by + 1;
+
+    //Let the last thread take care of any leftovers
+    if (tj == tx-1) bx += (n+1) % tx;
+    if (ti == ty-1) by += (m+1) % ty;
+
+    //Allocate local arrays
+    E = alloc2D(by+2, bx+2);
+    E_prev = alloc2D(by+2, bx+2); 
+    R = alloc2D(by+2, bx+2);
+    args->E_prev = &E_prev;
+
     #ifdef DEBUG
+    MT_PRINT("Initializing...");
+    #endif
+    //Copy data from the global array to the local one
+    for (i = 0; i < by; i++)
+    {
+        #pragma ivdep
+        for (j = 0; j < bx; j++)
+        {
+            E_prev[i+1][j+1] = args->E_prev_global[offset_y+i][offset_x+j];
+            R[i+1][j+1] = args->R_global[offset_y+i][offset_x+j];
+        }
+    }
+
+    #ifdef DEBUG
+    MT_PRINT("Initialization done.");
     printf("Thread %d params: bx=%d by=%d ti=%d tj=%d\n", thread_id, bx, by, ti, tj);
     fflush(stdout);
     #endif
     
     //References to the thread arguments on all four sides.
-    thread_args_t *t_left   = (tj == 0    ? 0 : &thread_args[ti*tx+tj-1]);
-    thread_args_t *t_right  = (tj == tx-1 ? 0 : &thread_args[ti*tx+tj+1]);
-    thread_args_t *t_top    = (ti == 0    ? 0 : &thread_args[(ti-1)*tx+tj]);
-    thread_args_t *t_bottom = (ti == ty-1 ? 0 : &thread_args[(ti+1)*tx+tj]);
+    thread_args_t *t_left   = (tj == 0    ? 0 : thread_args[ti*tx+tj-1]);
+    thread_args_t *t_right  = (tj == tx-1 ? 0 : thread_args[ti*tx+tj+1]);
+    thread_args_t *t_top    = (ti == 0    ? 0 : thread_args[(ti-1)*tx+tj]);
+    thread_args_t *t_bottom = (ti == ty-1 ? 0 : thread_args[(ti+1)*tx+tj]);
     
     //Border elements for neighboring blocks.
-    DOUBLE* left = 0, *right = 0, *top = 0, *bottom = 0;
-
+    //DOUBLE* left = 0, *right = 0, *top = 0, *bottom = 0;
 
     //If we're not on the edge of the array, point the border element pointers to the neighbor's border element array.
-    if (tj == 0) left = (DOUBLE*)malloc(sizeof(DOUBLE)*by);
+    /*if (tj == 0) left = (DOUBLE*)malloc(sizeof(DOUBLE)*by);
     else left = t_left->edgeRight;
     if (tj == tx-1) right = (DOUBLE*)malloc(sizeof(DOUBLE)*by);
     else right = t_right->edgeLeft;
     if (ti != 0) top = t_top->edgeBottom;
-    if (ti != ty-1) bottom = t_bottom->edgeTop;
+    if (ti != ty-1) bottom = t_bottom->edgeTop;*/
    
-    //if (ti == 0) top = (DOUBLE*)malloc(sizeof(DOUBLE)*bx);
-    //if (ti == by-1) bottom = (DOUBLE*)malloc(sizeof(DOUBLE)*bx);
-
-    while (true)
+   
+    while ((iterations < 0 && t < T) || niter < iterations) 
     {
-        //Wait for border padding
-        pthread_mutex_lock(&ready_mutex);
-        #ifdef DEBUG
-        printf("Thread %d waits for ready.\n", thread_id);
-        fflush(stdout);
-        #endif
-        while (state == 0)
-            pthread_cond_wait(&ready, &ready_mutex);
+        t += dt;
+        niter++;
+        
+        //Wait until all are initialized and we are sure that the arrays are swapped
+        //pthread_barrier_wait(&barr);
+        //Copy ghost cells
+        if (ti == 0)
+            memcpy(E_prev[0], E_prev[2], sizeof(DOUBLE)*(bx+2));
+        else
+            memcpy(E_prev[0], (*(t_top->E_prev))[t_top->by], sizeof(DOUBLE)*(bx+2));
+        if (ti == ty-1)
+            memcpy(&E_prev[by+1][0], &E_prev[by-1][0], sizeof(DOUBLE)*(bx+2));
+        else
+            memcpy(&E_prev[by+1][0], (*(t_bottom->E_prev))[1], sizeof(DOUBLE)*(bx+2));
             
-        #ifdef DEBUG
-        printf("Thread %d got ready.\n", thread_id);
-        fflush(stdout);
-        #endif
-        pthread_mutex_unlock(&ready_mutex);
-        
-        DOUBLE ** E = args->E;
-        DOUBLE ** E_prev = args->E_prev;
-        
-        if (ti == 0) top = E_prev[2];
-        if (ti == ty-1) bottom = E_prev[by-3];
-        
+        //MT_PRINT("PING")
         if (tj == 0)
         {
-            for (i = 0; i < by; i++)
-                left[i] = E_prev[i][2];
+            for (i = 1; i < by+1; i++)
+                E_prev[i][0] = E_prev[i][2];
         }
-        if (tj == tx-1)
+        else
         {
-            for (i = 0; i < by; i++)
-                right[i] = E_prev[i][bx-3];
+            for (i = 1; i < by+1; i++)
+                E_prev[i][0] = (*(t_left->E_prev))[i][t_left->bx];
         }
 
-        MT_PRINT("PING")
-        //Solve the PDE. First the inner area.
-        for (i = 1; i < by-1; i++)
+        if (tj == tx-1)
+        {
+            for (i = 1; i < by+1; i++)
+                E_prev[i][bx+1] = E_prev[i][bx-1];
+        }
+        else
+        {
+            for (i = 1; i < by+1; i++)
+                E_prev[i][bx+1] = (*(t_right->E_prev))[i][1];
+        }
+        
+        #ifdef DEBUG
+        if (DEBUG >=3)
+        {
+            printMat(E_prev, by+2, bx+2);
+            printf("\n");
+        }
+        #endif
+        
+        
+        
+        //Solve the PDE.
+        for (i = 1; i < by+1; i++)
         {
             #pragma ivdep
-            for (j = 1; j < bx-1; j++)
+            for (j = 1; j < bx+1; j++)
             {
                 E[i][j] = E_prev[i][j] + alpha * (E_prev[i][j + 1]+
                                           E_prev[i][j - 1]-
@@ -143,47 +195,13 @@ void * solve_block(void* _args)
                                           E_prev[i - 1][j]);
             }
         }
-        MT_PRINT("PONG")
         
-        //and the borders.
-        //Left and right borders
-        #pragma ivdep
-        for (i = 0; i < by; i++)
-        {
-            E[i][0] = E_prev[i][0] + alpha * (E_prev[i][1] +
-                                      left[i] -
-                                      4 * E_prev[i][0] +
-                                      (i > 0 ? E_prev[i - 1][0] : top[0]) +
-                                      (i < by-1 ? E_prev[i + 1][0] : bottom[0]));
-                                      
-            E[i][bx-1] = E_prev[i][bx-1] + alpha * (right[i] +
-                                      E_prev[i][bx-2] -
-                                      4 * E_prev[i][bx-1]+
-                                      (i > 0 ? E_prev[i - 1][bx-1] : top[bx-1]) +
-                                      (i < by-1 ? E_prev[i + 1][bx-1] : bottom[bx-1]));
-        }
-        /*MT_PRINT("PONG2")
-        #pragma ivdep
-        for (j = 0; j < bx; j++)
-        {
-            E[0][j] = E_prev[0][j] + alpha * ((j < bx-1 ? E_prev[0][j+1] : right[0]) +
-                                      (j > 0 ? E_prev[0][j-1] : left[0]) -
-                                      4 * E_prev[0][j] +
-                                      E_prev[1][j] +
-                                      top[j]);
-                                      
-            E[by-1][j] = E_prev[by-1][j] + alpha * ((j < bx-1 ? E_prev[by-1][j+1] : right[by-1]) +
-                                      (j > 0 ? E_prev[by-1][j-1] : left[by-1]) -
-                                      4 * E_prev[by-1][j]+
-                                      bottom[j] +
-                                      E_prev[by-2][j]);
-        }*/
-        MT_PRINT("PONG3")
+        //MT_PRINT("PONG3")
         //Solve the ODE for one time step
-        for (i = 0; i < by; i++)
+        for (i = 1; i < by+1; i++)
         {
             #pragma ivdep
-            for (j = 0; j < bx; j++)
+            for (j = 1; j < bx+1; j++)
             {
                 E[i][j] += -dt * (kk * E[i][j]*(E[i][j]-a)*(E[i][j] - 1) + E[i][j]*R[i][j]);
                 R[i][j] +=
@@ -194,7 +212,6 @@ void * solve_block(void* _args)
                     );
             }
         }
-        MT_PRINT("PONG4")
         
         //Barrier to make sure no thread waits for ready signal
         #ifdef DEBUG
@@ -202,9 +219,9 @@ void * solve_block(void* _args)
         fflush(stdout);
         #endif
         pthread_barrier_wait(&barr);
-        
+
         //Update the edge arrays
-        for (j = 0; j < bx; j++)
+        /*for (j = 0; j < bx; j++)
         {
             args->edgeTop[j] = E_prev[0][j];
             args->edgeBottom[j] = E_prev[by-1][j];
@@ -214,106 +231,43 @@ void * solve_block(void* _args)
         {
             args->edgeLeft[i] = E_prev[i][0];
             args->edgeRight[i] = E_prev[i][bx-1];
-        }
+        }*/
         
         #ifdef DEBUG
         printf("Thread %d past barrier.\n", thread_id);
         fflush(stdout);
         #endif
         
+        
         //Swap arrays
-        DOUBLE **tmp = args->E;
-        args->E = args->E_prev;
-        args->E_prev = tmp;
-
-        pthread_mutex_lock(&done_mutex);
-        
-        //Let the first thread entering this lock reset the state variable
-        if (done_count == 0)
-        {
-            #ifdef DEBUG
-            printf("Thread %d sets state to 0.\n", thread_id);
-            #endif
-            state = 0;
-        }
-        
-        //Increment count    
-        done_count++;
-        
-        //Are we done? If so, signal the main thread to continue.
-        if (done_count == threadcount)
-        {
-            #ifdef DEBUG
-            printf("Thread %d broadcasts done.\n", thread_id);
-            #endif
-            pthread_cond_broadcast(&done);
-        }
-        pthread_mutex_unlock(&done_mutex);
+        DOUBLE **tmp = E;
+        E = E_prev;
+        E_prev = tmp;
     }
 
-    if (tj == 0) free(left);
-    if (tj == tx-1) free(right);
-    
-    printf("Thread %d exits.\n", thread_id);
-    pthread_exit(NULL);
-}
-
-void * init_thread(void * _args)
-{
-    thread_init_args_t * args = (thread_init_args_t*)_args;
-    int thread_id = args->args->thread_id;
     #ifdef DEBUG
-    MT_PRINT("Initializing thread...");
-    #endif
-    int i, j;
-    int ti = args->args->thread_y, tj = args->args->thread_x;
-    int n = args->n, m = args->m;
-    int tx = args->tx, ty = args->ty;
-    //These values are used to determine the block size for the last threads, so cache the results for performance.
-    int blocks_x = (n+1) / tx;
-    int blocks_y = (m+1) / ty;
-
-    //Offsets into the global array and block size
-    int offset_x = tj*(blocks_x) + 1, bx = (n+1)/tx;
-    int offset_y = ti*(blocks_y) + 1, by = (m+1)/ty;
-
-    //Let the last thread take care of any leftovers
-    if (tj == tx-1) bx += (n+1) % tx;
-    if (ti == ty-1) by += (m+1) % ty;
-
-    #ifdef DEBUG
-    MT_PRINT("Parameters: ti=%d, tj=%d, offset_x=%d, offset_y=%d, bx=%d, by=%d", ti, tj, offset_x, offset_y, bx, by);
+    MT_PRINT("Started copying back...");
     #endif
 
-    args->args->edgeTop = (DOUBLE*)malloc(sizeof(DOUBLE)*bx);
-    args->args->edgeBottom = (DOUBLE*)malloc(sizeof(DOUBLE)*bx);
-    args->args->edgeLeft = (DOUBLE*)malloc(sizeof(DOUBLE)*by);
-    args->args->edgeRight = (DOUBLE*)malloc(sizeof(DOUBLE)*by);
+    args->iterations = niter;
 
-    args->args->bx = bx;
-    args->args->by = by;
-    
-    
-    args->args->E = alloc2D(by-1, bx-1);
-    args->args->E_prev = alloc2D(by-1, bx-1);
-    args->args->R = alloc2D(by-1, bx-1);
-    
     //Copy data from the global array to the local one
     for (i = 0; i < by; i++)
     {
         #pragma ivdep
         for (j = 0; j < bx; j++)
         {
-            args->args->E_prev[i][j] = args->E_prev[offset_y+i][offset_x+j];
-            args->args->R[i][j] = args->R[offset_y+i][offset_x+j];
+            args->E_prev_global[offset_y+i][offset_x+j] = E_prev[i+1][j+1];
+            args->R_global[offset_y+i][offset_x+j] = R[i+1][j+1];
         }
-    }
-    MT_PRINT("Initialization done.");
+    }  
     
-    return 0;
+    printf("Thread %d exits.\n", thread_id);
+
+    return NULL;
 }
 
-int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty) 
+int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, int iterations, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty) 
 {
     // Simulated time is different from the integer timestep number
     DOUBLE t = 0.0;
@@ -328,80 +282,72 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
     
     //Allocate threads
     threads = (pthread_t*)malloc(sizeof(pthread_t)*tx*ty);
-    pthread_t* init_threads = (pthread_t*)malloc(sizeof(pthread_t)*tx*ty);
  
     //The arguments are fixed for each iteration, so initialize them only once
-    thread_args = (thread_args_t*)malloc(sizeof(thread_args_t)*tx*ty);
-    thread_init_args_t* thread_init_args = (thread_init_args_t*)malloc(sizeof(thread_init_args_t)*tx*ty); 
+    thread_args = (thread_args_t**)malloc(sizeof(thread_args_t*)*tx*ty);
     
     for (ti = 0; ti < ty; ti++)
     {
         for (tj = 0; tj < tx; tj++)
         {
-            thread_args_t* ta = &thread_args[ti*tx+tj];
+            thread_args[ti*tx+tj] = (thread_args_t*)malloc(sizeof(thread_args_t));
+            thread_args_t* ta = thread_args[ti*tx+tj];
             ta->thread_id = ti*tx+tj;
             ta->thread_x = tj; ta->thread_y = ti;
             ta->alpha = alpha; ta->dt = dt;
             ta->tx = tx; ta->ty = ty;
+            ta->R_global = R; ta->E_prev_global = E_prev;
+            ta->m = m; ta->n = n;
+            ta->T = T; ta->iterations = iterations;
+            
 
-            thread_init_args_t *init_args = &thread_init_args[ti*tx+tj];
-            init_args->R =  R;  init_args->E_prev = E_prev;
-            init_args->m =  m;  init_args->n      = n;
-            init_args->tx = tx; init_args->ty     = ty;
-            init_args->args = ta;
-
-            //Start the initialization thread
-            pthread_create(&threads[ti*tx+tj], NULL, &init_thread, init_args);
+            //Start the threads
+            pthread_create(&threads[ti*tx+tj], NULL, &solve_block, thread_args[ti*tx+tj]);
         }
     }
     
+    //Join the threads when we're done
     for (ti = 0; ti < ty; ti++)
     {
         for (tj = 0; tj < tx; tj++)
         {
-            //Wait for initialization to finish
             pthread_join(threads[ti*tx+tj], NULL);
-            //then create the solver thread
-            pthread_create(&threads[ti*tx+tj], NULL, &solve_block, &thread_args[ti*tx+tj]);
         }
     }
-    free(init_threads);
-    free(thread_init_args);
+    niter = thread_args[0]->iterations;
+    
 
     // We continue to sweep over the mesh until the simulation has reached
     // the desired simulation Time
     // This is different from the number of iterations
-    while (t < T) 
+    /*while ((iterations < 0 && t < T) || niter < iterations) 
     {
-        #ifdef DEBUG
+        #if DEBUG
         printf("Main thread starts new loop.\n");
         #endif
         
         //printf("Iteration %d\n", niter);
         #ifdef DEBUG
-        printMat(E_prev, m, n);
-        repNorms(E_prev, t, dt, m, n, niter);
-        if (plot_freq) {
-            splot(E_prev, t, niter, m + 1, n + 1, WAIT);
+        if (DEBUG >=3)
+        {
+            //printMat(E_prev, m, n);
+            repNorms(E_prev, t, dt, m, n, niter);
+            if (plot_freq) {
+                splot(E_prev, t, niter, m + 1, n + 1, WAIT);
+            }
+            printf("\n");
         }
-        printf("\n");
         #endif
 
         t += dt;
         niter++;
-
-        /*
-        * Copy data from boundary of the computational box to the
-        * padding region, set up for differencing computational box's boundary
-        *
-        */
 
         //Wake up threads to do one iteration worth of work
         pthread_mutex_lock(&ready_mutex);
         #ifdef DEBUG
         printf("Main thread inited ghost cells, sets state to 1 and broadcasts ready.\n");
         #endif
-        state = 1;
+        state = STATE_WORKING;
         pthread_cond_broadcast(&ready);
         pthread_mutex_unlock(&ready_mutex);
 
@@ -430,12 +376,32 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
                 splot(E, t, niter, m + 1, n + 1, WAIT);
             }
         }
+    }*/
 
-        // Swap current and previous
-        //DOUBLE **tmp = E;
-        //E = E_prev;
-        //E_prev = tmp;
+
+    //Tell the threads that we're done and copy back the data
+    /*pthread_mutex_lock(&ready_mutex);
+    done_count = 0;
+    state = STATE_DONE;
+    pthread_cond_broadcast(&ready);
+    pthread_mutex_unlock(&ready_mutex);
+
+    pthread_mutex_lock(&done_mutex);
+    #ifdef DEBUG
+    printf("Main thread waits for copy back.\n");
+    fflush(stdout);
+    #endif
+
+    while (done_count < tx*ty)
+    {
+        pthread_cond_wait(&done, &done_mutex);
     }
+
+    #ifdef DEBUG
+    printf("Main thread got signal indicating copy is done. Exiting.\n");
+    fflush(stdout);
+    #endif
+    pthread_mutex_unlock(&done_mutex);*/
 
     // Store them into the pointers passed in
     *_E = E;

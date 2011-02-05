@@ -48,7 +48,11 @@ str(threads) + "\n")
                 f.write("num_threads=" + str(threads) + "\n")
                 f.write(pthreads_tail)
             f.write(common_tail)
-            
+            f.write("echo \"testset_name " + testname + "\"\n")
+            f.write("echo \"testset_version ")
+            if omp: f.write("openmp")
+            else: f.write("pthreads")
+            f.write("\"\n");
             f.write("echo \"section strong_scaling\"\n")
             # Jobs
             for n,t in nts:

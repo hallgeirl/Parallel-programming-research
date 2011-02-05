@@ -55,6 +55,7 @@ pthread_cond_t done = PTHREAD_COND_INITIALIZER;
 
 pthread_mutex_t ready_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t done_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t print_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 #define MT_PRINT(...) printf("Thread %d\t", thread_id); printf(__VA_ARGS__); printf("\n"); fflush(stdout); 
 
@@ -225,7 +226,11 @@ void * solve_block(void* _args)
     
     pthread_barrier_wait(&barr);
     t0 += getTime();
-    printf("Running Time: %f sec.\n", t0);
+    
+    pthread_mutex_lock(&print_mutex);
+    if (done_count == 0) printf("Running Time: %f sec.\n", t0);
+    done_count++;
+    pthread_mutex_unlock(&print_mutex);
 
     #ifdef DEBUG
     MT_PRINT("Started copying back...");

@@ -113,25 +113,17 @@ void * solve_block(void* _args)
     printf("Thread %d params: bx=%d by=%d ti=%d tj=%d\n", thread_id, bx, by, ti, tj);
     fflush(stdout);
     #endif
+    //Synchronize before starting the timer
+    pthread_barrier_wait(&barr);
     
+    double t0 = -getTime();
+
     //References to the thread arguments on all four sides.
     thread_args_t *t_left   = (tj == 0    ? 0 : thread_args[ti*tx+tj-1]);
     thread_args_t *t_right  = (tj == tx-1 ? 0 : thread_args[ti*tx+tj+1]);
     thread_args_t *t_top    = (ti == 0    ? 0 : thread_args[(ti-1)*tx+tj]);
     thread_args_t *t_bottom = (ti == ty-1 ? 0 : thread_args[(ti+1)*tx+tj]);
     
-    //Border elements for neighboring blocks.
-    //DOUBLE* left = 0, *right = 0, *top = 0, *bottom = 0;
-
-    //If we're not on the edge of the array, point the border element pointers to the neighbor's border element array.
-    /*if (tj == 0) left = (DOUBLE*)malloc(sizeof(DOUBLE)*by);
-    else left = t_left->edgeRight;
-    if (tj == tx-1) right = (DOUBLE*)malloc(sizeof(DOUBLE)*by);
-    else right = t_right->edgeLeft;
-    if (ti != 0) top = t_top->edgeBottom;
-    if (ti != ty-1) bottom = t_bottom->edgeTop;*/
-   
-   
     while ((iterations < 0 && t < T) || niter < iterations) 
     {
         t += dt;
@@ -150,7 +142,6 @@ void * solve_block(void* _args)
         else
             memcpy(&E_prev[by+1][0], (*(t_bottom->E_prev))[1], sizeof(DOUBLE)*(bx+2));
             
-        //MT_PRINT("PING")
         if (tj == 0)
         {
             for (i = 1; i < by+1; i++)
@@ -197,7 +188,6 @@ void * solve_block(void* _args)
             }
         }
         
-        //MT_PRINT("PONG3")
         //Solve the ODE for one time step
         for (i = 1; i < by+1; i++)
         {
@@ -221,19 +211,6 @@ void * solve_block(void* _args)
         #endif
         pthread_barrier_wait(&barr);
 
-        //Update the edge arrays
-        /*for (j = 0; j < bx; j++)
-        {
-            args->edgeTop[j] = E_prev[0][j];
-            args->edgeBottom[j] = E_prev[by-1][j];
-        }
-        
-        for (i = 0; i < by; i++)
-        {
-            args->edgeLeft[i] = E_prev[i][0];
-            args->edgeRight[i] = E_prev[i][bx-1];
-        }*/
-        
         #ifdef DEBUG
         printf("Thread %d past barrier.\n", thread_id);
         fflush(stdout);
@@ -245,6 +222,10 @@ void * solve_block(void* _args)
         E = E_prev;
         E_prev = tmp;
     }
+    
+    pthread_barrier_wait(&barr);
+    t0 += getTime();
+    printf("Running Time: %f sec.\n", t0);
 
     #ifdef DEBUG
     MT_PRINT("Started copying back...");
@@ -316,95 +297,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
         }
     }
     niter = thread_args[0]->iterations;
-    
 
-    // We continue to sweep over the mesh until the simulation has reached
-    // the desired simulation Time
-    // This is different from the number of iterations
-    /*while ((iterations < 0 && t < T) || niter < iterations) 
-    {
-        #if DEBUG
-        printf("Main thread starts new loop.\n");
-        #endif
-        
-        //printf("Iteration %d\n", niter);
-        #ifdef DEBUG
-        if (DEBUG >=3)
-        {
-            //printMat(E_prev, m, n);
-            repNorms(E_prev, t, dt, m, n, niter);
-            if (plot_freq) {
-                splot(E_prev, t, niter, m + 1, n + 1, WAIT);
-            }
-            printf("\n");
-        }
-        #endif
-
-        t += dt;
-        niter++;
-
-        //Wake up threads to do one iteration worth of work
-        pthread_mutex_lock(&ready_mutex);
-        #ifdef DEBUG
-        printf("Main thread inited ghost cells, sets state to 1 and broadcasts ready.\n");
-        #endif
-        state = STATE_WORKING;
-        pthread_cond_broadcast(&ready);
-        pthread_mutex_unlock(&ready_mutex);
-
-        //Wait for threads to finish
-        pthread_mutex_lock(&done_mutex);
-        #ifdef DEBUG
-        printf("Main waits for done signal.\n");
-        #endif
-        while (done_count < tx*ty)
-            pthread_cond_wait(&done, &done_mutex);
-        #ifdef DEBUG
-        printf("Main received done signal, sets done_count to 0.\n");
-        #endif
-        done_count = 0;
-        pthread_mutex_unlock(&done_mutex);
-
-
-        if (do_stats) {
-            repNorms(E, t, dt, m, n, niter);
-        }
-
-        if (plot_freq) {
-            int k = (int)(t / plot_freq);
-            if ((t - k * plot_freq) < dt) 
-            {
-                splot(E, t, niter, m + 1, n + 1, WAIT);
-            }
-        }
-    }*/
-
-
-    //Tell the threads that we're done and copy back the data
-    /*pthread_mutex_lock(&ready_mutex);
-    done_count = 0;
-    state = STATE_DONE;
-    pthread_cond_broadcast(&ready);
-    pthread_mutex_unlock(&ready_mutex);
-
-    pthread_mutex_lock(&done_mutex);
-    #ifdef DEBUG
-    printf("Main thread waits for copy back.\n");
-    fflush(stdout);
-    #endif
-
-    while (done_count < tx*ty)
-    {
-        pthread_cond_wait(&done, &done_mutex);
-    }
-
-    #ifdef DEBUG
-    printf("Main thread got signal indicating copy is done. Exiting.\n");
-    fflush(stdout);
-    #endif
-    pthread_mutex_unlock(&done_mutex);*/
-
-    // Store them into the pointers passed in
     *_E = E;
     *_E_prev = E_prev;
 

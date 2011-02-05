@@ -184,7 +184,7 @@ int main(int argc, char** argv) {
     printf("End at time: %g, iteration %d\n", T, niter);
     l2norm = stats(E_prev, m, n, &mx);
     printf("Max: %13.5e, L2norm: %13.5e\n", mx, l2norm);
-    printf("Running Time: %f sec.\n", t0);
+    //printf("Running Time: %f sec.\n", t0);
     if (plot_freq) {
     printf("\n\nEnter any input to close the program and the plot...");
     int resp;

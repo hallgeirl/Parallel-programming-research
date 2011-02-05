@@ -64,10 +64,11 @@ str(threads) + "\n")
                 f.write("echo \"n_tot=" + str(n_tot) + " n_per_cpu=" + str(n/2) + " i=" + str(t) + "\"\n")
                 for foo in xrange(testruns):
                     if omp:
-                        f.write("./apf -n " + str(n_tot) + " -i " + str(t))
+                        f.write("./apf_omp -n " + str(n_tot) + " -i " + str(t))
                         f.write(" -y " + str(threads) + " -x 1")
                     else:
-                        f.write("taskset -c $cpu_start-$cpu_end ./apf -n " + str(n_tot) + " -i " + str(t) + " -x 1 -y " + str(threads))
+                        f.write("taskset -c $cpu_start-$cpu_end ./apf_pthreads -n " + str(n_tot) + " -i " + str(t) + " -x 1 -y 
+" + str(threads))
                     f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")
 
     os.system("chmod +x run*.sh")

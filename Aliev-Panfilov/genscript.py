@@ -6,7 +6,11 @@ import re
 
 def main(args):
     testruns = 5
-    
+    if len(args) > 0:
+        testname = args[0]
+    else:
+        testname = "Unnamed test"
+
     # Create output directory if it doesn't exist
     if not os.path.exists("output"):
         os.mkdir("output")
@@ -51,10 +55,10 @@ str(threads) + "\n")
                 f.write("echo \"n=" + str(n) + " i=" + str(t) + "\"\n")
                 for foo in xrange(testruns):
                     if omp:
-                        f.write("./apf -n " + str(n) + " -i " + str(t))
+                        f.write("./apf_omp -n " + str(n) + " -i " + str(t))
                         f.write(" -y " + str(threads) + " -x 1")
                     else:
-                        f.write("taskset -c $cpu_start-$cpu_end ./apf -n " + str(n) + " -i " + str(t) + " -x 1 -y " + str(threads))
+                        f.write("taskset -c $cpu_start-$cpu_end ./apf_pthreads -n " + str(n) + " -i " + str(t) + " -x 1 -y " + str(threads))
                     f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")
 
             # Weak scaling runs. Keeping problem size constant per thread.

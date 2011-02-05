@@ -6,12 +6,10 @@ echo Running scripts: ${scripts}
 echo " "
 
 for s in ${scripts}; do
-    echo Waiting for dash to be free...
-    while true; do
-        if ! qstat |grep large > /dev/null; then
-            break;
-        fi
-        sleep 10
+    while qstat|grep large; do
+	sleep 10
+        clear
+        echo Waiting for dash to be free in order to run ${s} uncontended...
     done
 
     echo Running job ${s}

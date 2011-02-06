@@ -28,7 +28,7 @@ DOUBLE **alloc2D(int m, int n, int *pitch) {
     
     //Align to page boundary
     int lowerBits = ((int)(E+m) & 4095);
-    int shifted = (4096-lowerBits); //Shift the whole array by this much to align each row to the 4096 border
+    int shifted = (4096-lowerBits)+4096; //Shift the whole array by this much to align each row to the 4096 border
     
     int i;
     for (i = 0; i < m; i++)

@@ -23,13 +23,13 @@ ifdef debug
 CFLAGS += -DDEBUG -g
 endif
 
-app:		apf
+app:		apf_pthreads
 
 OBJECTS = apf.o solve.o splot.o cmdline.o printMat.o Timer.o
 
-apf:	        $(OBJECTS) 
+apf_pthreads:	        $(OBJECTS) 
 		$(CLINK) $(LDFLAGS) -o $@ $(OBJECTS)  $(LDLIBS)
 
 clean:	
-	$(RM) *.o apf;
+	$(RM) *.o apf_pthreads;
 	$(RM) core;

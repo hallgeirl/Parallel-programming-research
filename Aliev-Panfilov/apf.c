@@ -19,16 +19,29 @@
 
 // Utilities
 // Allocate a 2D array
-DOUBLE **alloc2D(int m, int n) {
+DOUBLE **alloc2D(int m, int n, int *pitch) {
     DOUBLE **E;
-    int nx = n + 1, ny = m + 1;
-    E = (DOUBLE **)malloc(sizeof(DOUBLE*) * ny + sizeof(DOUBLE) * nx * ny);
+    int leftover = n % (4096/sizeof(DOUBLE));
+    *pitch = n + (((4096/sizeof(DOUBLE))-leftover) % (4096/sizeof(DOUBLE)));
+    E = (DOUBLE **)malloc(sizeof(DOUBLE*) * m + sizeof(DOUBLE) * (*pitch) * m + 4096*2);
     assert(E);
-    int j;
-    for (j = 0; j < ny; j++)
-        E[j] = (DOUBLE *)(E + ny) + j * nx;
+
+    //Align to page boundary
+    int lowerBits = ((int)(E+m) & 4095);
+    int shifted = (4096-lowerBits)+4096; //Shift the whole array by this much to align each row to the 4096 border.
+
+    int i;
+    for (i = 0; i < m; i++)
+    {
+        E[i] = (DOUBLE *)(((DOUBLE**)(((char*)E)+shifted)) + m) + i * (*pitch);
+        #ifdef DEBUG
+        printf("E[%i] mod 4096: %d\n", i, ((int)E[i] & 4095));
+        #endif
+    }
+
     return E;
 }
+
     
 // Reports statistics about the computation
 // These values should not vary (except to within roundoff)
@@ -129,7 +142,7 @@ int main(int argc, char** argv) {
     int plot_freq = 0;
     int tx = 1, ty = 1;
     int bx = m / 4, by = n / 4;
-
+    int pitch;
     cmdLine(argc, argv, &T, &n, &tx, &ty, &bx, &by, &do_stats, &plot_freq);
     m = n;
 
@@ -139,9 +152,9 @@ int main(int argc, char** argv) {
     // The computational box is defined on [1:m+1,1:n+1]
     // We pad the arrays in order to facilitate differencing on the 
     // boundaries of the computation box
-    E = alloc2D(m + 2, n + 2);
-    E_prev = alloc2D(m + 2, n + 2);
-    R = alloc2D(m + 2, n + 2);
+    E = alloc2D(m + 3, n + 3, &pitch);
+    E_prev = alloc2D(m + 3, n + 3, &pitch);
+    R = alloc2D(m + 3, n + 3, &pitch);
 
     init(E, E_prev, R, m, n);
     

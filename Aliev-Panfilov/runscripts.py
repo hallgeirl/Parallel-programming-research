@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import os, subprocess, re, time
 
 def machineIsFree():

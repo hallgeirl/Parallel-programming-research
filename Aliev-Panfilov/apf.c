@@ -118,9 +118,9 @@ void printTOD(const char* mesg)
 
 
 // External functions
-void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* bx, int* by, int* do_stats, int* plot_freq);
+void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* iters, int* do_stats, int* plot_freq);
 
-int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by);
+int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, int iters, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by);
 
 // Main program
 int main(int argc, char** argv) {
@@ -143,7 +143,8 @@ int main(int argc, char** argv) {
     int tx = 1, ty = 1;
     int bx = m / 4, by = n / 4;
     int pitch;
-    cmdLine(argc, argv, &T, &n, &tx, &ty, &bx, &by, &do_stats, &plot_freq);
+    int iterations = -1;
+    cmdLine(argc, argv, &T, &n, &tx, &ty, &iterations, &do_stats, &plot_freq);
     m = n;
 
     printTOD("Run begins");
@@ -190,7 +191,7 @@ int main(int argc, char** argv) {
 
     // Start the timer
     double t0 = -getTime();
-    int niter = solve(&E, &E_prev, R, m, n, T, alpha, dt, do_stats, plot_freq, tx, ty);
+    int niter = solve(&E, &E_prev, R, m, n, T, iterations, alpha, dt, do_stats, plot_freq, tx, ty);
     t0 += getTime();
 
     printTOD("Run completes");

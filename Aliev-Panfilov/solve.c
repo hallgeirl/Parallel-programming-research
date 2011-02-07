@@ -146,7 +146,7 @@ void solve_block(void* _args)
     pthread_exit(NULL);
 }
 
-int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty) 
+int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, int iterations, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty) 
 {
     // Simulated time is different from the integer timestep number
     DOUBLE t = 0.0;
@@ -209,7 +209,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
     // We continue to sweep over the mesh until the simulation has reached
     // the desired simulation Time
     // This is different from the number of iterations
-    while (t < T) 
+    while ((iterations < 0 && t < T) || niter < iterations) 
     {
         #ifdef DEBUG
         printf("Main thread starts new loop.\n");

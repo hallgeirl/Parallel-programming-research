@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sqlite3, sys, re, os
+import sqlite3, sys, re, os, math
 
 def parseFile(filename):
     lines = []
@@ -26,11 +26,11 @@ def parseFile(filename):
         elif elements[0][0] == "n" or elements[0][0] == "i":
             for e in elements:
                 params = e.split("=")
-                if params[0] == "n": n = int(params[1])
+                if params[0] == "n_tot" or params[0] == "n": n = int(params[1])
                 elif params[0] == "i": i = int(params[1])
         elif elements[0] != "Nodes:":
             testresult = float(l)
-            key = (section, n, i)
+            key = (name, version, section, n, i)
             if not key in results:
                 results[key] = []
             results[key].append(testresult)
@@ -52,18 +52,25 @@ def main(args):
     for f in files:
         match = pattern.match(f)
         if match: 
-            threads = match.groups(1)[0]
+            threads = int(match.groups(1)[0])
             if not threads in results:
                 results[threads] = []
             results[threads].append(parseFile(os.path.join(searchpath, f)))
 
     # Open database
     db = sqlite3.connect(dbfile)
-    cursor = db.cursor()
+    c = db.cursor()
+    c.execute("create table if not exists testresults (resultid int primary key, name varchar(255), version varchar(255), section varchar(255), threads int, problemsize int, problemsize_perthread int, iters int, runningtime real)")
+    db.commit()
     
-    for k,v in results.iteritems():
-        print str(k) + str(": ") + str(v)
-    
+    # Insert test results
+    for threads,resultlist in results.iteritems():
+        for result in resultlist:
+            for (name, version, section, n, i), rts in result.iteritems():
+                for rt in rts:
+                    c.execute("insert into testresults (name, version, section, threads, problemsize, problemsize_perthread, iters, runningtime) values ('%s', '%s', '%s', %d, %d, %d, %d, %f)" % (name, version, section, threads, n, int(round(n/math.sqrt(threads))), i, rt))
+    db.commit()
+    c.close()
     db.close()
 
 if __name__ == "__main__":

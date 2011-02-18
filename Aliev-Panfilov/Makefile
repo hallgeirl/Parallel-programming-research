@@ -21,7 +21,7 @@ CFLAGS += -fopenmp
 LDFLAGS += -fopenmp
 endif
 
-CFLAGS += $(ARITH) -Wall -O3
+CFLAGS += $(ARITH) -O3
 
 ifdef debug
 CFLAGS += -DDEBUG -g

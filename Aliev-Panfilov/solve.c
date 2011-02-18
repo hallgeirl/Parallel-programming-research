@@ -48,18 +48,6 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
         t += dt;
         niter++;
 
-        /*
-        * Copy data from boundary of the computational box to the
-        * padding region, set up for differencing computational box's boundary
-        *
-        */
-        /*#pragma ivdep
-        for (j = 1; j <= m + 1; j++) {
-            E_prev[j][0] = E_prev[j][2];
-            E_prev[j][n + 2] = E_prev[j][n];
-        }*/
-
-
         // Solve for the excitation, a PDE
         // Also make sure that each CPU works on a block on a time instead of a larger unit of data.
         
@@ -69,9 +57,9 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
             //Let top and bottom thread copy top and bottom ghost cells
             if (ti == 0)
                 memcpy(&E_prev[0][0], &E_prev[2][0], sizeof(DOUBLE)*(n+3));
-            else if (ti == ty-1)
+            if (ti == ty-1)
                 memcpy(&E_prev[m+2][0], &E_prev[m][0], sizeof(DOUBLE)*(n+3));
-        
+
             int ii = ((m+1)/ty)*ti + 1;
             for (i = ii; i < ii+chunksizes[ti]; i++) 
             {

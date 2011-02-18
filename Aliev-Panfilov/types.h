@@ -10,6 +10,6 @@
 #else
 #define DOUBLE double
 #endif
-#else
+
 #endif
 

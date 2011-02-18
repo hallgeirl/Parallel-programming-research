@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include "types.h"
-#include "apf.h"
+//#include "apf.h"
 
 void printMat(DOUBLE **U, int m, int n){
     int i,j;

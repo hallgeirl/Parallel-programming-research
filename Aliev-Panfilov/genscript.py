@@ -24,17 +24,13 @@ def main(args):
     pthreads_tail = "cpu_start=`numabind --offset=$num_threads`\ncpu_end=`echo \"$cpu_start + $num_threads - 1\" | bc`\n"
 
     common_tail = "cd $PBS_O_WORKDIR\n"
-
-    nts = [(1024, 512), (2048, 128), (4096, 32), (8192, 8), (16384, 2)];
+    n = 2045
+    nts = [(1024, n, 512), (2048, n, 256), (4096, n, 128), (8192, n, 64), (16384, n, 32)];
 
     # Generate scripts for both pthreads and openmp
-    for omp in [True, False]:
+    for omp in ["openmp", "openmp_noghost", "pthreads"]:
         for threads in [1,2,4,8,16,32,64,128]:
-            filename = "run_"
-            if omp:
-                filename += "openmp"
-            else:
-                filename += "pthreads"
+            filename = "run_" + omp
             filename += "_" + str(threads) + ".sh"
             f = open(filename, "w")
             f.write(header1)
@@ -50,32 +46,33 @@ str(threads) + "\n")
             f.write(common_tail)
             f.write("echo \"testset_name " + testname + "\"\n")
             f.write("echo \"testset_version ")
-            if omp: f.write("openmp")
-            else: f.write("pthreads")
+            f.write(omp)
             f.write("\"\n");
             f.write("echo \"section strong_scaling\"\n")
             # Jobs
-            for n,t in nts:
-                f.write("echo \"n=" + str(n) + " i=" + str(t) + "\"\n")
+            for m,n,t in nts:
+                f.write("echo \"m=" + str(m) + " n=" + str(n) + " i=" + str(t) + "\"\n")
                 for foo in xrange(testruns):
-                    if omp:
-                        f.write("./apf_omp -n " + str(n) + " -i " + str(t))
+                    if omp.find("openmp") != -1:
+                        f.write("./apf_" + omp + " -m " + str(m) + " -n " + str(n) + " -i " + str(t))
                         f.write(" -y " + str(threads) + " -x 1")
                     else:
-                        f.write("taskset -c $cpu_start-$cpu_end ./apf_pthreads -n " + str(n) + " -i " + str(t) + " -x 1 -y " + str(threads))
+                        f.write("taskset -c $cpu_start-$cpu_end ./apf_pthreads -m " + str(m) + " -n " + str(n) + " -i " + str(t) + " -x 1 -y " + str(threads))
                     f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")
 
             # Weak scaling runs. Keeping problem size constant per thread.
             f.write("echo \"section weak_scaling\"\n")
-            for n,t in nts:
-                n_tot = int((n/2)*math.sqrt(threads))
-                f.write("echo \"n_tot=" + str(n_tot) + " n_per_cpu=" + str(n/2) + " i=" + str(t) + "\"\n")
+            for m,n,t in nts:
+                #n_tot = int((n/2)*math.sqrt(threads))
+                m_per_cpu = m
+                m_tot = int(m_per_cpu*threads)
+                f.write("echo \"m=" + str(m_tot) + " m_per_cpu=" + str(m_per_cpu) + " n=" + str(n) + " i=" + str(t) + "\"\n")
                 for foo in xrange(testruns):
-                    if omp:
-                        f.write("./apf_omp -n " + str(n_tot) + " -i " + str(t))
+                    if omp.find("openmp") != -1:
+                        f.write("./apf_" + omp + " -m " + str(m_tot) + " -n " + str(n) + " -i " + str(t))
                         f.write(" -y " + str(threads) + " -x 1")
                     else:
-                        f.write("taskset -c $cpu_start-$cpu_end ./apf_pthreads -n " + str(n_tot) + " -i " + str(t) + " -x 1 -y " + str(threads))
+                        f.write("taskset -c $cpu_start-$cpu_end ./apf_pthreads -m " + str(m_tot) + " -n " + str(n) + " -i " + str(t) + " -x 1 -y " + str(threads))
                     f.write("|grep Running|sed \"s/Running Time: //g\"|sed \"s/ sec.//g\"\n")
 
     os.system("chmod +x run*.sh")

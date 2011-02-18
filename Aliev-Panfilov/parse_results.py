@@ -4,13 +4,15 @@ import sqlite3, sys, re, os, math
 
 def parseFile(filename):
     lines = []
-    with open(filename, "r") as f:
-        lines = f.readlines()
+    f = open(filename, "r")
+    lines = f.readlines()
+    f.close()
 
     name = "unnamed_set"
     version = "unknown_version"
     section = "no_section"
     n = -1
+    m = -1
     i = -1
     # Results stored as a mapping from (section, n, i) to (list of times)
     results = {}
@@ -23,14 +25,15 @@ def parseFile(filename):
             version = elements[1]
         elif elements[0] == "section":
             section = "".join(elements[1:])
-        elif elements[0][0] == "n" or elements[0][0] == "i":
+        elif elements[0][0] in ["n", "i", "m"]:
             for e in elements:
                 params = e.split("=")
-                if params[0] == "n_tot" or params[0] == "n": n = int(params[1])
+                if params[0] == "n": n = int(params[1])
+                elif params[0] == "m": m = int(params[1])
                 elif params[0] == "i": i = int(params[1])
         elif elements[0] != "Nodes:":
             testresult = float(l)
-            key = (name, version, section, n, i)
+            key = (name, version, section, m, n, i)
             if not key in results:
                 results[key] = []
             results[key].append(testresult)
@@ -60,15 +63,15 @@ def main(args):
     # Open database
     db = sqlite3.connect(dbfile)
     c = db.cursor()
-    c.execute("create table if not exists testresults (resultid int primary key, name varchar(255), version varchar(255), section varchar(255), threads int, problemsize int, problemsize_perthread int, iters int, runningtime real)")
+    c.execute("create table if not exists testresults (resultid int primary key, name varchar(255), version varchar(255), section varchar(255), threads int, m int, n int, m_perthread int, iters int, runningtime real)")
     db.commit()
     
     # Insert test results
     for threads,resultlist in results.iteritems():
         for result in resultlist:
-            for (name, version, section, n, i), rts in result.iteritems():
+            for (name, version, section, m, n, i), rts in result.iteritems():
                 for rt in rts:
-                    c.execute("insert into testresults (name, version, section, threads, problemsize, problemsize_perthread, iters, runningtime) values ('%s', '%s', '%s', %d, %d, %d, %d, %f)" % (name, version, section, threads, n, int(round(n/math.sqrt(threads))), i, rt))
+                    c.execute("insert into testresults (name, version, section, threads, m, n, m_perthread, iters, runningtime) values ('%s', '%s', '%s', %d, %d, %d, %d, %d, %f)" % (name, version, section, threads, m, n, int(round(m/threads)), i, rt))
     db.commit()
     c.close()
     db.close()

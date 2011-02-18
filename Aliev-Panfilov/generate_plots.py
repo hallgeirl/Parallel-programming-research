@@ -52,7 +52,7 @@ def main(args):
 
     # First generate plots for the strong scaling results. Put all strong scaling results in one plot. 
     for (test, version) in tests:
-        for (section, probsize) in [("strong_scaling", "problemsize"), ("weak_scaling", "problemsize_perthread")]:
+        for (section, probsize) in [("strong_scaling", "m"), ("weak_scaling", "m_perthread")]:
             c.execute("select %s, iters, threads, min(runningtime) from testresults where name='%s' and section='%s' and version='%s' group by %s, iters, threads order by %s" % (probsize, test, section, version, probsize, probsize))
             fnamePrefix = test + "_" + section + "_" + version
 
@@ -84,7 +84,7 @@ def main(args):
                 title = ""
                 datfiles = sorted(datfiles, key=lambda x: int(x[0]))
                 if section == "strong_scaling": title = "Strong scaling runs."
-                elif section == "weak_scaling": title = "Weak scaling runs. Problem size n is per thread."
+                elif section == "weak_scaling": title = "Weak scaling runs. Problem size m is per thread."
                 title += " Version: " + version
                 makePlotFile(plotfile, outputtype, datfiles, title, plotfname[:-2] + ".png")
                 plotfile.close()

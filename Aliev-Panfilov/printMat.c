@@ -5,9 +5,9 @@
 
 void printMat(DOUBLE **U, int m, int n){
     int i,j;
-    for (j=0; j<m; j++){
-        for (i=0; i<n; i++) {
-            printf("%6.3f ", U[j][i]);
+    for (i=0; i<m; i++){
+        for (j=0; j<n; j++) {
+            printf("%6.3f ", U[i][j]);
         }
         printf("\n");
     }

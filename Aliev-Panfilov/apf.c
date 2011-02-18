@@ -67,21 +67,21 @@ DOUBLE stats(DOUBLE **E, int m, int n, DOUBLE *_mx) {
 void init (DOUBLE **E_prev, DOUBLE **R, int m, int n) {
   int i, j;
   // Initialization
-  for (j = 1; j <= m + 1; j++) {
-    for (i = 1; i <= n + 1; i++) {
-      E_prev[j][i] = R[j][i] = 0;
+  for (i = 1; i <= m + 1; i++) {
+    for (j = 1; j <= n + 1; j++) {
+      E_prev[i][j] = R[i][j] = 0;
     }
   }
 
-  for (j = 1; j <= m + 1; j++) {
-    for (i = n / 2 + 2; i <= n + 1 ; i++) {
-      E_prev[j][i] = 1.0;
+  for (i = 1; i <= m + 1; i++) {
+    for (j = n / 2 + 2; j <= n + 1 ; j++) {
+      E_prev[i][j] = 1.0;
     }
   }
 
-  for (j = m / 2 +2; j <= m + 1; j++) {
-    for (i = 1; i <= n + 1; i++) {
-        R[j][i] = 1.0;
+  for (i = m / 2 +2; i <= m + 1; i++) {
+    for (j = 1; j <= n + 1; j++) {
+        R[i][j] = 1.0;
     }
   }
 }

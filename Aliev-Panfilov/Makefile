@@ -12,6 +12,7 @@ include arch.gnu
 # See the gcc manual for the other levels of output: levels 1-7
 # http://gcc.gnu.org/onlinedocs/gcc-4.4.2/gcc/Debugging-Options.html#Debugging-Options
 #
+APP=apf_omp
 
 ifeq ($(CC),icc)
 CFLAGS += -openmp
@@ -27,11 +28,16 @@ ifdef debug
 CFLAGS += -DDEBUG -g
 endif
 
-app:		apf_omp
+ifdef disableghost
+CFLAGS += -DNO_GHOST_CELLS
+APP = apf_omp_noghost
+endif
+
+app:		$(APP)
 
 OBJECTS = apf.o solve.o splot.o cmdline.o printMat.o Timer.o
 
-apf_omp:	        $(OBJECTS) 
+$(APP):	        $(OBJECTS) 
 		$(CLINK) $(LDFLAGS) -o $@ $(OBJECTS)  $(LDLIBS)
 
 clean:	

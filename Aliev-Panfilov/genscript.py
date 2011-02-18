@@ -38,7 +38,7 @@ def main(args):
             f.write("#PBS -l walltime=04:00:00,nodes=1:ppn=" + 
 str(threads) + "\n")
             f.write(header2)
-            if omp:
+            if omp.find("openmp") != -1:
                 f.write("export OMP_NUM_THREADS=" + str(threads) + "\n")
                 f.write(omp_tail)
             else:

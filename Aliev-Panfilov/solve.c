@@ -14,7 +14,7 @@
 #include "apf.h"
 #include "types.h"
 
-int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by) 
+int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, int iterations, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by) 
 {
     // Simulated time is different from the integer timestep number
     DOUBLE t = 0.0;
@@ -26,7 +26,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, D
     // We continue to sweep over the mesh until the simulation has reached
     // the desired simulation Time
     // This is different from the number of iterations
-    while (t < T) {
+    while (niter < iterations || (iterations == -1 && t < T)) {
         #ifdef DEBUG
         printMat(E_prev, m, n);
         repNorms(E_prev, t, dt, m, n, niter);

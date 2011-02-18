@@ -105,9 +105,9 @@ void printTOD(const char* mesg)
 
 
 // External functions
-void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* bx, int* by, int* do_stats, int* plot_freq);
+void cmdLine(int argc, char *argv[], double* T, int *m, int* n, int* tx, int* ty, int* iterations, int* do_stats, int* plot_freq);
 
-int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by);
+int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, int iterations, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int bx, int by);
 
 // Main program
 int main(int argc, char** argv) {
@@ -124,14 +124,15 @@ int main(int argc, char** argv) {
     // Command line arguments
     // Default value of the domain sizes
     double T = 1500.0;
-    int m = 100, n = 100;
+    int m = 100, n = -1;
     int do_stats = 0;
     int plot_freq = 0;
     int tx = 1, ty = 1;
-    int bx = m / 4, by = n / 4;
+    int iterations = -1;
 
-    cmdLine(argc, argv, &T, &n, &tx, &ty, &bx, &by, &do_stats, &plot_freq);
-    m = n;
+    cmdLine(argc, argv, &T, &m, &n, &tx, &ty, &iterations, &do_stats, &plot_freq);
+    if (n == -1) n = m;
+    int bx = m / 4, by = n / 4;
 
     printTOD("Run begins");
 
@@ -188,7 +189,7 @@ int main(int argc, char** argv) {
 
     // Start the timer
     double t0 = -getTime();
-    int niter = solve(&E, &E_prev, R, m, n, T, alpha, dt, do_stats, plot_freq, bx, by);
+    int niter = solve(&E, &E_prev, R, m, n, T, iterations, alpha, dt, do_stats, plot_freq, bx, by);
     t0 += getTime();
 
     printTOD("Run completes");

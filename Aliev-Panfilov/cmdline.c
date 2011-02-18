@@ -5,7 +5,7 @@
 #include <string.h>
 #include "types.h"
 
-void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* bx, int* by, int* do_stats, int* plot_freq){
+void cmdLine(int argc, char *argv[], double* T, int *m, int* n, int* tx, int* ty, int *iterations, int* do_stats, int* plot_freq){
 /// Command line arguments
  // Default value of the domain sizes
  static struct option long_options[] = {
@@ -30,6 +30,10 @@ void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* b
                 *n = atoi(optarg);
                 break;
 
+            case 'm':
+                *m = atoi(optarg);
+                break;
+
 	    // X processor geometry
             case 'x':
                 *tx = atoi(optarg);
@@ -42,12 +46,7 @@ void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* b
 
 	    // X blocking factor
             case 'i':
-                *bx = atoi(optarg);
-                break;
-
-	    // Y processor geometry
-            case 'j':
-                *by = atoi(optarg);
+                *iterations = atoi(optarg);
                 break;
 
 	    // Length of simulation, in simulated time units

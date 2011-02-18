@@ -25,7 +25,8 @@ def main(args):
 
     common_tail = "cd $PBS_O_WORKDIR\n"
     n = 2045
-    nts = [(1024, n, 512), (2048, n, 256), (4096, n, 128), (8192, n, 64), (16384, n, 32)];
+    nts = [(1024, n, 512), (2048, n, 256), (4096, n, 128)]
+    #, (8192, n, 64), (16384, n, 32)];
 
     # Generate scripts for both pthreads and openmp
     for omp in ["openmp", "openmp_noghost", "pthreads"]:

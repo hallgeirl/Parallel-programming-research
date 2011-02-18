@@ -12,7 +12,7 @@ include arch.gnu
 # See the gcc manual for the other levels of output: levels 1-7
 # http://gcc.gnu.org/onlinedocs/gcc-4.4.2/gcc/Debugging-Options.html#Debugging-Options
 #
-APP=apf_omp
+APP=apf_openmp
 
 ifeq ($(CC),icc)
 CFLAGS += -openmp
@@ -30,7 +30,7 @@ endif
 
 ifdef disableghost
 CFLAGS += -DNO_GHOST_CELLS
-APP = apf_omp_noghost
+APP = apf_openmp_noghost
 endif
 
 app:		$(APP)

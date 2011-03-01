@@ -13,6 +13,8 @@ include arch.gnu
 # http://gcc.gnu.org/onlinedocs/gcc-4.4.2/gcc/Debugging-Options.html#Debugging-Options
 #
 
+APP = apf_openmp
+
 ifeq ($(CC),icc)
 CFLAGS += -openmp
 LDFLAGS += -openmp
@@ -26,6 +28,12 @@ CFLAGS += $(ARITH) -Wall -O3
 ifdef debug
 CFLAGS += -DDEBUG -g
 endif
+
+ifdef disableghost
+CFLAGS += -DNO_GHOST_CELLS
+APP = apf_omp_noghost
+endif
+
 
 app:		apf_omp
 

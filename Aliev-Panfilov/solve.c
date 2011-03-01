@@ -18,6 +18,10 @@
 
 int solve(block_t ** blocks, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty, bool enableGhostCells, int iterations) 
 {
+#ifdef NO_GHOST_CELLS
+    enableGhostCells = false;
+#endif
+
     // Simulated time is different from the integer timestep number
     DOUBLE t = 0.0;
     // Integer timestep number
@@ -53,7 +57,7 @@ int solve(block_t ** blocks, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, in
             {
                 block_t* b = blocks[k];
                 int bx = b->bx, by = b->by;
-                
+
                 //Left ghost cells, thread at left edge
                 if (b->tj == 0)
                 {
@@ -164,9 +168,12 @@ int solve(block_t ** blocks, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, in
             }
             
             //Swap arrays
-            DOUBLE** tmp = blocks[k]->E;
-            blocks[k]->E = blocks[k]->E_prev;
-            blocks[k]->E_prev = tmp;
+            if (enableGhostCells)
+            {
+                DOUBLE** tmp = blocks[k]->E;
+                blocks[k]->E = blocks[k]->E_prev;
+                blocks[k]->E_prev = tmp;
+            }
         }
         
       

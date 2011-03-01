@@ -35,13 +35,13 @@ APP = apf_omp_noghost
 endif
 
 
-app:		apf_omp
+app:		$(APP)
 
 OBJECTS = apf.o solve.o splot.o cmdline.o printMat.o Timer.o
 
-apf_omp:	        $(OBJECTS) 
+$(APP):	        $(OBJECTS) 
 		$(CLINK) $(LDFLAGS) -o $@ $(OBJECTS)  $(LDLIBS)
 
 clean:	
-	$(RM) *.o apf;
+	$(RM) *.o $(APP);
 	$(RM) core;

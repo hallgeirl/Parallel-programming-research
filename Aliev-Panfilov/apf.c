@@ -106,7 +106,7 @@ void printTOD(const char* mesg)
 
 
 // External functions
-void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int *iterations, bool *enableGhostCells, int* do_stats, int* plot_freq);
+void cmdLine(int argc, char *argv[], double* T, int* m, int* n, int* tx, int* ty, int *iterations, bool *enableGhostCells, int* do_stats, int* plot_freq);
 
 int solve(block_t ** blocks, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty, bool enableGhostCells, int iterations);
 
@@ -125,7 +125,7 @@ int main(int argc, char** argv) {
     // Command line arguments
     // Default value of the domain sizes
     double T = 1500.0;
-    int m = 100, n = 100;
+    int m = 100, n = -1;
     int do_stats = 0;
     int plot_freq = 0;
     int tx = 1, ty = 1;
@@ -133,8 +133,11 @@ int main(int argc, char** argv) {
     bool enableGhostCells = true;
     int iterations = -1;
 
-    cmdLine(argc, argv, &T, &n, &tx, &ty, &iterations, &enableGhostCells, &do_stats, &plot_freq);
-    m = n;
+    cmdLine(argc, argv, &T, &m, &n, &tx, &ty, &iterations, &enableGhostCells, &do_stats, &plot_freq);
+    if (n == -1) n = m;
+    if (m == -1) m = n;
+
+    omp_set_num_threads(tx*ty);
 
     printTOD("Run begins");
     printf("Max number of threads: %d\n", omp_get_max_threads());

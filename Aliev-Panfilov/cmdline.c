@@ -6,10 +6,11 @@
 #include <string.h>
 #include "types.h"
 
-void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int *iterations, bool *enableGhostCells, int* do_stats, int* plot_freq){
+void cmdLine(int argc, char *argv[], double* T, int* m, int* n, int* tx, int* ty, int *iterations, bool *enableGhostCells, int* do_stats, int* plot_freq){
 /// Command line arguments
  // Default value of the domain sizes
  static struct option long_options[] = {
+        {"m", required_argument, 0, 'm'},
         {"n", required_argument, 0, 'n'},
         {"tx", required_argument, 0, 'x'},
         {"ty", required_argument, 0, 'y'},
@@ -23,10 +24,13 @@ void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int *i
  int ac;
  for(ac=1;ac<argc;ac++) {
     int c;
-    while ((c=getopt_long(argc,argv,"n:x:y:i:gt:sp:",long_options,NULL)) != -1){
+    while ((c=getopt_long(argc,argv,"m:n:x:y:i:gt:sp:",long_options,NULL)) != -1){
         switch (c) {
 
 	    // Size of the computational box
+            case 'm':
+                *m = atoi(optarg);
+                break;
             case 'n':
                 *n = atoi(optarg);
                 break;

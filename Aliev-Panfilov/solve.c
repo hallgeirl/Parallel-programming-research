@@ -33,11 +33,11 @@ int solve(block_t ** blocks, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, in
     // This is different from the number of iterations
     while ((iterations == -1 && t < T) || niter < iterations) {
         #ifdef DEBUG
-        printMat(E_prev, m, n);
+        /*printMat(E_prev, m, n);
         repNorms(E_prev, t, dt, m, n, niter);
         if (plot_freq) {
             splot(E_prev, t, niter, m + 1, n + 1, WAIT);
-        }
+        }*/
         #endif
 
         t += dt;
@@ -166,7 +166,7 @@ int solve(block_t ** blocks, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, in
                         );
                 }
             }
-            
+
             //Swap arrays
             if (enableGhostCells)
             {
@@ -174,6 +174,7 @@ int solve(block_t ** blocks, int m, int n, DOUBLE T, DOUBLE alpha, DOUBLE dt, in
                 blocks[k]->E = blocks[k]->E_prev;
                 blocks[k]->E_prev = tmp;
             }
+            
         }
         
       

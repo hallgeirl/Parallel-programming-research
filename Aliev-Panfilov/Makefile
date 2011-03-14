@@ -27,6 +27,10 @@ ifdef noghost
 CFLAGS += -DDISABLE_GHOST
 endif
 
+ifdef nosync
+CFLAGS += -DDISABLE_SYNC
+endif
+
 app:		apf_pthreads
 
 OBJECTS = apf.o solve.o splot.o cmdline.o printMat.o Timer.o

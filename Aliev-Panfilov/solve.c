@@ -131,8 +131,10 @@ void * solve_block(void* _args)
         niter++;
         
         //Wait until all are initialized and we are sure that the arrays are swapped
+#ifndef DISABLE_SYNC
         pthread_barrier_wait(&barr);
-        
+#endif
+
         //Copy ghost cells
 #ifndef DISABLE_GHOST
         if (ti == 0)
@@ -211,8 +213,9 @@ void * solve_block(void* _args)
         printf("Thread %d waits at barrier.\n", thread_id);
         fflush(stdout);
         #endif
+#ifndef DISABLE_SYNC
         pthread_barrier_wait(&barr);
-
+#endif
         #ifdef DEBUG
         printf("Thread %d past barrier.\n", thread_id);
         fflush(stdout);
@@ -227,7 +230,9 @@ void * solve_block(void* _args)
 #endif
     }
     
+#ifndef DISABLE_SYNC
     pthread_barrier_wait(&barr);
+#endif
     t0 += getTime();
     
     pthread_mutex_lock(&print_mutex);

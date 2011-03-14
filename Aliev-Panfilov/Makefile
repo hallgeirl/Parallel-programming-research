@@ -13,7 +13,7 @@ include arch.gnu
 # http://gcc.gnu.org/onlinedocs/gcc-4.4.2/gcc/Debugging-Options.html#Debugging-Options
 #
 
-ifeq ($CC,icc)
+ifeq ($(CC),icc)
 else
 endif
 
@@ -21,6 +21,10 @@ CFLAGS += $(ARITH) -Wall -O3
 
 ifdef debug
 CFLAGS += -DDEBUG=${debug} -g
+endif
+
+ifdef noghost
+CFLAGS += -DDISABLE_GHOST
 endif
 
 app:		apf_pthreads

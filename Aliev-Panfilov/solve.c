@@ -134,6 +134,7 @@ void * solve_block(void* _args)
         pthread_barrier_wait(&barr);
         
         //Copy ghost cells
+#ifndef DISABLE_GHOST
         if (ti == 0)
             memcpy(E_prev[0], E_prev[2], sizeof(DOUBLE)*(bx+2));
         else
@@ -164,7 +165,7 @@ void * solve_block(void* _args)
             for (i = 1; i < by+1; i++)
                 E_prev[i][bx+1] = (*(t_right->E_prev))[i][1];
         }
-        
+#endif
         #ifdef DEBUG
         if (DEBUG >=3)
         {
@@ -219,9 +220,11 @@ void * solve_block(void* _args)
         
         
         //Swap arrays
+#ifndef DISABLE_GHOST
         DOUBLE **tmp = E;
         E = E_prev;
         E_prev = tmp;
+#endif
     }
     
     pthread_barrier_wait(&barr);
@@ -247,7 +250,7 @@ void * solve_block(void* _args)
             args->E_prev_global[offset_y+i][offset_x+j] = E_prev[i+1][j+1];
             args->R_global[offset_y+i][offset_x+j] = R[i+1][j+1];
         }
-    }  
+    }
     
     printf("Thread %d exits.\n", thread_id);
 
@@ -287,7 +290,6 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
             ta->m = m; ta->n = n;
             ta->T = T; ta->iterations = iterations;
             
-
             //Start the threads
             pthread_create(&threads[ti*tx+tj], NULL, &solve_block, thread_args[ti*tx+tj]);
         }

@@ -26,7 +26,10 @@ DOUBLE **alloc2D(int m, int n) {
     assert(E);
     int j;
     for (j = 0; j < m; j++)
+    {
         E[j] = (DOUBLE *)(E + m) + j * n;
+        memset(E[j], 0, n);
+    }
     return E;
 }
     
@@ -105,7 +108,7 @@ void printTOD(const char* mesg)
 
 
 // External functions
-void cmdLine(int argc, char *argv[], double* T, int* n, int* tx, int* ty, int* iterations, int* do_stats, int* plot_freq);
+void cmdLine(int argc, char *argv[], double* T, int* m, int* n, int* tx, int* ty, int* iterations, int* do_stats, int* plot_freq);
 
 int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, int iterations, DOUBLE alpha, DOUBLE dt, int do_stats, int plot_freq, int tx, int ty);
 
@@ -124,14 +127,16 @@ int main(int argc, char** argv) {
     // Command line arguments
     // Default value of the domain sizes
     double T = 1500.0;
-    int m = 100, n = 100;
+    int m = -1, n = -1;
     int do_stats = 0;
     int plot_freq = 0;
     int tx = 1, ty = 1;
     int iterations = -1;
 
-    cmdLine(argc, argv, &T, &n, &tx, &ty, &iterations, &do_stats, &plot_freq);
-    m = n;
+    cmdLine(argc, argv, &T, &m, &n, &tx, &ty, &iterations, &do_stats, &plot_freq);
+    if (n == -1 && m == -1) m = n = 100;
+    else if (n == -1) n = m;
+    else if (m == -1) m = n;
 
     printTOD("Run begins");
 

@@ -1,5 +1,5 @@
 testset_name partitions_constant_width
-testset_version pthreads
+testset_version pthreads_noghost
 section strong_scaling
 m=1024 n=2045 i=512
 32.540332

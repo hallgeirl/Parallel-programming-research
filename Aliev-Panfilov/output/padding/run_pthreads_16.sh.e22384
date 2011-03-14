@@ -1,0 +1,115 @@
+Processors in packed order: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127}
+Placement cost for {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15} is 7520000 (oversub 0)
+Placement {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16} is not acceptable, uses more boards than the minimum
+Placement {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17} is not acceptable, uses more boards than the minimum
+Placement {3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18} is not acceptable, uses more boards than the minimum
+Placement {4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19} is not acceptable, uses more boards than the minimum
+Placement {5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20} is not acceptable, uses more boards than the minimum
+Placement {6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21} is not acceptable, uses more boards than the minimum
+Placement {7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22} is not acceptable, uses more boards than the minimum
+Placement cost for {8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23} is 0 (oversub 0)
+Placement {9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24} is not acceptable, uses more boards than the minimum
+Placement {10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25} is not acceptable, uses more boards than the minimum
+Placement {11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26} is not acceptable, uses more boards than the minimum
+Placement {12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27} is not acceptable, uses more boards than the minimum
+Placement {13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28} is not acceptable, uses more boards than the minimum
+Placement {14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29} is not acceptable, uses more boards than the minimum
+Placement {15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30} is not acceptable, uses more boards than the minimum
+Placement cost for {16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31} is 0 (oversub 0)
+Placement {17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32} is not acceptable, uses more boards than the minimum
+Placement {18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33} is not acceptable, uses more boards than the minimum
+Placement {19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34} is not acceptable, uses more boards than the minimum
+Placement {20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35} is not acceptable, uses more boards than the minimum
+Placement {21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36} is not acceptable, uses more boards than the minimum
+Placement {22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37} is not acceptable, uses more boards than the minimum
+Placement {23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38} is not acceptable, uses more boards than the minimum
+Placement cost for {24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39} is 0 (oversub 0)
+Placement {25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40} is not acceptable, uses more boards than the minimum
+Placement {26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41} is not acceptable, uses more boards than the minimum
+Placement {27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42} is not acceptable, uses more boards than the minimum
+Placement {28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43} is not acceptable, uses more boards than the minimum
+Placement {29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44} is not acceptable, uses more boards than the minimum
+Placement {30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45} is not acceptable, uses more boards than the minimum
+Placement {31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46} is not acceptable, uses more boards than the minimum
+Placement cost for {32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47} is 0 (oversub 0)
+Placement {33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48} is not acceptable, uses more boards than the minimum
+Placement {34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49} is not acceptable, uses more boards than the minimum
+Placement {35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50} is not acceptable, uses more boards than the minimum
+Placement {36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51} is not acceptable, uses more boards than the minimum
+Placement {37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52} is not acceptable, uses more boards than the minimum
+Placement {38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53} is not acceptable, uses more boards than the minimum
+Placement {39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54} is not acceptable, uses more boards than the minimum
+Placement cost for {40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55} is 0 (oversub 0)
+Placement {41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56} is not acceptable, uses more boards than the minimum
+Placement {42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57} is not acceptable, uses more boards than the minimum
+Placement {43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58} is not acceptable, uses more boards than the minimum
+Placement {44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59} is not acceptable, uses more boards than the minimum
+Placement {45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60} is not acceptable, uses more boards than the minimum
+Placement {46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61} is not acceptable, uses more boards than the minimum
+Placement {47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62} is not acceptable, uses more boards than the minimum
+Placement cost for {48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63} is 0 (oversub 0)
+Placement {49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64} is not acceptable, uses more boards than the minimum
+Placement {50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65} is not acceptable, uses more boards than the minimum
+Placement {51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66} is not acceptable, uses more boards than the minimum
+Placement {52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67} is not acceptable, uses more boards than the minimum
+Placement {53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68} is not acceptable, uses more boards than the minimum
+Placement {54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69} is not acceptable, uses more boards than the minimum
+Placement {55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70} is not acceptable, uses more boards than the minimum
+Placement cost for {56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71} is 0 (oversub 0)
+Placement {57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72} is not acceptable, uses more boards than the minimum
+Placement {58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73} is not acceptable, uses more boards than the minimum
+Placement {59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74} is not acceptable, uses more boards than the minimum
+Placement {60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75} is not acceptable, uses more boards than the minimum
+Placement {61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76} is not acceptable, uses more boards than the minimum
+Placement {62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77} is not acceptable, uses more boards than the minimum
+Placement {63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78} is not acceptable, uses more boards than the minimum
+Placement cost for {64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79} is 0 (oversub 0)
+Placement {65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80} is not acceptable, uses more boards than the minimum
+Placement {66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81} is not acceptable, uses more boards than the minimum
+Placement {67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82} is not acceptable, uses more boards than the minimum
+Placement {68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83} is not acceptable, uses more boards than the minimum
+Placement {69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84} is not acceptable, uses more boards than the minimum
+Placement {70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85} is not acceptable, uses more boards than the minimum
+Placement {71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86} is not acceptable, uses more boards than the minimum
+Placement cost for {72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87} is 0 (oversub 0)
+Placement {73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88} is not acceptable, uses more boards than the minimum
+Placement {74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89} is not acceptable, uses more boards than the minimum
+Placement {75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90} is not acceptable, uses more boards than the minimum
+Placement {76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91} is not acceptable, uses more boards than the minimum
+Placement {77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92} is not acceptable, uses more boards than the minimum
+Placement {78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93} is not acceptable, uses more boards than the minimum
+Placement {79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94} is not acceptable, uses more boards than the minimum
+Placement cost for {80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95} is 0 (oversub 0)
+Placement {81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96} is not acceptable, uses more boards than the minimum
+Placement {82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97} is not acceptable, uses more boards than the minimum
+Placement {83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98} is not acceptable, uses more boards than the minimum
+Placement {84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99} is not acceptable, uses more boards than the minimum
+Placement {85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100} is not acceptable, uses more boards than the minimum
+Placement {86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101} is not acceptable, uses more boards than the minimum
+Placement {87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102} is not acceptable, uses more boards than the minimum
+Placement cost for {88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103} is 0 (oversub 0)
+Placement {89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104} is not acceptable, uses more boards than the minimum
+Placement {90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105} is not acceptable, uses more boards than the minimum
+Placement {91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106} is not acceptable, uses more boards than the minimum
+Placement {92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107} is not acceptable, uses more boards than the minimum
+Placement {93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108} is not acceptable, uses more boards than the minimum
+Placement {94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109} is not acceptable, uses more boards than the minimum
+Placement {95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110} is not acceptable, uses more boards than the minimum
+Placement cost for {96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111} is 0 (oversub 0)
+Placement {97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112} is not acceptable, uses more boards than the minimum
+Placement {98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113} is not acceptable, uses more boards than the minimum
+Placement {99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114} is not acceptable, uses more boards than the minimum
+Placement {100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115} is not acceptable, uses more boards than the minimum
+Placement {101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116} is not acceptable, uses more boards than the minimum
+Placement {102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117} is not acceptable, uses more boards than the minimum
+Placement {103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118} is not acceptable, uses more boards than the minimum
+Placement cost for {104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119} is 0 (oversub 0)
+Placement {105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120} is not acceptable, uses more boards than the minimum
+Placement {106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121} is not acceptable, uses more boards than the minimum
+Placement {107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122} is not acceptable, uses more boards than the minimum
+Placement {108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123} is not acceptable, uses more boards than the minimum
+Placement {109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124} is not acceptable, uses more boards than the minimum
+Placement {110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125} is not acceptable, uses more boards than the minimum
+Placement {111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126} is not acceptable, uses more boards than the minimum
+Placement cost for {112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127} is 315710000 (oversub 0)
+Best placement is {104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119}

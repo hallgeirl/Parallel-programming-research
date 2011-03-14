@@ -1,0 +1,11 @@
+testset_name partitions_constant_width
+testset_version pthreads
+section strong_scaling
+m=1024 n=2045 i=512
+m=2048 n=2045 i=256
+m=4096 n=2045 i=128
+section weak_scaling
+m=2048 m_per_cpu=1024 n=2045 i=512
+m=4096 m_per_cpu=2048 n=2045 i=256
+m=8192 m_per_cpu=4096 n=2045 i=128
+Nodes:        dash-1-20

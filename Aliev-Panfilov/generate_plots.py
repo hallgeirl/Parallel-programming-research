@@ -38,7 +38,15 @@ def makePlotFile(f, outputtype, datfiles, title, output_filename):
 def main(args):
     dbfile = "results.db"
     searchpath = "./"
+    outpath = "./plot_data"
+    if len(args) > 1: 
+        outpath = args[-2]
+    if not os.path.exists(outpath):
+        os.system("mkdir " + outpath)
+            
     if len(args) > 0: dbfile = args[-1]
+
+        
 
     # Open database
     db = sqlite3.connect(dbfile)
@@ -65,7 +73,7 @@ def main(args):
                 rt = float(row[3])
                 key = (n,i)
                 if not key in files:
-                    fname = fnamePrefix + "_" + str(n) + "_" + str(i) + ".dat"
+                    fname = os.path.join(outpath, fnamePrefix + "_" + str(n) + "_" + str(i) + ".dat")
                     files[key] = (fname, open(fname, "w"), 10e9)
 
                 if threads == 1:
@@ -75,7 +83,7 @@ def main(args):
 
             for outputtype in ["efficiency", "speedup", "runningtime"]:
                 plotfname = fnamePrefix + "_" + outputtype + ".p"
-                plotfile = open(plotfname, "w")
+                plotfile = open(os.path.join(outpath, plotfname), "w")
 
                 datfiles = []
                 for (n, i), (fname, f, srt) in files.iteritems():
@@ -88,7 +96,7 @@ def main(args):
                 title += " Version: " + version
                 makePlotFile(plotfile, outputtype, datfiles, title, plotfname[:-2] + ".png")
                 plotfile.close()
-                os.system("gnuplot " + plotfname) 
+                os.system("gnuplot " + os.path.join(outpath, plotfname))
             
     c.close()
     db.close()

@@ -26,11 +26,28 @@ def parseFile(filename):
         elif elements[0] == "section":
             section = "".join(elements[1:])
         elif elements[0][0] in ["n", "i", "m"]:
+            m = -1
+            n = -1
+            i = -1
+            percpu = False
             for e in elements:
                 params = e.split("=")
-                if params[0] == "n": n = int(params[1])
-                elif params[0] == "m": m = int(params[1])
-                elif params[0] == "i": i = int(params[1])
+                if not percpu:
+                    if params[0] == "n": n = int(params[1])
+                    elif params[0] == "m": m = int(params[1])
+                if params[0] == "n_per_cpu": 
+                    n = int(params[1])
+                    if not percpu: m = -1
+                    percpu = True
+                if params[0] == "m_per_cpu": 
+                    m = int(params[1])
+                    if not percpu: n = -1
+                    percpu = True
+                    
+                if params[0] == "i": i = int(params[1])
+            if m == -1: m = n
+            if n == -1: n = m
+
         elif elements[0] != "Nodes:":
             testresult = float(l)
             key = (name, version, section, m, n, i)
@@ -71,7 +88,8 @@ def main(args):
         for result in resultlist:
             for (name, version, section, m, n, i), rts in result.iteritems():
                 for rt in rts:
-                    c.execute("insert into testresults (name, version, section, threads, m, n, m_perthread, iters, runningtime) values ('%s', '%s', '%s', %d, %d, %d, %d, %d, %f)" % (name, version, section, threads, m, n, int(round(m/threads)), i, rt))
+                    #c.execute("insert into testresults (name, version, section, threads, m, n, m_perthread, iters, runningtime) values ('%s', '%s', '%s', %d, %d, %d, %d, %d, %f)" % (name, version, section, threads, m, n, int(round(m/threads)), i, rt))
+                    c.execute("insert into testresults (name, version, section, threads, m, n, m_perthread, iters, runningtime) values ('%s', '%s', '%s', %d, %d, %d, %d, %d, %f)" % (name, version, section, threads, m, n, m, i, rt))
     db.commit()
     c.close()
     db.close()

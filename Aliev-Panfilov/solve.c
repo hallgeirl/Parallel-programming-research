@@ -229,14 +229,19 @@ void * solve_block(void* _args)
         E_prev = tmp;
 #endif
     }
-    
-#ifndef DISABLE_SYNC
+    fprintf(stderr, "Thread %d completes at t=%f.\n", thread_id, t0+getTime());
+//#ifndef DISABLE_SYNC
     pthread_barrier_wait(&barr);
-#endif
+//#endif
     t0 += getTime();
     
+
     pthread_mutex_lock(&print_mutex);
-    if (done_count == 0) printf("Running Time: %f sec.\n", t0);
+    if (done_count == 0) 
+    {
+        printf("Running Time: %f sec.\n", t0);
+        fflush(stdout);
+    }
     done_count++;
     pthread_mutex_unlock(&print_mutex);
 
@@ -257,7 +262,7 @@ void * solve_block(void* _args)
         }
     }
     
-    printf("Thread %d exits.\n", thread_id);
+    fprintf(stderr, "Thread %d exits.\n", thread_id);
 
     return NULL;
 }

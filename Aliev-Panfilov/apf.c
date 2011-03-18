@@ -124,6 +124,12 @@ int main(int argc, char** argv) {
     DOUBLE **E, **R, **E_prev;
     DOUBLE mx, l2norm;
 
+    #ifdef DISABLE_SYNC
+    fprintf(stderr, "Synchronization is DISABLED!\n");
+    #endif
+    #ifdef DISABLE_GHOST
+    fprintf(stderr, "Ghostcells are DISABLED!\n");
+    #endif
     // Command line arguments
     // Default value of the domain sizes
     double T = 1500.0;

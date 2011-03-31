@@ -17,7 +17,7 @@ ifeq ($(CC),icc)
 else
 endif
 
-CFLAGS += $(ARITH) -Wall -O3
+CFLAGS += $(ARITH) 
 
 ifdef debug
 CFLAGS += -DDEBUG=${debug} -g
@@ -33,7 +33,7 @@ endif
 
 app:		apf_pthreads
 
-OBJECTS = apf.o solve.o splot.o cmdline.o printMat.o Timer.o
+OBJECTS = apf.o solve.o splot.o cmdline.o printMat.o Timer.o barrier.o
 
 apf_pthreads:	        $(OBJECTS) 
 		$(CLINK) $(LDFLAGS) -o $@ $(OBJECTS)  $(LDLIBS)

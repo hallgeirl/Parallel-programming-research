@@ -6,24 +6,11 @@
  * 
  * Modified further by Hallgeir Lien
  */
-#define _XOPEN_SOURCE 600
+#include "includes.h"
 #include <pthread.h>
-#include <semaphore.h>
-#include <assert.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <stdbool.h>
-//#include <omp.h>
-#include "time.h"
 #include "apf.h"
 #include "types.h"
-
-#define STATE_NOTREADY 0
-#define STATE_WORKING 1
-#define STATE_DONE 2
-#define STATE_COPIED = 3
+#include "barrier.h"
 
 typedef struct thread_args_s
 {
@@ -31,30 +18,20 @@ typedef struct thread_args_s
     DOUBLE **E_prev_global, **R_global;  //Global arrays, for initialization
     DOUBLE ***E_prev;                    //For ghost cells
     int iterations;
-    //DOUBLE * edgeTop, * edgeBottom, * edgeLeft, * edgeRight; //Border elements
     DOUBLE alpha;
     int tx, ty, m, n, bx, by; 
     DOUBLE dt;
     DOUBLE T;
 } thread_args_t;
 
-//int m, n, tx, ty, iterations;
-//DOUBLE **E_prev_global, **R_global;
-
-
 pthread_t *threads;
 thread_args_t ** thread_args; // Need this to be global in order for threads to access neighboring blocks.
 
-pthread_barrier_t barr;
+//pthread_barrier_t barr;
+tour_barrier_t tour_barr;
 int threadcount;
-int state = STATE_NOTREADY;
 int done_count;
 
-pthread_cond_t ready = PTHREAD_COND_INITIALIZER;
-pthread_cond_t done = PTHREAD_COND_INITIALIZER;
-
-pthread_mutex_t ready_mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t done_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t print_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 #define MT_PRINT(...) printf("Thread %d\t", thread_id); printf(__VA_ARGS__); printf("\n"); fflush(stdout); 
@@ -115,7 +92,8 @@ void * solve_block(void* _args)
     fflush(stdout);
     #endif
     //Synchronize before starting the timer
-    pthread_barrier_wait(&barr);
+    //pthread_barrier_wait(&barr);
+    tour_barrier(&tour_barr, thread_id);
     
     double t0 = -getTime();
 
@@ -132,7 +110,8 @@ void * solve_block(void* _args)
         
         //Wait until all are initialized and we are sure that the arrays are swapped
 #ifndef DISABLE_SYNC
-        pthread_barrier_wait(&barr);
+        tour_barrier(&tour_barr, thread_id);
+        //pthread_barrier_wait(&barr);
 #endif
 
         //Copy ghost cells
@@ -214,7 +193,8 @@ void * solve_block(void* _args)
         fflush(stdout);
         #endif
 #ifndef DISABLE_SYNC
-        pthread_barrier_wait(&barr);
+        tour_barrier(&tour_barr, thread_id);
+        //pthread_barrier_wait(&barr);
 #endif
         #ifdef DEBUG
         printf("Thread %d past barrier.\n", thread_id);
@@ -231,7 +211,8 @@ void * solve_block(void* _args)
     }
     fprintf(stderr, "Thread %d completes at t=%f.\n", thread_id, t0+getTime());
 //#ifndef DISABLE_SYNC
-    pthread_barrier_wait(&barr);
+    tour_barrier(&tour_barr, thread_id);
+    //pthread_barrier_wait(&barr);
 //#endif
     t0 += getTime();
     
@@ -278,8 +259,9 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
 
     DOUBLE **E = *_E, **E_prev = *_E_prev;
     threadcount = tx*ty;
-    pthread_barrier_init(&barr, NULL, tx*ty);
-    
+    //pthread_barrier_init(&barr, NULL, tx*ty);
+    tour_barrier_init(&tour_barr, tx*ty);
+
     //Allocate threads
     threads = (pthread_t*)malloc(sizeof(pthread_t)*tx*ty);
  

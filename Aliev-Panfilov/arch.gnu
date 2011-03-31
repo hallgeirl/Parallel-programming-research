@@ -29,7 +29,7 @@ C++FLAGS        += $(INCLUDES) $(ARCH_FLAGS) $(WARNINGS) \
                   $(XTRAFLAGS) $(DEBUG)
 
 CFLAGS		+= $(INCLUDES) $(ARCH_FLAGS) $(WARNINGS) $(OPTIMIZATION) \
-                  $(XTRAFLAGS) $(DEBUG) --std=c99
+                  $(XTRAFLAGS) $(DEBUG) 
 
 FFLAGS		= $(ARCH_FLAGS) -O2 -fno-second-underscore -ff90 -fugly-complex
 
@@ -62,25 +62,13 @@ ARCH_HAS_X	= arch_has_X
 .SUFFIXES: .C .cpp .c .o
 
 .C.o:
-		@$(ECHO)
-		@$(ECHO) "Compiling Source File --" $<
-		@$(ECHO) "---------------------"
 		$(CC) $(C++FLAGS) -c $<
-		@$(ECHO)
 
 .cpp.o:
-		@$(ECHO)
-		@$(ECHO) "Compiling Source File --" $<
-		@$(ECHO) "---------------------"
 		$(C++) $(C++FLAGS) -c $<
-		@$(ECHO)
 
 
 
 .c.o:
-		@$(ECHO)
-		@$(ECHO) "Compiling Source File --" $<
-		@$(ECHO) "---------------------"
 		$(CC) $(CFLAGS) -c $<
-		@$(ECHO)
 

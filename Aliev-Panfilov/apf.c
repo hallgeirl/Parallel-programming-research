@@ -7,13 +7,7 @@
  *
  * Modified and  restructured by Scott B. Baden, UCSD
  */
-#include <assert.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <omp.h>
-#include "time.h"
+#include "includes.h"
 #include "apf.h"
 #include "types.h"
 
@@ -31,6 +25,28 @@ DOUBLE **alloc2D(int m, int n) {
         memset(E[j], 0, n);
     }
     return E;
+}
+
+//Allocate bytes aligned to a page boundary
+void *allocAligned(int bytes)
+{
+    void *result;
+    int i;
+
+    //Worst case is that we need to shift the start of the allocated data by pagesize - 1 bytes. So allocate enough memory to account for that.
+    int pitch = bytes + 4095;
+    result = malloc(pitch);
+    assert(result);
+
+    //Align to page boundary by clearing the least significant bits
+    long bitmask = ~4095;
+
+    //If already aligned (that is, clearing the least significant bits have no effect), then we're done
+    if ((long)result & bitmask == (long)result) return result;
+    
+    result = (void*)(((long)result + 4096) & bitmask);
+
+    return result;
 }
     
 // Reports statistics about the computation
@@ -139,6 +155,9 @@ int main(int argc, char** argv) {
     int tx = 1, ty = 1;
     int iterations = -1;
 
+    bool* test = (bool*)allocAligned(sizeof(bool));
+    printf("bool %ld mod %ld\n", (long)test, (long)test % 4096);
+
     cmdLine(argc, argv, &T, &m, &n, &tx, &ty, &iterations, &do_stats, &plot_freq);
     if (n == -1 && m == -1) m = n = 100;
     else if (n == -1) n = m;
@@ -175,9 +194,9 @@ int main(int argc, char** argv) {
     #endif
 
     #ifdef FLOAT
-    printf("Using SINGLE precision arithmetic (element size: %d)\n", sizeof(DOUBLE));
+    printf("Using SINGLE precision arithmetic (element size: %ld)\n", sizeof(DOUBLE));
     #else
-    printf("Using DOUBLE precision arithmetic (element size: %d)\n", sizeof(DOUBLE));
+    printf("Using DOUBLE precision arithmetic (element size: %ld)\n", sizeof(DOUBLE));
     #endif
 
     printf("dt=%f, T = %lf\n", dt, T);

@@ -1,0 +1,397 @@
+Processors in packed order: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127}
+Placement cost for {0,1,2,3} is 11000000 (oversub 0)
+Placement cost for {1,2,3,4} is 8250000 (oversub 0)
+Placement cost for {2,3,4,5} is 5500000 (oversub 0)
+Placement cost for {3,4,5,6} is 2750000 (oversub 0)
+Placement cost for {4,5,6,7} is 0 (oversub 0)
+Placement {5,6,7,8} is not acceptable, uses more boards than the minimum
+Placement {6,7,8,9} is not acceptable, uses more boards than the minimum
+Placement {7,8,9,10} is not acceptable, uses more boards than the minimum
+Placement cost for {8,9,10,11} is 0 (oversub 0)
+Placement cost for {9,10,11,12} is 0 (oversub 0)
+Placement cost for {10,11,12,13} is 0 (oversub 0)
+Placement cost for {11,12,13,14} is 0 (oversub 0)
+Placement cost for {12,13,14,15} is 0 (oversub 0)
+Placement {13,14,15,16} is not acceptable, uses more boards than the minimum
+Placement {14,15,16,17} is not acceptable, uses more boards than the minimum
+Placement {15,16,17,18} is not acceptable, uses more boards than the minimum
+Placement cost for {16,17,18,19} is 0 (oversub 0)
+Placement cost for {17,18,19,20} is 0 (oversub 0)
+Placement cost for {18,19,20,21} is 0 (oversub 0)
+Placement cost for {19,20,21,22} is 0 (oversub 0)
+Placement cost for {20,21,22,23} is 0 (oversub 0)
+Placement {21,22,23,24} is not acceptable, uses more boards than the minimum
+Placement {22,23,24,25} is not acceptable, uses more boards than the minimum
+Placement {23,24,25,26} is not acceptable, uses more boards than the minimum
+Placement cost for {24,25,26,27} is 0 (oversub 0)
+Placement cost for {25,26,27,28} is 0 (oversub 0)
+Placement cost for {26,27,28,29} is 0 (oversub 0)
+Placement cost for {27,28,29,30} is 0 (oversub 0)
+Placement cost for {28,29,30,31} is 0 (oversub 0)
+Placement {29,30,31,32} is not acceptable, uses more boards than the minimum
+Placement {30,31,32,33} is not acceptable, uses more boards than the minimum
+Placement {31,32,33,34} is not acceptable, uses more boards than the minimum
+Placement cost for {32,33,34,35} is 0 (oversub 0)
+Placement cost for {33,34,35,36} is 0 (oversub 0)
+Placement cost for {34,35,36,37} is 0 (oversub 0)
+Placement cost for {35,36,37,38} is 0 (oversub 0)
+Placement cost for {36,37,38,39} is 0 (oversub 0)
+Placement {37,38,39,40} is not acceptable, uses more boards than the minimum
+Placement {38,39,40,41} is not acceptable, uses more boards than the minimum
+Placement {39,40,41,42} is not acceptable, uses more boards than the minimum
+Placement cost for {40,41,42,43} is 0 (oversub 0)
+Placement cost for {41,42,43,44} is 0 (oversub 0)
+Placement cost for {42,43,44,45} is 0 (oversub 0)
+Placement cost for {43,44,45,46} is 0 (oversub 0)
+Placement cost for {44,45,46,47} is 0 (oversub 0)
+Placement {45,46,47,48} is not acceptable, uses more boards than the minimum
+Placement {46,47,48,49} is not acceptable, uses more boards than the minimum
+Placement {47,48,49,50} is not acceptable, uses more boards than the minimum
+Placement cost for {48,49,50,51} is 0 (oversub 0)
+Placement cost for {49,50,51,52} is 0 (oversub 0)
+Placement cost for {50,51,52,53} is 0 (oversub 0)
+Placement cost for {51,52,53,54} is 0 (oversub 0)
+Placement cost for {52,53,54,55} is 0 (oversub 0)
+Placement {53,54,55,56} is not acceptable, uses more boards than the minimum
+Placement {54,55,56,57} is not acceptable, uses more boards than the minimum
+Placement {55,56,57,58} is not acceptable, uses more boards than the minimum
+Placement cost for {56,57,58,59} is 0 (oversub 0)
+Placement cost for {57,58,59,60} is 0 (oversub 0)
+Placement cost for {58,59,60,61} is 0 (oversub 0)
+Placement cost for {59,60,61,62} is 0 (oversub 0)
+Placement cost for {60,61,62,63} is 0 (oversub 0)
+Placement {61,62,63,64} is not acceptable, uses more boards than the minimum
+Placement {62,63,64,65} is not acceptable, uses more boards than the minimum
+Placement {63,64,65,66} is not acceptable, uses more boards than the minimum
+Placement cost for {64,65,66,67} is 0 (oversub 0)
+Placement cost for {65,66,67,68} is 0 (oversub 0)
+Placement cost for {66,67,68,69} is 0 (oversub 0)
+Placement cost for {67,68,69,70} is 0 (oversub 0)
+Placement cost for {68,69,70,71} is 0 (oversub 0)
+Placement {69,70,71,72} is not acceptable, uses more boards than the minimum
+Placement {70,71,72,73} is not acceptable, uses more boards than the minimum
+Placement {71,72,73,74} is not acceptable, uses more boards than the minimum
+Placement cost for {72,73,74,75} is 0 (oversub 0)
+Placement cost for {73,74,75,76} is 0 (oversub 0)
+Placement cost for {74,75,76,77} is 0 (oversub 0)
+Placement cost for {75,76,77,78} is 0 (oversub 0)
+Placement cost for {76,77,78,79} is 0 (oversub 0)
+Placement {77,78,79,80} is not acceptable, uses more boards than the minimum
+Placement {78,79,80,81} is not acceptable, uses more boards than the minimum
+Placement {79,80,81,82} is not acceptable, uses more boards than the minimum
+Placement cost for {80,81,82,83} is 0 (oversub 0)
+Placement cost for {81,82,83,84} is 0 (oversub 0)
+Placement cost for {82,83,84,85} is 0 (oversub 0)
+Placement cost for {83,84,85,86} is 0 (oversub 0)
+Placement cost for {84,85,86,87} is 0 (oversub 0)
+Placement {85,86,87,88} is not acceptable, uses more boards than the minimum
+Placement {86,87,88,89} is not acceptable, uses more boards than the minimum
+Placement {87,88,89,90} is not acceptable, uses more boards than the minimum
+Placement cost for {88,89,90,91} is 0 (oversub 0)
+Placement cost for {89,90,91,92} is 0 (oversub 0)
+Placement cost for {90,91,92,93} is 0 (oversub 0)
+Placement cost for {91,92,93,94} is 0 (oversub 0)
+Placement cost for {92,93,94,95} is 0 (oversub 0)
+Placement {93,94,95,96} is not acceptable, uses more boards than the minimum
+Placement {94,95,96,97} is not acceptable, uses more boards than the minimum
+Placement {95,96,97,98} is not acceptable, uses more boards than the minimum
+Placement cost for {96,97,98,99} is 0 (oversub 0)
+Placement cost for {97,98,99,100} is 0 (oversub 0)
+Placement cost for {98,99,100,101} is 0 (oversub 0)
+Placement cost for {99,100,101,102} is 0 (oversub 0)
+Placement cost for {100,101,102,103} is 0 (oversub 0)
+Placement {101,102,103,104} is not acceptable, uses more boards than the minimum
+Placement {102,103,104,105} is not acceptable, uses more boards than the minimum
+Placement {103,104,105,106} is not acceptable, uses more boards than the minimum
+Placement cost for {104,105,106,107} is 0 (oversub 0)
+Placement cost for {105,106,107,108} is 0 (oversub 0)
+Placement cost for {106,107,108,109} is 0 (oversub 0)
+Placement cost for {107,108,109,110} is 0 (oversub 0)
+Placement cost for {108,109,110,111} is 0 (oversub 0)
+Placement {109,110,111,112} is not acceptable, uses more boards than the minimum
+Placement {110,111,112,113} is not acceptable, uses more boards than the minimum
+Placement {111,112,113,114} is not acceptable, uses more boards than the minimum
+Placement cost for {112,113,114,115} is 0 (oversub 0)
+Placement cost for {113,114,115,116} is 0 (oversub 0)
+Placement cost for {114,115,116,117} is 0 (oversub 0)
+Placement cost for {115,116,117,118} is 0 (oversub 0)
+Placement cost for {116,117,118,119} is 0 (oversub 0)
+Placement {117,118,119,120} is not acceptable, uses more boards than the minimum
+Placement {118,119,120,121} is not acceptable, uses more boards than the minimum
+Placement {119,120,121,122} is not acceptable, uses more boards than the minimum
+Placement cost for {120,121,122,123} is 1187880000 (oversub 0)
+Placement cost for {121,122,123,124} is 891205000 (oversub 0)
+Placement cost for {122,123,124,125} is 594530000 (oversub 0)
+Placement cost for {123,124,125,126} is 297855000 (oversub 0)
+Placement cost for {124,125,126,127} is 1180000 (oversub 0)
+Best placement is {116,117,118,119}
+Using pthread_barrier.
+Thread 1 completes at t=14.208698.
+Thread 3 completes at t=14.204816.
+Thread 0 completes at t=14.210016.
+Thread 2 completes at t=14.210201.
+Thread 2 exits.
+Thread 1 exits.
+Thread 3 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 0 completes at t=15.987983.
+Thread 1 completes at t=15.991434.
+Thread 2 completes at t=15.987877.
+Thread 3 completes at t=15.987877.
+Thread 1 exits.
+Thread 2 exits.
+Thread 3 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 0 completes at t=14.261626.
+Thread 3 completes at t=14.269085.
+Thread 1 completes at t=14.269089.
+Thread 2 completes at t=14.278231.
+Thread 3 exits.
+Thread 2 exits.
+Thread 0 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 3 completes at t=14.823320.
+Thread 0 completes at t=14.833109.
+Thread 1 completes at t=14.833068.
+Thread 2 completes at t=14.833263.
+Thread 2 exits.
+Thread 0 exits.
+Thread 3 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 3 completes at t=13.833471.
+Thread 2 completes at t=13.837971.
+Thread 0 completes at t=13.830314.
+Thread 1 completes at t=13.837946.
+Thread 1 exits.
+Thread 3 exits.
+Thread 2 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 1 completes at t=8.560197.
+Thread 2 completes at t=8.559277.
+Thread 3 completes at t=8.560098.
+Thread 0 completes at t=8.559932.
+Thread 3 exits.
+Thread 2 exits.
+Thread 1 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 1 completes at t=9.156090.
+Thread 3 completes at t=9.151680.
+Thread 0 completes at t=9.162531.
+Thread 2 completes at t=9.162244.
+Thread 2 exits.
+Thread 3 exits.
+Thread 0 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 2 completes at t=9.849501.
+Thread 3 completes at t=9.849500.
+Thread 0 completes at t=9.849573.
+Thread 1 completes at t=9.843601.
+Thread 2 exits.
+Thread 3 exits.
+Thread 1 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 0 completes at t=10.048086.
+Thread 1 completes at t=10.052722.
+Thread 2 completes at t=10.052787.
+Thread 3 completes at t=10.046936.
+Thread 3 exits.
+Thread 1 exits.
+Thread 2 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 1 completes at t=9.621977.
+Thread 0 completes at t=9.621941.
+Thread 2 completes at t=9.615686.
+Thread 3 completes at t=9.622020.
+Thread 3 exits.
+Thread 2 exits.
+Thread 1 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 1 completes at t=7.329981.
+Thread 0 completes at t=7.323199.
+Thread 3 completes at t=7.330052.
+Thread 2 completes at t=7.329931.
+Thread 3 exits.
+Thread 0 exits.
+Thread 1 exits.
+Thread 2 exits.
+Using pthread_barrier.
+Thread 0 completes at t=6.764485.
+Thread 1 completes at t=6.773162.
+Thread 2 completes at t=6.779301.
+Thread 3 completes at t=6.782614.
+Thread 0 exits.
+Thread 3 exits.
+Thread 2 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 3 completes at t=6.684082.
+Thread 2 completes at t=6.693490.
+Thread 1 completes at t=6.687672.
+Thread 0 completes at t=6.693567.
+Thread 3 exits.
+Thread 2 exits.
+Thread 0 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 0 completes at t=6.440147.
+Thread 2 completes at t=6.434934.
+Thread 1 completes at t=6.447864.
+Thread 3 completes at t=6.441565.
+Thread 0 exits.
+Thread 3 exits.
+Thread 2 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 1 completes at t=6.745524.
+Thread 0 completes at t=6.743233.
+Thread 2 completes at t=6.750204.
+Thread 3 completes at t=6.758658.
+Thread 1 exits.
+Thread 3 exits.
+Thread 0 exits.
+Thread 2 exits.
+Using pthread_barrier.
+Thread 3 completes at t=24.097458.
+Thread 0 completes at t=24.102838.
+Thread 2 completes at t=24.094947.
+Thread 1 completes at t=24.103024.
+Thread 3 exits.
+Thread 2 exits.
+Thread 1 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 3 completes at t=25.130599.
+Thread 1 completes at t=25.129472.
+Thread 0 completes at t=25.141905.
+Thread 2 completes at t=25.140654.
+Thread 3 exits.
+Thread 2 exits.
+Thread 0 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 3 completes at t=34.183060.
+Thread 1 completes at t=34.183082.
+Thread 2 completes at t=34.183081.
+Thread 0 completes at t=34.183181.
+Thread 3 exits.
+Thread 0 exits.
+Thread 2 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 0 completes at t=26.263308.
+Thread 3 completes at t=26.264123.
+Thread 1 completes at t=26.271903.
+Thread 2 completes at t=26.264741.
+Thread 2 exits.
+Thread 1 exits.
+Thread 0 exits.
+Thread 3 exits.
+Using pthread_barrier.
+Thread 3 completes at t=24.476006.
+Thread 1 completes at t=24.475881.
+Thread 0 completes at t=24.469048.
+Thread 2 completes at t=24.476170.
+Thread 2 exits.
+Thread 0 exits.
+Thread 3 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 0 completes at t=20.054063.
+Thread 2 completes at t=20.070368.
+Thread 1 completes at t=20.060685.
+Thread 3 completes at t=20.060580.
+Thread 0 exits.
+Thread 1 exits.
+Thread 2 exits.
+Thread 3 exits.
+Using pthread_barrier.
+Thread 2 completes at t=22.989411.
+Thread 1 completes at t=22.989520.
+Thread 0 completes at t=22.982400.
+Thread 3 completes at t=22.989395.
+Thread 3 exits.
+Thread 2 exits.
+Thread 0 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 0 completes at t=20.614420.
+Thread 1 completes at t=20.608813.
+Thread 3 completes at t=20.616272.
+Thread 2 completes at t=20.624656.
+Thread 2 exits.
+Thread 3 exits.
+Thread 1 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 2 completes at t=19.886891.
+Thread 0 completes at t=19.894791.
+Thread 1 completes at t=19.894632.
+Thread 3 completes at t=19.894102.
+Thread 0 exits.
+Thread 2 exits.
+Thread 3 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 2 completes at t=19.064933.
+Thread 0 completes at t=19.056875.
+Thread 1 completes at t=19.064885.
+Thread 3 completes at t=19.064937.
+Thread 2 exits.
+Thread 1 exits.
+Thread 3 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 3 completes at t=23.243507.
+Thread 0 completes at t=23.250744.
+Thread 2 completes at t=23.250682.
+Thread 1 completes at t=23.250683.
+Thread 3 exits.
+Thread 0 exits.
+Thread 2 exits.
+Thread 1 exits.
+Using pthread_barrier.
+Thread 1 completes at t=18.178809.
+Thread 0 completes at t=18.175169.
+Thread 3 completes at t=18.175180.
+Thread 2 completes at t=18.175181.
+Thread 2 exits.
+Thread 3 exits.
+Thread 1 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 1 completes at t=18.589775.
+Thread 2 completes at t=18.595320.
+Thread 3 completes at t=18.595348.
+Thread 0 completes at t=18.591526.
+Thread 2 exits.
+Thread 3 exits.
+Thread 1 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 0 completes at t=18.457764.
+Thread 3 completes at t=18.448199.
+Thread 2 completes at t=18.455200.
+Thread 1 completes at t=18.465320.
+Thread 1 exits.
+Thread 2 exits.
+Thread 3 exits.
+Thread 0 exits.
+Using pthread_barrier.
+Thread 0 completes at t=19.346258.
+Thread 2 completes at t=19.350961.
+Thread 1 completes at t=19.350865.
+Thread 3 completes at t=19.360618.
+Thread 2 exits.
+Thread 3 exits.
+Thread 1 exits.
+Thread 0 exits.

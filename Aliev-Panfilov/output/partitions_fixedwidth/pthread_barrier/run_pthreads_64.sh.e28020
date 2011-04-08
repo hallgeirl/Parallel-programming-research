@@ -1,0 +1,3906 @@
+Processors in packed order: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127}
+Placement cost for {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64} is 11000000 (oversub 0)
+Placement cost for {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65} is 8250000 (oversub 0)
+Placement cost for {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66} is 5500000 (oversub 0)
+Placement cost for {3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67} is 2750000 (oversub 0)
+Placement cost for {4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68} is 0 (oversub 0)
+Placement cost for {5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69} is 0 (oversub 0)
+Placement cost for {6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70} is 0 (oversub 0)
+Placement cost for {7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71} is 0 (oversub 0)
+Placement cost for {8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72} is 0 (oversub 0)
+Placement cost for {9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73} is 0 (oversub 0)
+Placement cost for {10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74} is 0 (oversub 0)
+Placement cost for {11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75} is 0 (oversub 0)
+Placement cost for {12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76} is 0 (oversub 0)
+Placement cost for {13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77} is 0 (oversub 0)
+Placement cost for {14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78} is 0 (oversub 0)
+Placement cost for {15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79} is 0 (oversub 0)
+Placement cost for {16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80} is 0 (oversub 0)
+Placement cost for {17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81} is 0 (oversub 0)
+Placement cost for {18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82} is 0 (oversub 0)
+Placement cost for {19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83} is 0 (oversub 0)
+Placement cost for {20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84} is 0 (oversub 0)
+Placement cost for {21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85} is 0 (oversub 0)
+Placement cost for {22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86} is 0 (oversub 0)
+Placement cost for {23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87} is 0 (oversub 0)
+Placement cost for {24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88} is 0 (oversub 0)
+Placement cost for {25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89} is 0 (oversub 0)
+Placement cost for {26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90} is 0 (oversub 0)
+Placement cost for {27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91} is 0 (oversub 0)
+Placement cost for {28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92} is 0 (oversub 0)
+Placement cost for {29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93} is 0 (oversub 0)
+Placement cost for {30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94} is 0 (oversub 0)
+Placement cost for {31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95} is 0 (oversub 0)
+Placement cost for {32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96} is 0 (oversub 0)
+Placement cost for {33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97} is 0 (oversub 0)
+Placement cost for {34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98} is 0 (oversub 0)
+Placement cost for {35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99} is 0 (oversub 0)
+Placement cost for {36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100} is 0 (oversub 0)
+Placement cost for {37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101} is 0 (oversub 0)
+Placement cost for {38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102} is 0 (oversub 0)
+Placement cost for {39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103} is 0 (oversub 0)
+Placement cost for {40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104} is 0 (oversub 0)
+Placement cost for {41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105} is 0 (oversub 0)
+Placement cost for {42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106} is 0 (oversub 0)
+Placement cost for {43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107} is 0 (oversub 0)
+Placement cost for {44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108} is 0 (oversub 0)
+Placement cost for {45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109} is 0 (oversub 0)
+Placement cost for {46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110} is 0 (oversub 0)
+Placement cost for {47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111} is 0 (oversub 0)
+Placement cost for {48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112} is 0 (oversub 0)
+Placement cost for {49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113} is 0 (oversub 0)
+Placement cost for {50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114} is 0 (oversub 0)
+Placement cost for {51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115} is 0 (oversub 0)
+Placement cost for {52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116} is 0 (oversub 0)
+Placement cost for {53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117} is 0 (oversub 0)
+Placement cost for {54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118} is 0 (oversub 0)
+Placement cost for {55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119} is 0 (oversub 0)
+Placement cost for {56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120} is 296970000 (oversub 0)
+Placement cost for {57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121} is 593940000 (oversub 0)
+Placement cost for {58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122} is 890910000 (oversub 0)
+Placement cost for {59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123} is 1187880000 (oversub 0)
+Placement cost for {60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124} is 1188175000 (oversub 0)
+Placement cost for {61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125} is 1188470000 (oversub 0)
+Placement cost for {62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126} is 1188765000 (oversub 0)
+Placement cost for {63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127} is 1189060000 (oversub 0)
+Best placement is {55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119}
+Thread 24 completes at t=188.442426.
+Thread 31 completes at t=188.442068.
+Thread 40 completes at t=188.442003.
+Thread 56 completes at t=188.441833.
+Thread 0 completes at t=188.441119.
+Thread 63 completes at t=188.442850.
+Thread 7 completes at t=188.442866.
+Thread 47 completes at t=188.443066.
+Thread 60 completes at t=188.442076.
+Thread 42 completes at t=188.441832.
+Thread 52 completes at t=188.441680.
+Thread 15 completes at t=188.442385.
+Thread 21 completes at t=188.441925.
+Thread 50 completes at t=188.440818.
+Thread 48 completes at t=188.441522.
+Thread 59 completes at t=188.400684.
+Thread 30 completes at t=188.442596.
+Thread 23 completes at t=188.442429.
+Thread 45 completes at t=188.440337.
+Thread 43 completes at t=188.443082.
+Thread 12 completes at t=188.442024.
+Thread 41 completes at t=188.377437.
+Thread 36 completes at t=188.440193.
+Thread 32 completes at t=188.441648.
+Thread 37 completes at t=188.442465.
+Thread 3 completes at t=188.442190.
+Thread 33 completes at t=188.443075.
+Thread 8 completes at t=188.442021.
+Thread 28 completes at t=188.442286.
+Thread 16 completes at t=188.307539.
+Thread 46 completes at t=188.442910.
+Thread 10 completes at t=188.442374.
+Thread 9 completes at t=188.442397.
+Thread 2 completes at t=188.441976.
+Thread 61 completes at t=188.441768.
+Thread 26 completes at t=188.442107.
+Thread 13 completes at t=188.441784.
+Thread 57 completes at t=188.441753.
+Thread 44 completes at t=188.441938.
+Thread 18 completes at t=188.452881.
+Thread 27 completes at t=188.443060.
+Thread 17 completes at t=188.441944.
+Thread 62 completes at t=188.441098.
+Thread 4 completes at t=188.402086.
+Thread 1 completes at t=188.441955.
+Thread 53 completes at t=188.441979.
+Thread 54 completes at t=188.442388.
+Thread 11 completes at t=188.441781.
+Thread 22 completes at t=188.441668.
+Thread 20 completes at t=188.441360.
+Thread 14 completes at t=188.384948.
+Thread 58 completes at t=188.442231.
+Thread 25 completes at t=188.442573.
+Thread 51 completes at t=188.441231.
+Thread 29 completes at t=188.442418.
+Thread 49 completes at t=188.441861.
+Thread 6 completes at t=188.392959.
+Thread 5 completes at t=188.442701.
+Thread 38 completes at t=188.368202.
+Thread 39 completes at t=188.442234.
+Thread 34 completes at t=188.441196.
+Thread 55 completes at t=188.442049.
+Thread 19 completes at t=188.441184.
+Thread 35 completes at t=188.441127.
+Thread 4 exits.
+Thread 12 exits.
+Thread 55 exits.
+Thread 48 exits.
+Thread 30 exits.
+Thread 53 exits.
+Thread 32 exits.
+Thread 39 exits.
+Thread 38 exits.
+Thread 6 exits.
+Thread 46 exits.
+Thread 57 exits.
+Thread 41 exits.
+Thread 20 exits.
+Thread 56 exits.
+Thread 19 exits.
+Thread 33 exits.
+Thread 61 exits.
+Thread 7 exits.
+Thread 27 exits.
+Thread 5 exits.
+Thread 0 exits.
+Thread 51 exits.
+Thread 31 exits.
+Thread 17 exits.
+Thread 1 exits.
+Thread 24 exits.
+Thread 47 exits.
+Thread 9 exits.
+Thread 42 exits.
+Thread 62 exits.
+Thread 63 exits.
+Thread 15 exits.
+Thread 59 exits.
+Thread 37 exits.
+Thread 8 exits.
+Thread 11 exits.
+Thread 22 exits.
+Thread 60 exits.
+Thread 40 exits.
+Thread 50 exits.
+Thread 18 exits.
+Thread 21 exits.
+Thread 49 exits.
+Thread 34 exits.
+Thread 25 exits.
+Thread 13 exits.
+Thread 16 exits.
+Thread 43 exits.
+Thread 23 exits.
+Thread 3 exits.
+Thread 45 exits.
+Thread 10 exits.
+Thread 28 exits.
+Thread 2 exits.
+Thread 26 exits.
+Thread 36 exits.
+Thread 29 exits.
+Thread 14 exits.
+Thread 58 exits.
+Thread 52 exits.
+Thread 35 exits.
+Thread 44 exits.
+Thread 54 exits.
+Thread 25 completes at t=23.881541.
+Thread 24 completes at t=23.879367.
+Thread 4 completes at t=23.808834.
+Thread 38 completes at t=23.880540.
+Thread 60 completes at t=23.880888.
+Thread 36 completes at t=23.881505.
+Thread 5 completes at t=23.879279.
+Thread 32 completes at t=23.880480.
+Thread 33 completes at t=23.880397.
+Thread 13 completes at t=23.880690.
+Thread 21 completes at t=23.880807.
+Thread 23 completes at t=23.880382.
+Thread 50 completes at t=23.881102.
+Thread 44 completes at t=23.879824.
+Thread 20 completes at t=23.880824.
+Thread 37 completes at t=23.880992.
+Thread 17 completes at t=23.577391.
+Thread 26 completes at t=23.812000.
+Thread 7 completes at t=23.707691.
+Thread 59 completes at t=23.879079.
+Thread 48 completes at t=23.881218.
+Thread 29 completes at t=23.879999.
+Thread 51 completes at t=23.881451.
+Thread 9 completes at t=23.880711.
+Thread 11 completes at t=23.879981.
+Thread 16 completes at t=23.742270.
+Thread 19 completes at t=23.881052.
+Thread 54 completes at t=23.817722.
+Thread 55 completes at t=23.880966.
+Thread 42 completes at t=23.880442.
+Thread 62 completes at t=23.880100.
+Thread 0 completes at t=23.879565.
+Thread 45 completes at t=23.880985.
+Thread 6 completes at t=23.809920.
+Thread 10 completes at t=23.880676.
+Thread 58 completes at t=23.880187.
+Thread 46 completes at t=23.881099.
+Thread 2 completes at t=23.880433.
+Thread 14 completes at t=23.880166.
+Thread 47 completes at t=23.881156.
+Thread 56 completes at t=23.801494.
+Thread 28 completes at t=23.880738.
+Thread 57 completes at t=23.881148.
+Thread 61 completes at t=23.879293.
+Thread 22 completes at t=23.881443.
+Thread 52 completes at t=23.879670.
+Thread 43 completes at t=23.881344.
+Thread 30 completes at t=23.880083.
+Thread 27 completes at t=23.880559.
+Thread 49 completes at t=23.845140.
+Thread 8 completes at t=23.880712.
+Thread 18 completes at t=23.807603.
+Thread 31 completes at t=23.767879.
+Thread 15 completes at t=23.851467.
+Thread 53 completes at t=23.881235.
+Thread 40 completes at t=23.881158.
+Thread 35 completes at t=23.880888.
+Thread 41 completes at t=23.880815.
+Thread 3 completes at t=23.880041.
+Thread 34 completes at t=23.880812.
+Thread 39 completes at t=23.881107.
+Thread 63 completes at t=23.880536.
+Thread 12 completes at t=23.878509.
+Thread 1 completes at t=23.879208.
+Thread 28 exits.
+Thread 0 exits.
+Thread 37 exits.
+Thread 3 exits.
+Thread 40 exits.
+Thread 15 exits.
+Thread 11 exits.
+Thread 25 exits.
+Thread 30 exits.
+Thread 45 exits.
+Thread 21 exits.
+Thread 19 exits.
+Thread 52 exits.
+Thread 5 exits.
+Thread 48 exits.
+Thread 7 exits.
+Thread 14 exits.
+Thread 50 exits.
+Thread 49 exits.
+Thread 63 exits.
+Thread 53 exits.
+Thread 61 exits.
+Thread 22 exits.
+Thread 41 exits.
+Thread 9 exits.
+Thread 23 exits.
+Thread 17 exits.
+Thread 29 exits.
+Thread 8 exits.
+Thread 38 exits.
+Thread 47 exits.
+Thread 34 exits.
+Thread 4 exits.
+Thread 2 exits.
+Thread 20 exits.
+Thread 13 exits.
+Thread 60 exits.
+Thread 59 exits.
+Thread 62 exits.
+Thread 44 exits.
+Thread 16 exits.
+Thread 35 exits.
+Thread 33 exits.
+Thread 54 exits.
+Thread 56 exits.
+Thread 6 exits.
+Thread 32 exits.
+Thread 27 exits.
+Thread 55 exits.
+Thread 24 exits.
+Thread 18 exits.
+Thread 43 exits.
+Thread 31 exits.
+Thread 42 exits.
+Thread 10 exits.
+Thread 12 exits.
+Thread 46 exits.
+Thread 36 exits.
+Thread 51 exits.
+Thread 57 exits.
+Thread 26 exits.
+Thread 58 exits.
+Thread 39 exits.
+Thread 1 exits.
+Thread 30 completes at t=240.640743.
+Thread 54 completes at t=240.638758.
+Thread 22 completes at t=240.640528.
+Thread 47 completes at t=240.639858.
+Thread 50 completes at t=240.582873.
+Thread 43 completes at t=240.641004.
+Thread 40 completes at t=240.640422.
+Thread 18 completes at t=240.240037.
+Thread 2 completes at t=240.641042.
+Thread 60 completes at t=240.641658.
+Thread 38 completes at t=240.640754.
+Thread 27 completes at t=240.641219.
+Thread 33 completes at t=240.641331.
+Thread 48 completes at t=240.641138.
+Thread 1 completes at t=240.641216.
+Thread 56 completes at t=240.501827.
+Thread 19 completes at t=240.641517.
+Thread 44 completes at t=240.641142.
+Thread 28 completes at t=240.640429.
+Thread 37 completes at t=240.641407.
+Thread 15 completes at t=240.533660.
+Thread 25 completes at t=240.641241.
+Thread 13 completes at t=240.641639.
+Thread 20 completes at t=240.640375.
+Thread 45 completes at t=240.653695.
+Thread 16 completes at t=240.529669.
+Thread 3 completes at t=240.500058.
+Thread 53 completes at t=240.532490.
+Thread 57 completes at t=240.640805.
+Thread 63 completes at t=240.641466.
+Thread 6 completes at t=240.641224.
+Thread 31 completes at t=240.641338.
+Thread 10 completes at t=240.586759.
+Thread 62 completes at t=240.641994.
+Thread 8 completes at t=240.641218.
+Thread 12 completes at t=240.638580.
+Thread 11 completes at t=240.641093.
+Thread 52 completes at t=240.581891.
+Thread 39 completes at t=240.640841.
+Thread 34 completes at t=240.641711.
+Thread 9 completes at t=240.641227.
+Thread 32 completes at t=240.639046.
+Thread 35 completes at t=240.641371.
+Thread 23 completes at t=240.640960.
+Thread 59 completes at t=240.640165.
+Thread 46 completes at t=240.641060.
+Thread 26 completes at t=240.640070.
+Thread 29 completes at t=240.641206.
+Thread 61 completes at t=240.640920.
+Thread 0 completes at t=240.640944.
+Thread 58 completes at t=240.641308.
+Thread 51 completes at t=240.591838.
+Thread 17 completes at t=240.499790.
+Thread 7 completes at t=240.641486.
+Thread 24 completes at t=240.640918.
+Thread 4 completes at t=240.552374.
+Thread 55 completes at t=240.522121.
+Thread 5 completes at t=240.640966.
+Thread 36 completes at t=240.641332.
+Thread 41 completes at t=240.641107.
+Thread 21 completes at t=240.641102.
+Thread 14 completes at t=240.641653.
+Thread 49 completes at t=240.640949.
+Thread 42 completes at t=240.641727.
+Thread 0 exits.
+Thread 61 exits.
+Thread 5 exits.
+Thread 1 exits.
+Thread 56 exits.
+Thread 44 exits.
+Thread 51 exits.
+Thread 62 exits.
+Thread 22 exits.
+Thread 7 exits.
+Thread 4 exits.
+Thread 33 exits.
+Thread 2 exits.
+Thread 20 exits.
+Thread 6 exits.
+Thread 31 exits.
+Thread 58 exits.
+Thread 10 exits.
+Thread 46 exits.
+Thread 14 exits.
+Thread 48 exits.
+Thread 27 exits.
+Thread 17 exits.
+Thread 34 exits.
+Thread 29 exits.
+Thread 21 exits.
+Thread 24 exits.
+Thread 35 exits.
+Thread 39 exits.
+Thread 23 exits.
+Thread 43 exits.
+Thread 3 exits.
+Thread 55 exits.
+Thread 63 exits.
+Thread 41 exits.
+Thread 54 exits.
+Thread 8 exits.
+Thread 36 exits.
+Thread 42 exits.
+Thread 12 exits.
+Thread 19 exits.
+Thread 25 exits.
+Thread 26 exits.
+Thread 57 exits.
+Thread 45 exits.
+Thread 59 exits.
+Thread 13 exits.
+Thread 28 exits.
+Thread 16 exits.
+Thread 52 exits.
+Thread 40 exits.
+Thread 49 exits.
+Thread 60 exits.
+Thread 30 exits.
+Thread 53 exits.
+Thread 50 exits.
+Thread 32 exits.
+Thread 38 exits.
+Thread 9 exits.
+Thread 15 exits.
+Thread 11 exits.
+Thread 18 exits.
+Thread 47 exits.
+Thread 37 exits.
+Thread 1 completes at t=202.555365.
+Thread 14 completes at t=202.555885.
+Thread 45 completes at t=202.555443.
+Thread 24 completes at t=202.554674.
+Thread 22 completes at t=202.555536.
+Thread 11 completes at t=202.554541.
+Thread 40 completes at t=202.555020.
+Thread 21 completes at t=202.555675.
+Thread 62 completes at t=202.478524.
+Thread 63 completes at t=202.555373.
+Thread 8 completes at t=202.554891.
+Thread 39 completes at t=202.555809.
+Thread 44 completes at t=202.556395.
+Thread 60 completes at t=202.466083.
+Thread 57 completes at t=202.555419.
+Thread 0 completes at t=202.554381.
+Thread 25 completes at t=202.555539.
+Thread 47 completes at t=202.556194.
+Thread 3 completes at t=202.555968.
+Thread 4 completes at t=202.555878.
+Thread 28 completes at t=202.555491.
+Thread 50 completes at t=202.569701.
+Thread 27 completes at t=202.556037.
+Thread 52 completes at t=202.508200.
+Thread 34 completes at t=202.555636.
+Thread 18 completes at t=202.555504.
+Thread 48 completes at t=202.556455.
+Thread 12 completes at t=202.555471.
+Thread 49 completes at t=202.555816.
+Thread 29 completes at t=202.556074.
+Thread 31 completes at t=202.555088.
+Thread 17 completes at t=202.556363.
+Thread 30 completes at t=202.554996.
+Thread 41 completes at t=202.555706.
+Thread 46 completes at t=202.556305.
+Thread 13 completes at t=202.555481.
+Thread 23 completes at t=202.555764.
+Thread 20 completes at t=202.555803.
+Thread 32 completes at t=202.555888.
+Thread 37 completes at t=202.555665.
+Thread 9 completes at t=202.555693.
+Thread 36 completes at t=202.555017.
+Thread 51 completes at t=202.501941.
+Thread 7 completes at t=202.555845.
+Thread 15 completes at t=202.554521.
+Thread 53 completes at t=202.555254.
+Thread 42 completes at t=202.555976.
+Thread 54 completes at t=202.547077.
+Thread 38 completes at t=202.555002.
+Thread 19 completes at t=202.554544.
+Thread 43 completes at t=202.555812.
+Thread 2 completes at t=202.555481.
+Thread 56 completes at t=202.554479.
+Thread 35 completes at t=202.555643.
+Thread 59 completes at t=202.556473.
+Thread 26 completes at t=202.554880.
+Thread 16 completes at t=202.555481.
+Thread 5 completes at t=202.554893.
+Thread 33 completes at t=202.554791.
+Thread 10 completes at t=202.555411.
+Thread 61 completes at t=202.448063.
+Thread 55 completes at t=202.556471.
+Thread 6 completes at t=202.555519.
+Thread 58 completes at t=202.556917.
+Thread 52 exits.
+Thread 0 exits.
+Thread 21 exits.
+Thread 26 exits.
+Thread 24 exits.
+Thread 38 exits.
+Thread 15 exits.
+Thread 30 exits.
+Thread 54 exits.
+Thread 61 exits.
+Thread 3 exits.
+Thread 28 exits.
+Thread 7 exits.
+Thread 40 exits.
+Thread 2 exits.
+Thread 46 exits.
+Thread 4 exits.
+Thread 35 exits.
+Thread 45 exits.
+Thread 56 exits.
+Thread 29 exits.
+Thread 12 exits.
+Thread 8 exits.
+Thread 63 exits.
+Thread 32 exits.
+Thread 10 exits.
+Thread 58 exits.
+Thread 41 exits.
+Thread 17 exits.
+Thread 53 exits.
+Thread 25 exits.
+Thread 19 exits.
+Thread 9 exits.
+Thread 50 exits.
+Thread 14 exits.
+Thread 34 exits.
+Thread 51 exits.
+Thread 13 exits.
+Thread 5 exits.
+Thread 16 exits.
+Thread 37 exits.
+Thread 59 exits.
+Thread 39 exits.
+Thread 47 exits.
+Thread 43 exits.
+Thread 20 exits.
+Thread 22 exits.
+Thread 23 exits.
+Thread 62 exits.
+Thread 49 exits.
+Thread 27 exits.
+Thread 18 exits.
+Thread 42 exits.
+Thread 48 exits.
+Thread 55 exits.
+Thread 33 exits.
+Thread 36 exits.
+Thread 60 exits.
+Thread 6 exits.
+Thread 57 exits.
+Thread 44 exits.
+Thread 1 exits.
+Thread 11 exits.
+Thread 31 exits.
+Thread 18 completes at t=161.407463.
+Thread 29 completes at t=161.407092.
+Thread 10 completes at t=161.405962.
+Thread 3 completes at t=161.406001.
+Thread 14 completes at t=161.407540.
+Thread 49 completes at t=161.407632.
+Thread 15 completes at t=161.407294.
+Thread 5 completes at t=161.407670.
+Thread 38 completes at t=161.405958.
+Thread 44 completes at t=161.407354.
+Thread 39 completes at t=161.407356.
+Thread 31 completes at t=161.407484.
+Thread 56 completes at t=161.406826.
+Thread 33 completes at t=161.407862.
+Thread 54 completes at t=161.406989.
+Thread 7 completes at t=161.407723.
+Thread 47 completes at t=161.407376.
+Thread 60 completes at t=161.407484.
+Thread 30 completes at t=161.407064.
+Thread 4 completes at t=161.407440.
+Thread 22 completes at t=161.407143.
+Thread 21 completes at t=161.407309.
+Thread 24 completes at t=161.406745.
+Thread 45 completes at t=161.407095.
+Thread 6 completes at t=161.407427.
+Thread 1 completes at t=161.407062.
+Thread 59 completes at t=161.407849.
+Thread 41 completes at t=161.407683.
+Thread 28 completes at t=161.341309.
+Thread 36 completes at t=161.406969.
+Thread 9 completes at t=161.407449.
+Thread 12 completes at t=161.407496.
+Thread 43 completes at t=161.407866.
+Thread 17 completes at t=161.407323.
+Thread 19 completes at t=161.407708.
+Thread 50 completes at t=161.406086.
+Thread 20 completes at t=161.407133.
+Thread 32 completes at t=161.407323.
+Thread 48 completes at t=161.407303.
+Thread 35 completes at t=161.405941.
+Thread 40 completes at t=161.407472.
+Thread 16 completes at t=161.405761.
+Thread 42 completes at t=161.406602.
+Thread 52 completes at t=161.406142.
+Thread 53 completes at t=161.407859.
+Thread 37 completes at t=161.407436.
+Thread 61 completes at t=161.407382.
+Thread 0 completes at t=161.407384.
+Thread 13 completes at t=161.407393.
+Thread 23 completes at t=161.407605.
+Thread 51 completes at t=161.407231.
+Thread 11 completes at t=161.407462.
+Thread 27 completes at t=161.406566.
+Thread 2 completes at t=161.407277.
+Thread 46 completes at t=161.406973.
+Thread 62 completes at t=161.321479.
+Thread 34 completes at t=161.406495.
+Thread 8 completes at t=161.407124.
+Thread 25 completes at t=161.407265.
+Thread 57 completes at t=161.400394.
+Thread 63 completes at t=161.406817.
+Thread 58 completes at t=161.406874.
+Thread 55 completes at t=161.407369.
+Thread 26 completes at t=161.579054.
+Thread 51 exits.
+Thread 35 exits.
+Thread 44 exits.
+Thread 2 exits.
+Thread 49 exits.
+Thread 16 exits.
+Thread 18 exits.
+Thread 7 exits.
+Thread 30 exits.
+Thread 31 exits.
+Thread 12 exits.
+Thread 41 exits.
+Thread 11 exits.
+Thread 20 exits.
+Thread 19 exits.
+Thread 34 exits.
+Thread 26 exits.
+Thread 27 exits.
+Thread 14 exits.
+Thread 13 exits.
+Thread 6 exits.
+Thread 28 exits.
+Thread 58 exits.
+Thread 54 exits.
+Thread 4 exits.
+Thread 40 exits.
+Thread 10 exits.
+Thread 62 exits.
+Thread 37 exits.
+Thread 43 exits.
+Thread 25 exits.
+Thread 61 exits.
+Thread 17 exits.
+Thread 46 exits.
+Thread 63 exits.
+Thread 38 exits.
+Thread 23 exits.
+Thread 21 exits.
+Thread 8 exits.
+Thread 36 exits.
+Thread 52 exits.
+Thread 53 exits.
+Thread 22 exits.
+Thread 47 exits.
+Thread 0 exits.
+Thread 1 exits.
+Thread 50 exits.
+Thread 9 exits.
+Thread 3 exits.
+Thread 5 exits.
+Thread 60 exits.
+Thread 57 exits.
+Thread 33 exits.
+Thread 56 exits.
+Thread 39 exits.
+Thread 42 exits.
+Thread 24 exits.
+Thread 59 exits.
+Thread 55 exits.
+Thread 48 exits.
+Thread 29 exits.
+Thread 15 exits.
+Thread 32 exits.
+Thread 45 exits.
+Thread 34 completes at t=12.333483.
+Thread 7 completes at t=12.333080.
+Thread 62 completes at t=12.331763.
+Thread 33 completes at t=12.332561.
+Thread 12 completes at t=12.331649.
+Thread 2 completes at t=12.331972.
+Thread 14 completes at t=12.333511.
+Thread 31 completes at t=12.333603.
+Thread 19 completes at t=12.332465.
+Thread 50 completes at t=12.201060.
+Thread 1 completes at t=12.333266.
+Thread 15 completes at t=12.332577.
+Thread 8 completes at t=12.331986.
+Thread 22 completes at t=11.840708.
+Thread 37 completes at t=12.331123.
+Thread 29 completes at t=12.282200.
+Thread 16 completes at t=12.332777.
+Thread 28 completes at t=12.332650.
+Thread 21 completes at t=12.332024.
+Thread 5 completes at t=12.332840.
+Thread 18 completes at t=12.333123.
+Thread 25 completes at t=12.333237.
+Thread 17 completes at t=12.332873.
+Thread 58 completes at t=12.332666.
+Thread 47 completes at t=12.331459.
+Thread 26 completes at t=12.332105.
+Thread 38 completes at t=12.250672.
+Thread 35 completes at t=12.332821.
+Thread 40 completes at t=12.331832.
+Thread 11 completes at t=12.333566.
+Thread 52 completes at t=12.332775.
+Thread 6 completes at t=12.332126.
+Thread 41 completes at t=12.332137.
+Thread 57 completes at t=12.331818.
+Thread 32 completes at t=12.332786.
+Thread 43 completes at t=12.332399.
+Thread 61 completes at t=12.280181.
+Thread 46 completes at t=12.300508.
+Thread 44 completes at t=12.332508.
+Thread 54 completes at t=12.331323.
+Thread 10 completes at t=12.332776.
+Thread 4 completes at t=12.333186.
+Thread 55 completes at t=12.333042.
+Thread 9 completes at t=12.333553.
+Thread 36 completes at t=12.331277.
+Thread 60 completes at t=12.330549.
+Thread 48 completes at t=12.332849.
+Thread 53 completes at t=12.332614.
+Thread 45 completes at t=12.332555.
+Thread 39 completes at t=12.216163.
+Thread 30 completes at t=12.331915.
+Thread 0 completes at t=12.333443.
+Thread 56 completes at t=12.333395.
+Thread 49 completes at t=12.333329.
+Thread 3 completes at t=12.332840.
+Thread 20 completes at t=12.331307.
+Thread 13 completes at t=12.333384.
+Thread 51 completes at t=12.332609.
+Thread 42 completes at t=12.214091.
+Thread 23 completes at t=12.332707.
+Thread 27 completes at t=12.332637.
+Thread 59 completes at t=12.332254.
+Thread 63 completes at t=12.333063.
+Thread 24 completes at t=12.332724.
+Thread 5 exits.
+Thread 34 exits.
+Thread 45 exits.
+Thread 46 exits.
+Thread 3 exits.
+Thread 49 exits.
+Thread 12 exits.
+Thread 6 exits.
+Thread 2 exits.
+Thread 4 exits.
+Thread 10 exits.
+Thread 60 exits.
+Thread 56 exits.
+Thread 13 exits.
+Thread 50 exits.
+Thread 16 exits.
+Thread 22 exits.
+Thread 8 exits.
+Thread 63 exits.
+Thread 32 exits.
+Thread 26 exits.
+Thread 55 exits.
+Thread 36 exits.
+Thread 23 exits.
+Thread 40 exits.
+Thread 24 exits.
+Thread 61 exits.
+Thread 30 exits.
+Thread 48 exits.
+Thread 31 exits.
+Thread 18 exits.
+Thread 44 exits.
+Thread 52 exits.
+Thread 14 exits.
+Thread 1 exits.
+Thread 47 exits.
+Thread 39 exits.
+Thread 20 exits.
+Thread 28 exits.
+Thread 27 exits.
+Thread 9 exits.
+Thread 57 exits.
+Thread 29 exits.
+Thread 38 exits.
+Thread 25 exits.
+Thread 62 exits.
+Thread 51 exits.
+Thread 11 exits.
+Thread 53 exits.
+Thread 37 exits.
+Thread 19 exits.
+Thread 15 exits.
+Thread 17 exits.
+Thread 35 exits.
+Thread 58 exits.
+Thread 21 exits.
+Thread 41 exits.
+Thread 54 exits.
+Thread 0 exits.
+Thread 59 exits.
+Thread 42 exits.
+Thread 33 exits.
+Thread 7 exits.
+Thread 43 exits.
+Thread 51 completes at t=79.528590.
+Thread 10 completes at t=79.527767.
+Thread 14 completes at t=79.528591.
+Thread 54 completes at t=79.457577.
+Thread 0 completes at t=79.528861.
+Thread 11 completes at t=79.528946.
+Thread 62 completes at t=79.429980.
+Thread 38 completes at t=79.529676.
+Thread 15 completes at t=79.528746.
+Thread 23 completes at t=79.529121.
+Thread 31 completes at t=79.528489.
+Thread 59 completes at t=79.529073.
+Thread 17 completes at t=79.529000.
+Thread 2 completes at t=79.527422.
+Thread 36 completes at t=79.528229.
+Thread 18 completes at t=79.528844.
+Thread 16 completes at t=79.528813.
+Thread 40 completes at t=79.527240.
+Thread 58 completes at t=79.529040.
+Thread 28 completes at t=79.529083.
+Thread 45 completes at t=79.528079.
+Thread 27 completes at t=79.528882.
+Thread 46 completes at t=79.528419.
+Thread 60 completes at t=79.527736.
+Thread 50 completes at t=79.528973.
+Thread 37 completes at t=79.528674.
+Thread 26 completes at t=79.528888.
+Thread 7 completes at t=79.529020.
+Thread 43 completes at t=79.529602.
+Thread 34 completes at t=79.528858.
+Thread 1 completes at t=79.529557.
+Thread 55 completes at t=79.529060.
+Thread 9 completes at t=79.529249.
+Thread 32 completes at t=79.528816.
+Thread 39 completes at t=79.528969.
+Thread 44 completes at t=79.527487.
+Thread 35 completes at t=79.279791.
+Thread 8 completes at t=79.528420.
+Thread 42 completes at t=79.528753.
+Thread 4 completes at t=79.529449.
+Thread 61 completes at t=79.489659.
+Thread 24 completes at t=79.529040.
+Thread 5 completes at t=79.527818.
+Thread 47 completes at t=79.471348.
+Thread 56 completes at t=79.527819.
+Thread 30 completes at t=79.530008.
+Thread 57 completes at t=79.527872.
+Thread 29 completes at t=79.528236.
+Thread 53 completes at t=79.505707.
+Thread 49 completes at t=79.461334.
+Thread 33 completes at t=79.528779.
+Thread 21 completes at t=79.527434.
+Thread 48 completes at t=79.528535.
+Thread 25 completes at t=79.529311.
+Thread 6 completes at t=79.457890.
+Thread 19 completes at t=79.527244.
+Thread 41 completes at t=79.529163.
+Thread 63 completes at t=79.529122.
+Thread 52 completes at t=79.528562.
+Thread 20 completes at t=79.529057.
+Thread 22 completes at t=79.528510.
+Thread 3 completes at t=79.529012.
+Thread 13 completes at t=79.528624.
+Thread 12 completes at t=79.529143.
+Thread 58 exits.
+Thread 13 exits.
+Thread 22 exits.
+Thread 0 exits.
+Thread 23 exits.
+Thread 60 exits.
+Thread 10 exits.
+Thread 43 exits.
+Thread 53 exits.
+Thread 49 exits.
+Thread 25 exits.
+Thread 35 exits.
+Thread 31 exits.
+Thread 27 exits.
+Thread 12 exits.
+Thread 32 exits.
+Thread 2 exits.
+Thread 37 exits.
+Thread 41 exits.
+Thread 18 exits.
+Thread 1 exits.
+Thread 54 exits.
+Thread 39 exits.
+Thread 47 exits.
+Thread 44 exits.
+Thread 17 exits.
+Thread 36 exits.
+Thread 16 exits.
+Thread 21 exits.
+Thread 9 exits.
+Thread 46 exits.
+Thread 15 exits.
+Thread 52 exits.
+Thread 8 exits.
+Thread 30 exits.
+Thread 48 exits.
+Thread 51 exits.
+Thread 57 exits.
+Thread 40 exits.
+Thread 7 exits.
+Thread 5 exits.
+Thread 24 exits.
+Thread 6 exits.
+Thread 56 exits.
+Thread 62 exits.
+Thread 11 exits.
+Thread 63 exits.
+Thread 26 exits.
+Thread 4 exits.
+Thread 19 exits.
+Thread 42 exits.
+Thread 33 exits.
+Thread 29 exits.
+Thread 38 exits.
+Thread 55 exits.
+Thread 14 exits.
+Thread 3 exits.
+Thread 28 exits.
+Thread 45 exits.
+Thread 20 exits.
+Thread 50 exits.
+Thread 34 exits.
+Thread 61 exits.
+Thread 59 exits.
+Thread 11 completes at t=117.975278.
+Thread 12 completes at t=117.975056.
+Thread 31 completes at t=117.976217.
+Thread 38 completes at t=117.975971.
+Thread 17 completes at t=117.976144.
+Thread 10 completes at t=117.976118.
+Thread 39 completes at t=117.975569.
+Thread 44 completes at t=117.976436.
+Thread 37 completes at t=117.975451.
+Thread 36 completes at t=117.975839.
+Thread 15 completes at t=117.976515.
+Thread 16 completes at t=117.897920.
+Thread 40 completes at t=117.975979.
+Thread 21 completes at t=117.976186.
+Thread 19 completes at t=117.975901.
+Thread 62 completes at t=117.976362.
+Thread 32 completes at t=117.975002.
+Thread 53 completes at t=117.976004.
+Thread 42 completes at t=118.002873.
+Thread 2 completes at t=117.975691.
+Thread 43 completes at t=117.918437.
+Thread 23 completes at t=117.975920.
+Thread 63 completes at t=117.975713.
+Thread 45 completes at t=117.975981.
+Thread 25 completes at t=117.975932.
+Thread 20 completes at t=117.974867.
+Thread 27 completes at t=117.975690.
+Thread 13 completes at t=117.976179.
+Thread 24 completes at t=117.976171.
+Thread 7 completes at t=117.975844.
+Thread 57 completes at t=117.974686.
+Thread 35 completes at t=117.975446.
+Thread 3 completes at t=117.976112.
+Thread 5 completes at t=117.931443.
+Thread 51 completes at t=117.976569.
+Thread 56 completes at t=117.975312.
+Thread 58 completes at t=117.974871.
+Thread 59 completes at t=117.976159.
+Thread 9 completes at t=117.975702.
+Thread 49 completes at t=117.976343.
+Thread 52 completes at t=117.976009.
+Thread 6 completes at t=117.975220.
+Thread 41 completes at t=117.976061.
+Thread 14 completes at t=117.976537.
+Thread 28 completes at t=117.975651.
+Thread 1 completes at t=117.976015.
+Thread 54 completes at t=117.975150.
+Thread 8 completes at t=117.975844.
+Thread 30 completes at t=117.975624.
+Thread 29 completes at t=117.976135.
+Thread 33 completes at t=117.975849.
+Thread 34 completes at t=117.976250.
+Thread 60 completes at t=117.975887.
+Thread 22 completes at t=117.976530.
+Thread 47 completes at t=117.975994.
+Thread 48 completes at t=117.976041.
+Thread 18 completes at t=117.974807.
+Thread 26 completes at t=117.975242.
+Thread 0 completes at t=117.975957.
+Thread 50 completes at t=117.976308.
+Thread 46 completes at t=117.975972.
+Thread 4 completes at t=117.975944.
+Thread 55 completes at t=117.967572.
+Thread 61 completes at t=117.990578.
+Thread 0 exits.
+Thread 22 exits.
+Thread 9 exits.
+Thread 56 exits.
+Thread 58 exits.
+Thread 23 exits.
+Thread 18 exits.
+Thread 1 exits.
+Thread 4 exits.
+Thread 29 exits.
+Thread 36 exits.
+Thread 14 exits.
+Thread 6 exits.
+Thread 15 exits.
+Thread 11 exits.
+Thread 57 exits.
+Thread 50 exits.
+Thread 46 exits.
+Thread 5 exits.
+Thread 37 exits.
+Thread 44 exits.
+Thread 40 exits.
+Thread 7 exits.
+Thread 26 exits.
+Thread 54 exits.
+Thread 43 exits.
+Thread 53 exits.
+Thread 42 exits.
+Thread 60 exits.
+Thread 16 exits.
+Thread 48 exits.
+Thread 45 exits.
+Thread 32 exits.
+Thread 59 exits.
+Thread 47 exits.
+Thread 41 exits.
+Thread 55 exits.
+Thread 49 exits.
+Thread 30 exits.
+Thread 38 exits.
+Thread 13 exits.
+Thread 19 exits.
+Thread 51 exits.
+Thread 21 exits.
+Thread 31 exits.
+Thread 10 exits.
+Thread 34 exits.
+Thread 35 exits.
+Thread 33 exits.
+Thread 27 exits.
+Thread 63 exits.
+Thread 28 exits.
+Thread 2 exits.
+Thread 39 exits.
+Thread 24 exits.
+Thread 20 exits.
+Thread 52 exits.
+Thread 61 exits.
+Thread 12 exits.
+Thread 62 exits.
+Thread 3 exits.
+Thread 8 exits.
+Thread 17 exits.
+Thread 25 exits.
+Thread 24 completes at t=8.259712.
+Thread 33 completes at t=8.235322.
+Thread 48 completes at t=8.259190.
+Thread 0 completes at t=8.259781.
+Thread 1 completes at t=8.216157.
+Thread 51 completes at t=8.155921.
+Thread 46 completes at t=8.194213.
+Thread 25 completes at t=8.258995.
+Thread 29 completes at t=8.259559.
+Thread 58 completes at t=8.259523.
+Thread 53 completes at t=8.259212.
+Thread 9 completes at t=8.258990.
+Thread 27 completes at t=8.259400.
+Thread 42 completes at t=8.259675.
+Thread 50 completes at t=8.158692.
+Thread 40 completes at t=8.258656.
+Thread 26 completes at t=8.259112.
+Thread 28 completes at t=8.259666.
+Thread 15 completes at t=8.258971.
+Thread 13 completes at t=8.259824.
+Thread 10 completes at t=8.257939.
+Thread 43 completes at t=8.259314.
+Thread 16 completes at t=8.258588.
+Thread 3 completes at t=8.241386.
+Thread 30 completes at t=8.259330.
+Thread 44 completes at t=8.259978.
+Thread 2 completes at t=8.259453.
+Thread 54 completes at t=8.259353.
+Thread 5 completes at t=8.259761.
+Thread 14 completes at t=8.259558.
+Thread 8 completes at t=8.080300.
+Thread 49 completes at t=8.259689.
+Thread 36 completes at t=8.259897.
+Thread 55 completes at t=8.257359.
+Thread 31 completes at t=8.258473.
+Thread 11 completes at t=8.259170.
+Thread 39 completes at t=8.260111.
+Thread 35 completes at t=8.259265.
+Thread 7 completes at t=8.170426.
+Thread 38 completes at t=8.259090.
+Thread 57 completes at t=8.259089.
+Thread 41 completes at t=8.259924.
+Thread 37 completes at t=8.205036.
+Thread 34 completes at t=8.259579.
+Thread 32 completes at t=8.258166.
+Thread 47 completes at t=8.260006.
+Thread 61 completes at t=8.259943.
+Thread 56 completes at t=8.260041.
+Thread 60 completes at t=8.259002.
+Thread 6 completes at t=8.156644.
+Thread 62 completes at t=8.259732.
+Thread 19 completes at t=8.258721.
+Thread 4 completes at t=8.259651.
+Thread 18 completes at t=8.259090.
+Thread 12 completes at t=8.258276.
+Thread 23 completes at t=8.241043.
+Thread 20 completes at t=8.259234.
+Thread 59 completes at t=8.259706.
+Thread 22 completes at t=8.258239.
+Thread 52 completes at t=8.258827.
+Thread 45 completes at t=8.180289.
+Thread 17 completes at t=8.258046.
+Thread 63 completes at t=8.259707.
+Thread 21 completes at t=8.260102.
+Thread 26 exits.
+Thread 25 exits.
+Thread 17 exits.
+Thread 0 exits.
+Thread 27 exits.
+Thread 49 exits.
+Thread 15 exits.
+Thread 22 exits.
+Thread 31 exits.
+Thread 29 exits.
+Thread 2 exits.
+Thread 20 exits.
+Thread 35 exits.
+Thread 63 exits.
+Thread 16 exits.
+Thread 58 exits.
+Thread 30 exits.
+Thread 24 exits.
+Thread 37 exits.
+Thread 14 exits.
+Thread 42 exits.
+Thread 39 exits.
+Thread 45 exits.
+Thread 52 exits.
+Thread 32 exits.
+Thread 12 exits.
+Thread 9 exits.
+Thread 4 exits.
+Thread 50 exits.
+Thread 47 exits.
+Thread 38 exits.
+Thread 61 exits.
+Thread 33 exits.
+Thread 6 exits.
+Thread 40 exits.
+Thread 41 exits.
+Thread 43 exits.
+Thread 34 exits.
+Thread 62 exits.
+Thread 59 exits.
+Thread 60 exits.
+Thread 51 exits.
+Thread 11 exits.
+Thread 44 exits.
+Thread 48 exits.
+Thread 36 exits.
+Thread 19 exits.
+Thread 10 exits.
+Thread 5 exits.
+Thread 13 exits.
+Thread 46 exits.
+Thread 55 exits.
+Thread 56 exits.
+Thread 18 exits.
+Thread 23 exits.
+Thread 53 exits.
+Thread 7 exits.
+Thread 54 exits.
+Thread 28 exits.
+Thread 8 exits.
+Thread 57 exits.
+Thread 1 exits.
+Thread 3 exits.
+Thread 21 exits.
+Thread 19 completes at t=21.154949.
+Thread 18 completes at t=21.258383.
+Thread 14 completes at t=21.258329.
+Thread 36 completes at t=21.258351.
+Thread 6 completes at t=21.258772.
+Thread 42 completes at t=21.257960.
+Thread 10 completes at t=20.943864.
+Thread 3 completes at t=21.257816.
+Thread 9 completes at t=21.089733.
+Thread 31 completes at t=21.218366.
+Thread 4 completes at t=21.249812.
+Thread 50 completes at t=21.258366.
+Thread 40 completes at t=21.258612.
+Thread 1 completes at t=21.258243.
+Thread 30 completes at t=21.257250.
+Thread 34 completes at t=21.207036.
+Thread 39 completes at t=21.258112.
+Thread 49 completes at t=21.193922.
+Thread 0 completes at t=21.257500.
+Thread 46 completes at t=21.062458.
+Thread 21 completes at t=21.089122.
+Thread 37 completes at t=21.258558.
+Thread 53 completes at t=21.257880.
+Thread 47 completes at t=21.258496.
+Thread 62 completes at t=21.258239.
+Thread 2 completes at t=21.258634.
+Thread 8 completes at t=21.258613.
+Thread 26 completes at t=21.258417.
+Thread 7 completes at t=21.258334.
+Thread 15 completes at t=21.258472.
+Thread 57 completes at t=21.204909.
+Thread 58 completes at t=21.258498.
+Thread 17 completes at t=21.209926.
+Thread 16 completes at t=21.258736.
+Thread 59 completes at t=21.243569.
+Thread 29 completes at t=21.258243.
+Thread 60 completes at t=21.218852.
+Thread 5 completes at t=21.257699.
+Thread 51 completes at t=21.189828.
+Thread 13 completes at t=21.258752.
+Thread 38 completes at t=21.257873.
+Thread 45 completes at t=21.257809.
+Thread 43 completes at t=21.258183.
+Thread 35 completes at t=21.258030.
+Thread 63 completes at t=21.258959.
+Thread 61 completes at t=21.257120.
+Thread 55 completes at t=21.205104.
+Thread 12 completes at t=21.213975.
+Thread 25 completes at t=21.257324.
+Thread 22 completes at t=21.257869.
+Thread 44 completes at t=21.258914.
+Thread 48 completes at t=21.258298.
+Thread 33 completes at t=21.258370.
+Thread 11 completes at t=21.183936.
+Thread 20 completes at t=21.258019.
+Thread 32 completes at t=21.256689.
+Thread 23 completes at t=21.257374.
+Thread 28 completes at t=21.257373.
+Thread 24 completes at t=21.257765.
+Thread 56 completes at t=21.258951.
+Thread 54 completes at t=21.258787.
+Thread 27 completes at t=21.258933.
+Thread 52 completes at t=21.258609.
+Thread 41 completes at t=21.258329.
+Thread 31 exits.
+Thread 33 exits.
+Thread 63 exits.
+Thread 3 exits.
+Thread 50 exits.
+Thread 61 exits.
+Thread 6 exits.
+Thread 48 exits.
+Thread 24 exits.
+Thread 53 exits.
+Thread 49 exits.
+Thread 39 exits.
+Thread 32 exits.
+Thread 23 exits.
+Thread 25 exits.
+Thread 5 exits.
+Thread 29 exits.
+Thread 28 exits.
+Thread 41 exits.
+Thread 36 exits.
+Thread 7 exits.
+Thread 57 exits.
+Thread 21 exits.
+Thread 4 exits.
+Thread 2 exits.
+Thread 38 exits.
+Thread 27 exits.
+Thread 56 exits.
+Thread 35 exits.
+Thread 34 exits.
+Thread 19 exits.
+Thread 20 exits.
+Thread 8 exits.
+Thread 40 exits.
+Thread 37 exits.
+Thread 62 exits.
+Thread 43 exits.
+Thread 59 exits.
+Thread 12 exits.
+Thread 42 exits.
+Thread 45 exits.
+Thread 0 exits.
+Thread 11 exits.
+Thread 44 exits.
+Thread 55 exits.
+Thread 51 exits.
+Thread 47 exits.
+Thread 60 exits.
+Thread 10 exits.
+Thread 30 exits.
+Thread 9 exits.
+Thread 58 exits.
+Thread 22 exits.
+Thread 14 exits.
+Thread 46 exits.
+Thread 1 exits.
+Thread 17 exits.
+Thread 52 exits.
+Thread 26 exits.
+Thread 15 exits.
+Thread 16 exits.
+Thread 54 exits.
+Thread 13 exits.
+Thread 18 exits.
+Thread 32 completes at t=70.808984.
+Thread 42 completes at t=70.719278.
+Thread 38 completes at t=70.809169.
+Thread 37 completes at t=70.633951.
+Thread 46 completes at t=70.809268.
+Thread 0 completes at t=70.808534.
+Thread 47 completes at t=70.808099.
+Thread 56 completes at t=70.808486.
+Thread 15 completes at t=70.808018.
+Thread 20 completes at t=70.808238.
+Thread 16 completes at t=70.807735.
+Thread 50 completes at t=70.808511.
+Thread 55 completes at t=70.808959.
+Thread 23 completes at t=70.809004.
+Thread 57 completes at t=70.808895.
+Thread 18 completes at t=70.807002.
+Thread 60 completes at t=70.831945.
+Thread 54 completes at t=70.808326.
+Thread 58 completes at t=70.808241.
+Thread 44 completes at t=70.806100.
+Thread 14 completes at t=70.808327.
+Thread 52 completes at t=70.808420.
+Thread 4 completes at t=70.808557.
+Thread 31 completes at t=70.808630.
+Thread 13 completes at t=70.807388.
+Thread 1 completes at t=70.807483.
+Thread 24 completes at t=70.600021.
+Thread 27 completes at t=70.808527.
+Thread 17 completes at t=70.808614.
+Thread 8 completes at t=70.809015.
+Thread 10 completes at t=70.809045.
+Thread 21 completes at t=70.809315.
+Thread 39 completes at t=70.760025.
+Thread 35 completes at t=70.808845.
+Thread 3 completes at t=70.808338.
+Thread 25 completes at t=70.808442.
+Thread 12 completes at t=70.808976.
+Thread 28 completes at t=70.807491.
+Thread 26 completes at t=70.808546.
+Thread 45 completes at t=70.809213.
+Thread 63 completes at t=70.708959.
+Thread 29 completes at t=70.808854.
+Thread 30 completes at t=70.805915.
+Thread 34 completes at t=70.809245.
+Thread 36 completes at t=70.808852.
+Thread 53 completes at t=70.808940.
+Thread 48 completes at t=70.807660.
+Thread 19 completes at t=70.808807.
+Thread 43 completes at t=70.809042.
+Thread 40 completes at t=70.679721.
+Thread 6 completes at t=70.808574.
+Thread 7 completes at t=70.717877.
+Thread 5 completes at t=70.808983.
+Thread 49 completes at t=70.807323.
+Thread 33 completes at t=70.808042.
+Thread 9 completes at t=70.808976.
+Thread 2 completes at t=70.808752.
+Thread 51 completes at t=70.809308.
+Thread 11 completes at t=70.809209.
+Thread 41 completes at t=70.808616.
+Thread 22 completes at t=70.806201.
+Thread 62 completes at t=70.808914.
+Thread 59 completes at t=70.760101.
+Thread 61 completes at t=70.809139.
+Thread 0 exits.
+Thread 9 exits.
+Thread 1 exits.
+Thread 59 exits.
+Thread 2 exits.
+Thread 8 exits.
+Thread 5 exits.
+Thread 4 exits.
+Thread 3 exits.
+Thread 63 exits.
+Thread 51 exits.
+Thread 20 exits.
+Thread 12 exits.
+Thread 60 exits.
+Thread 41 exits.
+Thread 32 exits.
+Thread 28 exits.
+Thread 22 exits.
+Thread 42 exits.
+Thread 57 exits.
+Thread 46 exits.
+Thread 47 exits.
+Thread 50 exits.
+Thread 7 exits.
+Thread 45 exits.
+Thread 33 exits.
+Thread 43 exits.
+Thread 58 exits.
+Thread 23 exits.
+Thread 29 exits.
+Thread 61 exits.
+Thread 18 exits.
+Thread 40 exits.
+Thread 62 exits.
+Thread 35 exits.
+Thread 48 exits.
+Thread 14 exits.
+Thread 56 exits.
+Thread 10 exits.
+Thread 30 exits.
+Thread 24 exits.
+Thread 31 exits.
+Thread 55 exits.
+Thread 39 exits.
+Thread 15 exits.
+Thread 36 exits.
+Thread 21 exits.
+Thread 53 exits.
+Thread 17 exits.
+Thread 54 exits.
+Thread 27 exits.
+Thread 38 exits.
+Thread 44 exits.
+Thread 25 exits.
+Thread 16 exits.
+Thread 37 exits.
+Thread 34 exits.
+Thread 13 exits.
+Thread 6 exits.
+Thread 11 exits.
+Thread 19 exits.
+Thread 26 exits.
+Thread 52 exits.
+Thread 49 exits.
+Thread 10 completes at t=67.865935.
+Thread 29 completes at t=67.866034.
+Thread 25 completes at t=67.866262.
+Thread 60 completes at t=67.865856.
+Thread 26 completes at t=67.865203.
+Thread 2 completes at t=67.865900.
+Thread 46 completes at t=67.876002.
+Thread 59 completes at t=67.866561.
+Thread 18 completes at t=67.866448.
+Thread 24 completes at t=67.865074.
+Thread 7 completes at t=67.879531.
+Thread 12 completes at t=67.865578.
+Thread 17 completes at t=67.866067.
+Thread 15 completes at t=67.865405.
+Thread 11 completes at t=67.865778.
+Thread 50 completes at t=67.866285.
+Thread 47 completes at t=67.866153.
+Thread 54 completes at t=67.866827.
+Thread 41 completes at t=67.862265.
+Thread 61 completes at t=67.865112.
+Thread 63 completes at t=67.857410.
+Thread 1 completes at t=67.865623.
+Thread 23 completes at t=67.865678.
+Thread 36 completes at t=67.866505.
+Thread 16 completes at t=67.866001.
+Thread 8 completes at t=67.865543.
+Thread 34 completes at t=67.864297.
+Thread 21 completes at t=67.865986.
+Thread 4 completes at t=67.866048.
+Thread 58 completes at t=67.864913.
+Thread 20 completes at t=67.865889.
+Thread 39 completes at t=67.866035.
+Thread 42 completes at t=67.866159.
+Thread 52 completes at t=67.865544.
+Thread 31 completes at t=67.866417.
+Thread 37 completes at t=67.888086.
+Thread 53 completes at t=67.865870.
+Thread 9 completes at t=67.866150.
+Thread 28 completes at t=67.803350.
+Thread 32 completes at t=67.863922.
+Thread 38 completes at t=67.865552.
+Thread 27 completes at t=67.866449.
+Thread 3 completes at t=67.866126.
+Thread 56 completes at t=67.866508.
+Thread 40 completes at t=67.865893.
+Thread 48 completes at t=67.866308.
+Thread 14 completes at t=67.865481.
+Thread 0 completes at t=67.866044.
+Thread 6 completes at t=67.866335.
+Thread 43 completes at t=67.866007.
+Thread 45 completes at t=67.768574.
+Thread 5 completes at t=67.866380.
+Thread 22 completes at t=67.864619.
+Thread 35 completes at t=67.864034.
+Thread 57 completes at t=67.787135.
+Thread 62 completes at t=67.866544.
+Thread 19 completes at t=67.866392.
+Thread 33 completes at t=67.865747.
+Thread 13 completes at t=67.877602.
+Thread 30 completes at t=67.866283.
+Thread 49 completes at t=67.861858.
+Thread 51 completes at t=67.864834.
+Thread 44 completes at t=67.866453.
+Thread 55 completes at t=67.865554.
+Thread 36 exits.
+Thread 46 exits.
+Thread 2 exits.
+Thread 37 exits.
+Thread 20 exits.
+Thread 12 exits.
+Thread 42 exits.
+Thread 14 exits.
+Thread 0 exits.
+Thread 49 exits.
+Thread 28 exits.
+Thread 19 exits.
+Thread 56 exits.
+Thread 17 exits.
+Thread 43 exits.
+Thread 25 exits.
+Thread 15 exits.
+Thread 61 exits.
+Thread 10 exits.
+Thread 26 exits.
+Thread 48 exits.
+Thread 35 exits.
+Thread 8 exits.
+Thread 7 exits.
+Thread 55 exits.
+Thread 51 exits.
+Thread 1 exits.
+Thread 3 exits.
+Thread 24 exits.
+Thread 38 exits.
+Thread 54 exits.
+Thread 4 exits.
+Thread 11 exits.
+Thread 44 exits.
+Thread 63 exits.
+Thread 29 exits.
+Thread 5 exits.
+Thread 52 exits.
+Thread 21 exits.
+Thread 57 exits.
+Thread 40 exits.
+Thread 60 exits.
+Thread 62 exits.
+Thread 23 exits.
+Thread 16 exits.
+Thread 33 exits.
+Thread 18 exits.
+Thread 58 exits.
+Thread 13 exits.
+Thread 47 exits.
+Thread 30 exits.
+Thread 41 exits.
+Thread 27 exits.
+Thread 59 exits.
+Thread 31 exits.
+Thread 39 exits.
+Thread 50 exits.
+Thread 22 exits.
+Thread 45 exits.
+Thread 6 exits.
+Thread 9 exits.
+Thread 53 exits.
+Thread 32 exits.
+Thread 34 exits.
+Thread 52 completes at t=60.890103.
+Thread 36 completes at t=60.961528.
+Thread 40 completes at t=60.962188.
+Thread 58 completes at t=60.962326.
+Thread 43 completes at t=60.962148.
+Thread 12 completes at t=60.958787.
+Thread 45 completes at t=60.961874.
+Thread 59 completes at t=60.961637.
+Thread 46 completes at t=60.961967.
+Thread 33 completes at t=60.961790.
+Thread 13 completes at t=60.962165.
+Thread 5 completes at t=60.961819.
+Thread 41 completes at t=60.961714.
+Thread 9 completes at t=60.961824.
+Thread 63 completes at t=60.959479.
+Thread 22 completes at t=60.962074.
+Thread 31 completes at t=60.960953.
+Thread 6 completes at t=60.960848.
+Thread 32 completes at t=60.962025.
+Thread 60 completes at t=60.962083.
+Thread 54 completes at t=60.961959.
+Thread 15 completes at t=60.961772.
+Thread 20 completes at t=60.783976.
+Thread 30 completes at t=60.991269.
+Thread 29 completes at t=60.962190.
+Thread 10 completes at t=60.960799.
+Thread 26 completes at t=60.889811.
+Thread 44 completes at t=60.962450.
+Thread 4 completes at t=60.961580.
+Thread 1 completes at t=60.962309.
+Thread 37 completes at t=60.962123.
+Thread 39 completes at t=60.962121.
+Thread 49 completes at t=60.962840.
+Thread 0 completes at t=60.961579.
+Thread 55 completes at t=60.961940.
+Thread 50 completes at t=60.961419.
+Thread 14 completes at t=60.962087.
+Thread 51 completes at t=60.961064.
+Thread 35 completes at t=60.952180.
+Thread 61 completes at t=60.933813.
+Thread 23 completes at t=60.961702.
+Thread 25 completes at t=60.962473.
+Thread 24 completes at t=60.786937.
+Thread 38 completes at t=60.958602.
+Thread 57 completes at t=60.960515.
+Thread 19 completes at t=60.967001.
+Thread 11 completes at t=60.962335.
+Thread 7 completes at t=60.890502.
+Thread 53 completes at t=60.962026.
+Thread 18 completes at t=60.962372.
+Thread 48 completes at t=60.962066.
+Thread 27 completes at t=60.962244.
+Thread 34 completes at t=60.916999.
+Thread 8 completes at t=60.961950.
+Thread 42 completes at t=60.961852.
+Thread 62 completes at t=60.962118.
+Thread 16 completes at t=60.961783.
+Thread 2 completes at t=60.960384.
+Thread 3 completes at t=60.962115.
+Thread 56 completes at t=60.961312.
+Thread 21 completes at t=60.962019.
+Thread 47 completes at t=60.912769.
+Thread 28 completes at t=60.962145.
+Thread 17 completes at t=61.148129.
+Thread 41 exits.
+Thread 0 exits.
+Thread 58 exits.
+Thread 49 exits.
+Thread 51 exits.
+Thread 47 exits.
+Thread 16 exits.
+Thread 43 exits.
+Thread 35 exits.
+Thread 5 exits.
+Thread 33 exits.
+Thread 62 exits.
+Thread 17 exits.
+Thread 29 exits.
+Thread 10 exits.
+Thread 46 exits.
+Thread 8 exits.
+Thread 13 exits.
+Thread 18 exits.
+Thread 45 exits.
+Thread 54 exits.
+Thread 48 exits.
+Thread 56 exits.
+Thread 60 exits.
+Thread 30 exits.
+Thread 12 exits.
+Thread 23 exits.
+Thread 59 exits.
+Thread 42 exits.
+Thread 14 exits.
+Thread 57 exits.
+Thread 24 exits.
+Thread 27 exits.
+Thread 39 exits.
+Thread 44 exits.
+Thread 6 exits.
+Thread 31 exits.
+Thread 38 exits.
+Thread 4 exits.
+Thread 26 exits.
+Thread 36 exits.
+Thread 20 exits.
+Thread 50 exits.
+Thread 15 exits.
+Thread 11 exits.
+Thread 1 exits.
+Thread 32 exits.
+Thread 22 exits.
+Thread 61 exits.
+Thread 28 exits.
+Thread 7 exits.
+Thread 34 exits.
+Thread 37 exits.
+Thread 2 exits.
+Thread 21 exits.
+Thread 63 exits.
+Thread 40 exits.
+Thread 53 exits.
+Thread 25 exits.
+Thread 9 exits.
+Thread 55 exits.
+Thread 3 exits.
+Thread 19 exits.
+Thread 52 exits.
+Thread 24 completes at t=36.216597.
+Thread 60 completes at t=36.215470.
+Thread 40 completes at t=36.216474.
+Thread 17 completes at t=36.215051.
+Thread 61 completes at t=36.214531.
+Thread 41 completes at t=36.217075.
+Thread 28 completes at t=36.216180.
+Thread 59 completes at t=36.215620.
+Thread 37 completes at t=36.201126.
+Thread 51 completes at t=36.215582.
+Thread 12 completes at t=36.214228.
+Thread 22 completes at t=36.215838.
+Thread 8 completes at t=36.216256.
+Thread 9 completes at t=36.216443.
+Thread 38 completes at t=36.215016.
+Thread 27 completes at t=36.216108.
+Thread 46 completes at t=36.215846.
+Thread 35 completes at t=36.215586.
+Thread 25 completes at t=36.216254.
+Thread 34 completes at t=36.214658.
+Thread 18 completes at t=36.216060.
+Thread 50 completes at t=36.216344.
+Thread 14 completes at t=36.215003.
+Thread 43 completes at t=36.216287.
+Thread 7 completes at t=36.216005.
+Thread 44 completes at t=36.214985.
+Thread 57 completes at t=36.216450.
+Thread 23 completes at t=36.216311.
+Thread 55 completes at t=36.215631.
+Thread 45 completes at t=36.217039.
+Thread 52 completes at t=36.215906.
+Thread 56 completes at t=36.216220.
+Thread 49 completes at t=36.216382.
+Thread 3 completes at t=36.215887.
+Thread 6 completes at t=36.215615.
+Thread 58 completes at t=36.214683.
+Thread 0 completes at t=36.216471.
+Thread 21 completes at t=36.216420.
+Thread 33 completes at t=36.214836.
+Thread 48 completes at t=36.213855.
+Thread 5 completes at t=36.216690.
+Thread 63 completes at t=36.213462.
+Thread 4 completes at t=36.215828.
+Thread 42 completes at t=36.216404.
+Thread 29 completes at t=36.215856.
+Thread 47 completes at t=36.216490.
+Thread 15 completes at t=36.114792.
+Thread 19 completes at t=36.216176.
+Thread 39 completes at t=36.215625.
+Thread 36 completes at t=36.216823.
+Thread 62 completes at t=36.215966.
+Thread 13 completes at t=36.216834.
+Thread 10 completes at t=36.215079.
+Thread 11 completes at t=36.216908.
+Thread 31 completes at t=36.137833.
+Thread 1 completes at t=36.216304.
+Thread 32 completes at t=36.215795.
+Thread 20 completes at t=36.214612.
+Thread 30 completes at t=36.216268.
+Thread 54 completes at t=36.137364.
+Thread 53 completes at t=36.216041.
+Thread 26 completes at t=36.215901.
+Thread 16 completes at t=36.214787.
+Thread 2 completes at t=36.215767.
+Thread 41 exits.
+Thread 3 exits.
+Thread 0 exits.
+Thread 5 exits.
+Thread 13 exits.
+Thread 45 exits.
+Thread 54 exits.
+Thread 2 exits.
+Thread 32 exits.
+Thread 53 exits.
+Thread 43 exits.
+Thread 47 exits.
+Thread 28 exits.
+Thread 4 exits.
+Thread 58 exits.
+Thread 6 exits.
+Thread 60 exits.
+Thread 35 exits.
+Thread 56 exits.
+Thread 46 exits.
+Thread 19 exits.
+Thread 40 exits.
+Thread 33 exits.
+Thread 34 exits.
+Thread 12 exits.
+Thread 48 exits.
+Thread 39 exits.
+Thread 30 exits.
+Thread 7 exits.
+Thread 42 exits.
+Thread 8 exits.
+Thread 20 exits.
+Thread 26 exits.
+Thread 52 exits.
+Thread 51 exits.
+Thread 37 exits.
+Thread 29 exits.
+Thread 22 exits.
+Thread 16 exits.
+Thread 27 exits.
+Thread 21 exits.
+Thread 49 exits.
+Thread 31 exits.
+Thread 1 exits.
+Thread 44 exits.
+Thread 17 exits.
+Thread 57 exits.
+Thread 62 exits.
+Thread 50 exits.
+Thread 14 exits.
+Thread 23 exits.
+Thread 61 exits.
+Thread 18 exits.
+Thread 10 exits.
+Thread 9 exits.
+Thread 24 exits.
+Thread 15 exits.
+Thread 59 exits.
+Thread 63 exits.
+Thread 38 exits.
+Thread 11 exits.
+Thread 25 exits.
+Thread 55 exits.
+Thread 36 exits.
+Thread 61 completes at t=40.403176.
+Thread 41 completes at t=40.402597.
+Thread 54 completes at t=40.323910.
+Thread 50 completes at t=40.402067.
+Thread 56 completes at t=40.402270.
+Thread 0 completes at t=40.402444.
+Thread 35 completes at t=40.402601.
+Thread 39 completes at t=40.400959.
+Thread 57 completes at t=40.402858.
+Thread 59 completes at t=40.402071.
+Thread 60 completes at t=40.401276.
+Thread 38 completes at t=40.402453.
+Thread 36 completes at t=40.402523.
+Thread 3 completes at t=40.402890.
+Thread 47 completes at t=40.402035.
+Thread 55 completes at t=40.390177.
+Thread 28 completes at t=40.402286.
+Thread 14 completes at t=40.402940.
+Thread 31 completes at t=40.402798.
+Thread 37 completes at t=40.402412.
+Thread 53 completes at t=40.403143.
+Thread 44 completes at t=40.403197.
+Thread 20 completes at t=40.401850.
+Thread 25 completes at t=40.401853.
+Thread 51 completes at t=40.403070.
+Thread 49 completes at t=40.383688.
+Thread 16 completes at t=40.402803.
+Thread 33 completes at t=40.402666.
+Thread 22 completes at t=40.402527.
+Thread 42 completes at t=40.401047.
+Thread 7 completes at t=40.401061.
+Thread 2 completes at t=40.402414.
+Thread 17 completes at t=40.402820.
+Thread 46 completes at t=40.383360.
+Thread 34 completes at t=40.402518.
+Thread 21 completes at t=40.402476.
+Thread 4 completes at t=40.402754.
+Thread 63 completes at t=40.364867.
+Thread 5 completes at t=40.402906.
+Thread 24 completes at t=40.401545.
+Thread 52 completes at t=40.381111.
+Thread 58 completes at t=40.399492.
+Thread 62 completes at t=40.400714.
+Thread 43 completes at t=40.403127.
+Thread 23 completes at t=40.402680.
+Thread 11 completes at t=40.403146.
+Thread 12 completes at t=40.400757.
+Thread 1 completes at t=40.403247.
+Thread 9 completes at t=40.401505.
+Thread 26 completes at t=40.402422.
+Thread 30 completes at t=40.402655.
+Thread 18 completes at t=40.402574.
+Thread 40 completes at t=40.402964.
+Thread 19 completes at t=40.384220.
+Thread 27 completes at t=40.403231.
+Thread 48 completes at t=40.401858.
+Thread 10 completes at t=40.401392.
+Thread 15 completes at t=40.113135.
+Thread 45 completes at t=40.402169.
+Thread 32 completes at t=40.402106.
+Thread 13 completes at t=40.402596.
+Thread 6 completes at t=40.402488.
+Thread 8 completes at t=40.402220.
+Thread 29 completes at t=40.490092.
+Thread 8 exits.
+Thread 51 exits.
+Thread 43 exits.
+Thread 0 exits.
+Thread 9 exits.
+Thread 4 exits.
+Thread 59 exits.
+Thread 21 exits.
+Thread 14 exits.
+Thread 45 exits.
+Thread 50 exits.
+Thread 39 exits.
+Thread 22 exits.
+Thread 63 exits.
+Thread 57 exits.
+Thread 30 exits.
+Thread 32 exits.
+Thread 44 exits.
+Thread 27 exits.
+Thread 7 exits.
+Thread 38 exits.
+Thread 25 exits.
+Thread 53 exits.
+Thread 46 exits.
+Thread 61 exits.
+Thread 6 exits.
+Thread 18 exits.
+Thread 60 exits.
+Thread 35 exits.
+Thread 5 exits.
+Thread 13 exits.
+Thread 29 exits.
+Thread 26 exits.
+Thread 3 exits.
+Thread 62 exits.
+Thread 49 exits.
+Thread 20 exits.
+Thread 34 exits.
+Thread 42 exits.
+Thread 55 exits.
+Thread 12 exits.
+Thread 36 exits.
+Thread 2 exits.
+Thread 40 exits.
+Thread 17 exits.
+Thread 16 exits.
+Thread 37 exits.
+Thread 48 exits.
+Thread 58 exits.
+Thread 41 exits.
+Thread 52 exits.
+Thread 47 exits.
+Thread 54 exits.
+Thread 33 exits.
+Thread 56 exits.
+Thread 24 exits.
+Thread 15 exits.
+Thread 31 exits.
+Thread 23 exits.
+Thread 1 exits.
+Thread 28 exits.
+Thread 10 exits.
+Thread 19 exits.
+Thread 11 exits.
+Thread 25 completes at t=34.921937.
+Thread 60 completes at t=34.921957.
+Thread 22 completes at t=34.920492.
+Thread 43 completes at t=34.921194.
+Thread 51 completes at t=34.921887.
+Thread 24 completes at t=34.922620.
+Thread 15 completes at t=34.920501.
+Thread 1 completes at t=34.921782.
+Thread 50 completes at t=34.921428.
+Thread 28 completes at t=34.922297.
+Thread 34 completes at t=34.920947.
+Thread 62 completes at t=34.921891.
+Thread 14 completes at t=34.921995.
+Thread 33 completes at t=34.921296.
+Thread 6 completes at t=34.922097.
+Thread 46 completes at t=34.921763.
+Thread 52 completes at t=34.921925.
+Thread 36 completes at t=34.921680.
+Thread 20 completes at t=34.922198.
+Thread 21 completes at t=34.921839.
+Thread 16 completes at t=34.922079.
+Thread 53 completes at t=34.921632.
+Thread 41 completes at t=34.921921.
+Thread 48 completes at t=34.921736.
+Thread 27 completes at t=34.921214.
+Thread 3 completes at t=34.920335.
+Thread 37 completes at t=34.921839.
+Thread 17 completes at t=34.920341.
+Thread 59 completes at t=34.921564.
+Thread 11 completes at t=34.921846.
+Thread 23 completes at t=34.921088.
+Thread 35 completes at t=34.921765.
+Thread 39 completes at t=34.920587.
+Thread 0 completes at t=34.921448.
+Thread 2 completes at t=34.921931.
+Thread 54 completes at t=34.921663.
+Thread 10 completes at t=34.922244.
+Thread 4 completes at t=34.922428.
+Thread 32 completes at t=34.921169.
+Thread 31 completes at t=34.922081.
+Thread 45 completes at t=34.921971.
+Thread 57 completes at t=34.920864.
+Thread 18 completes at t=34.921454.
+Thread 56 completes at t=34.921684.
+Thread 8 completes at t=34.922238.
+Thread 7 completes at t=34.920828.
+Thread 5 completes at t=34.919884.
+Thread 9 completes at t=34.921799.
+Thread 47 completes at t=34.920941.
+Thread 40 completes at t=34.921477.
+Thread 12 completes at t=34.778355.
+Thread 13 completes at t=34.921307.
+Thread 55 completes at t=34.922572.
+Thread 44 completes at t=34.921829.
+Thread 26 completes at t=34.921798.
+Thread 49 completes at t=34.921814.
+Thread 38 completes at t=34.921569.
+Thread 61 completes at t=34.921284.
+Thread 19 completes at t=34.921431.
+Thread 42 completes at t=34.921934.
+Thread 58 completes at t=34.921995.
+Thread 30 completes at t=34.921389.
+Thread 29 completes at t=34.921813.
+Thread 63 completes at t=34.922176.
+Thread 2 exits.
+Thread 11 exits.
+Thread 28 exits.
+Thread 61 exits.
+Thread 8 exits.
+Thread 13 exits.
+Thread 4 exits.
+Thread 0 exits.
+Thread 12 exits.
+Thread 43 exits.
+Thread 22 exits.
+Thread 1 exits.
+Thread 16 exits.
+Thread 14 exits.
+Thread 31 exits.
+Thread 40 exits.
+Thread 20 exits.
+Thread 29 exits.
+Thread 45 exits.
+Thread 56 exits.
+Thread 37 exits.
+Thread 46 exits.
+Thread 52 exits.
+Thread 51 exits.
+Thread 35 exits.
+Thread 21 exits.
+Thread 41 exits.
+Thread 19 exits.
+Thread 23 exits.
+Thread 60 exits.
+Thread 34 exits.
+Thread 32 exits.
+Thread 48 exits.
+Thread 47 exits.
+Thread 50 exits.
+Thread 7 exits.
+Thread 30 exits.
+Thread 33 exits.
+Thread 24 exits.
+Thread 49 exits.
+Thread 53 exits.
+Thread 9 exits.
+Thread 25 exits.
+Thread 38 exits.
+Thread 15 exits.
+Thread 63 exits.
+Thread 39 exits.
+Thread 54 exits.
+Thread 27 exits.
+Thread 26 exits.
+Thread 55 exits.
+Thread 10 exits.
+Thread 44 exits.
+Thread 57 exits.
+Thread 5 exits.
+Thread 36 exits.
+Thread 3 exits.
+Thread 42 exits.
+Thread 62 exits.
+Thread 18 exits.
+Thread 58 exits.
+Thread 6 exits.
+Thread 17 exits.
+Thread 59 exits.
+Thread 49 completes at t=260.119865.
+Thread 55 completes at t=260.119721.
+Thread 42 completes at t=260.118399.
+Thread 53 completes at t=260.119737.
+Thread 23 completes at t=260.120068.
+Thread 7 completes at t=260.120794.
+Thread 10 completes at t=260.045024.
+Thread 5 completes at t=260.120088.
+Thread 8 completes at t=260.120662.
+Thread 36 completes at t=260.120419.
+Thread 28 completes at t=260.120106.
+Thread 61 completes at t=260.118908.
+Thread 52 completes at t=260.119793.
+Thread 57 completes at t=260.119324.
+Thread 44 completes at t=260.119352.
+Thread 3 completes at t=260.119524.
+Thread 0 completes at t=260.119929.
+Thread 27 completes at t=260.120112.
+Thread 19 completes at t=260.120676.
+Thread 12 completes at t=260.120405.
+Thread 48 completes at t=260.120654.
+Thread 37 completes at t=260.119840.
+Thread 26 completes at t=260.120484.
+Thread 16 completes at t=259.950897.
+Thread 1 completes at t=260.119827.
+Thread 59 completes at t=260.120342.
+Thread 22 completes at t=260.120308.
+Thread 2 completes at t=260.119964.
+Thread 32 completes at t=260.120435.
+Thread 17 completes at t=260.120218.
+Thread 41 completes at t=260.120751.
+Thread 29 completes at t=260.120529.
+Thread 20 completes at t=260.120027.
+Thread 31 completes at t=260.120465.
+Thread 24 completes at t=260.119779.
+Thread 25 completes at t=260.119112.
+Thread 4 completes at t=260.119916.
+Thread 30 completes at t=260.120106.
+Thread 45 completes at t=260.120719.
+Thread 35 completes at t=260.119266.
+Thread 63 completes at t=260.120149.
+Thread 62 completes at t=260.120589.
+Thread 13 completes at t=260.119472.
+Thread 43 completes at t=259.835775.
+Thread 54 completes at t=260.119232.
+Thread 51 completes at t=260.115867.
+Thread 47 completes at t=260.118047.
+Thread 34 completes at t=260.118959.
+Thread 60 completes at t=260.119986.
+Thread 6 completes at t=260.142426.
+Thread 40 completes at t=260.119248.
+Thread 18 completes at t=260.119892.
+Thread 56 completes at t=260.120079.
+Thread 33 completes at t=260.119141.
+Thread 15 completes at t=260.118307.
+Thread 50 completes at t=260.120590.
+Thread 14 completes at t=260.119776.
+Thread 46 completes at t=260.119746.
+Thread 39 completes at t=260.119946.
+Thread 11 completes at t=260.111792.
+Thread 38 completes at t=260.120320.
+Thread 58 completes at t=260.120188.
+Thread 21 completes at t=260.120232.
+Thread 9 completes at t=259.893396.
+Thread 17 exits.
+Thread 12 exits.
+Thread 28 exits.
+Thread 23 exits.
+Thread 26 exits.
+Thread 37 exits.
+Thread 18 exits.
+Thread 49 exits.
+Thread 9 exits.
+Thread 0 exits.
+Thread 25 exits.
+Thread 16 exits.
+Thread 44 exits.
+Thread 31 exits.
+Thread 2 exits.
+Thread 3 exits.
+Thread 1 exits.
+Thread 13 exits.
+Thread 63 exits.
+Thread 30 exits.
+Thread 46 exits.
+Thread 59 exits.
+Thread 35 exits.
+Thread 8 exits.
+Thread 20 exits.
+Thread 22 exits.
+Thread 47 exits.
+Thread 4 exits.
+Thread 14 exits.
+Thread 61 exits.
+Thread 29 exits.
+Thread 54 exits.
+Thread 39 exits.
+Thread 42 exits.
+Thread 21 exits.
+Thread 40 exits.
+Thread 24 exits.
+Thread 27 exits.
+Thread 62 exits.
+Thread 50 exits.
+Thread 5 exits.
+Thread 60 exits.
+Thread 51 exits.
+Thread 52 exits.
+Thread 56 exits.
+Thread 48 exits.
+Thread 34 exits.
+Thread 15 exits.
+Thread 57 exits.
+Thread 7 exits.
+Thread 53 exits.
+Thread 58 exits.
+Thread 55 exits.
+Thread 43 exits.
+Thread 19 exits.
+Thread 32 exits.
+Thread 38 exits.
+Thread 11 exits.
+Thread 6 exits.
+Thread 36 exits.
+Thread 10 exits.
+Thread 41 exits.
+Thread 33 exits.
+Thread 45 exits.
+Thread 16 completes at t=91.100793.
+Thread 60 completes at t=91.102697.
+Thread 13 completes at t=91.103142.
+Thread 24 completes at t=91.103408.
+Thread 45 completes at t=91.102683.
+Thread 15 completes at t=91.103189.
+Thread 34 completes at t=91.103321.
+Thread 6 completes at t=91.102414.
+Thread 8 completes at t=91.102787.
+Thread 61 completes at t=91.103542.
+Thread 46 completes at t=91.101665.
+Thread 50 completes at t=91.102808.
+Thread 10 completes at t=91.102987.
+Thread 55 completes at t=91.102280.
+Thread 38 completes at t=91.102933.
+Thread 29 completes at t=91.020150.
+Thread 33 completes at t=91.099928.
+Thread 31 completes at t=91.102608.
+Thread 2 completes at t=91.102224.
+Thread 9 completes at t=91.103196.
+Thread 43 completes at t=91.102834.
+Thread 14 completes at t=91.102425.
+Thread 25 completes at t=91.103695.
+Thread 23 completes at t=91.103331.
+Thread 12 completes at t=91.102680.
+Thread 18 completes at t=91.101292.
+Thread 42 completes at t=91.102642.
+Thread 26 completes at t=91.102024.
+Thread 20 completes at t=91.103692.
+Thread 4 completes at t=91.102538.
+Thread 1 completes at t=91.102542.
+Thread 32 completes at t=91.102244.
+Thread 41 completes at t=91.102889.
+Thread 28 completes at t=91.103656.
+Thread 17 completes at t=91.102120.
+Thread 30 completes at t=91.102016.
+Thread 37 completes at t=91.103334.
+Thread 22 completes at t=91.102784.
+Thread 44 completes at t=91.103523.
+Thread 58 completes at t=91.102821.
+Thread 52 completes at t=91.103661.
+Thread 63 completes at t=91.103661.
+Thread 57 completes at t=91.103161.
+Thread 54 completes at t=91.102446.
+Thread 0 completes at t=91.102560.
+Thread 51 completes at t=91.103047.
+Thread 36 completes at t=91.103131.
+Thread 53 completes at t=91.102741.
+Thread 56 completes at t=91.102810.
+Thread 11 completes at t=91.102998.
+Thread 59 completes at t=91.101950.
+Thread 62 completes at t=91.102717.
+Thread 5 completes at t=91.103334.
+Thread 3 completes at t=91.104044.
+Thread 19 completes at t=91.101764.
+Thread 27 completes at t=91.102824.
+Thread 47 completes at t=91.103022.
+Thread 7 completes at t=91.102383.
+Thread 40 completes at t=91.103416.
+Thread 35 completes at t=91.102449.
+Thread 48 completes at t=91.103646.
+Thread 21 completes at t=91.102564.
+Thread 49 completes at t=91.102453.
+Thread 39 completes at t=91.106703.
+Thread 36 exits.
+Thread 5 exits.
+Thread 14 exits.
+Thread 53 exits.
+Thread 23 exits.
+Thread 16 exits.
+Thread 62 exits.
+Thread 8 exits.
+Thread 56 exits.
+Thread 37 exits.
+Thread 48 exits.
+Thread 6 exits.
+Thread 47 exits.
+Thread 34 exits.
+Thread 17 exits.
+Thread 19 exits.
+Thread 1 exits.
+Thread 24 exits.
+Thread 30 exits.
+Thread 21 exits.
+Thread 27 exits.
+Thread 49 exits.
+Thread 55 exits.
+Thread 44 exits.
+Thread 28 exits.
+Thread 60 exits.
+Thread 29 exits.
+Thread 31 exits.
+Thread 51 exits.
+Thread 2 exits.
+Thread 57 exits.
+Thread 22 exits.
+Thread 59 exits.
+Thread 11 exits.
+Thread 18 exits.
+Thread 26 exits.
+Thread 52 exits.
+Thread 15 exits.
+Thread 40 exits.
+Thread 58 exits.
+Thread 35 exits.
+Thread 50 exits.
+Thread 25 exits.
+Thread 9 exits.
+Thread 32 exits.
+Thread 3 exits.
+Thread 46 exits.
+Thread 45 exits.
+Thread 43 exits.
+Thread 41 exits.
+Thread 13 exits.
+Thread 33 exits.
+Thread 10 exits.
+Thread 54 exits.
+Thread 0 exits.
+Thread 38 exits.
+Thread 12 exits.
+Thread 4 exits.
+Thread 61 exits.
+Thread 42 exits.
+Thread 20 exits.
+Thread 63 exits.
+Thread 7 exits.
+Thread 39 exits.
+Thread 33 completes at t=223.135783.
+Thread 55 completes at t=223.136091.
+Thread 38 completes at t=223.135285.
+Thread 59 completes at t=223.135523.
+Thread 25 completes at t=223.135748.
+Thread 24 completes at t=223.135939.
+Thread 22 completes at t=223.135525.
+Thread 0 completes at t=223.135720.
+Thread 37 completes at t=223.135993.
+Thread 46 completes at t=223.135729.
+Thread 62 completes at t=223.135302.
+Thread 21 completes at t=223.135560.
+Thread 14 completes at t=223.135171.
+Thread 52 completes at t=223.136683.
+Thread 13 completes at t=223.135002.
+Thread 11 completes at t=223.073122.
+Thread 31 completes at t=223.136176.
+Thread 28 completes at t=223.135452.
+Thread 5 completes at t=223.136736.
+Thread 63 completes at t=223.135853.
+Thread 60 completes at t=223.136428.
+Thread 17 completes at t=223.096750.
+Thread 29 completes at t=223.134777.
+Thread 34 completes at t=223.136145.
+Thread 26 completes at t=223.136174.
+Thread 56 completes at t=223.135976.
+Thread 50 completes at t=223.135549.
+Thread 16 completes at t=223.135714.
+Thread 20 completes at t=223.134800.
+Thread 27 completes at t=223.136452.
+Thread 41 completes at t=223.136423.
+Thread 49 completes at t=223.135884.
+Thread 44 completes at t=223.135771.
+Thread 47 completes at t=223.135324.
+Thread 30 completes at t=223.135514.
+Thread 58 completes at t=223.136021.
+Thread 51 completes at t=223.135716.
+Thread 18 completes at t=223.135614.
+Thread 8 completes at t=223.135547.
+Thread 61 completes at t=223.135950.
+Thread 6 completes at t=222.965980.
+Thread 57 completes at t=223.135765.
+Thread 23 completes at t=223.136387.
+Thread 19 completes at t=223.135359.
+Thread 32 completes at t=223.136350.
+Thread 45 completes at t=223.135772.
+Thread 36 completes at t=223.136372.
+Thread 2 completes at t=222.973076.
+Thread 3 completes at t=223.135206.
+Thread 48 completes at t=223.136440.
+Thread 54 completes at t=223.135529.
+Thread 39 completes at t=223.135297.
+Thread 35 completes at t=223.135479.
+Thread 12 completes at t=223.136000.
+Thread 40 completes at t=223.132998.
+Thread 9 completes at t=223.136740.
+Thread 1 completes at t=223.136453.
+Thread 53 completes at t=223.135457.
+Thread 7 completes at t=223.135408.
+Thread 43 completes at t=223.135810.
+Thread 10 completes at t=223.135849.
+Thread 42 completes at t=223.136324.
+Thread 15 completes at t=223.135703.
+Thread 4 completes at t=223.135646.
+Thread 2 exits.
+Thread 0 exits.
+Thread 3 exits.
+Thread 6 exits.
+Thread 5 exits.
+Thread 9 exits.
+Thread 47 exits.
+Thread 54 exits.
+Thread 46 exits.
+Thread 43 exits.
+Thread 29 exits.
+Thread 13 exits.
+Thread 23 exits.
+Thread 28 exits.
+Thread 60 exits.
+Thread 62 exits.
+Thread 33 exits.
+Thread 50 exits.
+Thread 53 exits.
+Thread 57 exits.
+Thread 51 exits.
+Thread 38 exits.
+Thread 25 exits.
+Thread 48 exits.
+Thread 49 exits.
+Thread 34 exits.
+Thread 4 exits.
+Thread 44 exits.
+Thread 10 exits.
+Thread 26 exits.
+Thread 24 exits.
+Thread 52 exits.
+Thread 16 exits.
+Thread 27 exits.
+Thread 12 exits.
+Thread 37 exits.
+Thread 59 exits.
+Thread 39 exits.
+Thread 42 exits.
+Thread 7 exits.
+Thread 15 exits.
+Thread 8 exits.
+Thread 45 exits.
+Thread 63 exits.
+Thread 35 exits.
+Thread 18 exits.
+Thread 19 exits.
+Thread 31 exits.
+Thread 40 exits.
+Thread 14 exits.
+Thread 21 exits.
+Thread 20 exits.
+Thread 61 exits.
+Thread 58 exits.
+Thread 1 exits.
+Thread 56 exits.
+Thread 41 exits.
+Thread 30 exits.
+Thread 36 exits.
+Thread 32 exits.
+Thread 17 exits.
+Thread 55 exits.
+Thread 22 exits.
+Thread 11 exits.
+Thread 25 completes at t=119.136667.
+Thread 62 completes at t=119.137870.
+Thread 49 completes at t=119.137405.
+Thread 31 completes at t=119.136737.
+Thread 32 completes at t=119.137496.
+Thread 9 completes at t=119.137658.
+Thread 58 completes at t=119.137625.
+Thread 10 completes at t=119.138005.
+Thread 6 completes at t=119.137600.
+Thread 44 completes at t=119.047172.
+Thread 22 completes at t=119.136462.
+Thread 14 completes at t=119.138466.
+Thread 43 completes at t=119.138369.
+Thread 16 completes at t=119.136827.
+Thread 42 completes at t=119.137921.
+Thread 17 completes at t=119.137801.
+Thread 63 completes at t=119.136588.
+Thread 15 completes at t=119.135834.
+Thread 60 completes at t=119.136948.
+Thread 50 completes at t=119.137236.
+Thread 51 completes at t=119.137075.
+Thread 12 completes at t=119.137794.
+Thread 35 completes at t=119.137710.
+Thread 57 completes at t=119.136975.
+Thread 59 completes at t=119.137998.
+Thread 20 completes at t=119.138159.
+Thread 24 completes at t=119.136525.
+Thread 46 completes at t=119.137534.
+Thread 21 completes at t=119.137418.
+Thread 54 completes at t=119.137409.
+Thread 41 completes at t=119.138011.
+Thread 5 completes at t=119.137696.
+Thread 1 completes at t=119.135242.
+Thread 18 completes at t=119.137905.
+Thread 55 completes at t=119.061084.
+Thread 28 completes at t=119.137444.
+Thread 4 completes at t=119.137596.
+Thread 11 completes at t=119.137534.
+Thread 38 completes at t=119.086204.
+Thread 40 completes at t=119.137509.
+Thread 7 completes at t=119.137385.
+Thread 39 completes at t=119.138115.
+Thread 61 completes at t=119.138462.
+Thread 13 completes at t=119.137395.
+Thread 30 completes at t=119.137481.
+Thread 34 completes at t=119.137627.
+Thread 47 completes at t=119.138265.
+Thread 53 completes at t=119.137437.
+Thread 3 completes at t=119.138141.
+Thread 19 completes at t=119.136998.
+Thread 29 completes at t=119.137625.
+Thread 56 completes at t=119.137715.
+Thread 33 completes at t=119.137593.
+Thread 27 completes at t=119.137796.
+Thread 26 completes at t=119.138229.
+Thread 52 completes at t=119.137444.
+Thread 0 completes at t=119.137403.
+Thread 45 completes at t=119.137315.
+Thread 36 completes at t=119.137649.
+Thread 23 completes at t=119.137629.
+Thread 48 completes at t=119.137957.
+Thread 8 completes at t=119.136540.
+Thread 2 completes at t=119.137853.
+Thread 37 completes at t=119.141037.
+Thread 59 exits.
+Thread 56 exits.
+Thread 4 exits.
+Thread 48 exits.
+Thread 19 exits.
+Thread 29 exits.
+Thread 21 exits.
+Thread 52 exits.
+Thread 36 exits.
+Thread 39 exits.
+Thread 41 exits.
+Thread 15 exits.
+Thread 45 exits.
+Thread 53 exits.
+Thread 12 exits.
+Thread 60 exits.
+Thread 51 exits.
+Thread 62 exits.
+Thread 9 exits.
+Thread 34 exits.
+Thread 2 exits.
+Thread 58 exits.
+Thread 50 exits.
+Thread 28 exits.
+Thread 0 exits.
+Thread 17 exits.
+Thread 54 exits.
+Thread 3 exits.
+Thread 31 exits.
+Thread 44 exits.
+Thread 32 exits.
+Thread 26 exits.
+Thread 57 exits.
+Thread 14 exits.
+Thread 63 exits.
+Thread 20 exits.
+Thread 61 exits.
+Thread 5 exits.
+Thread 27 exits.
+Thread 33 exits.
+Thread 16 exits.
+Thread 40 exits.
+Thread 35 exits.
+Thread 43 exits.
+Thread 42 exits.
+Thread 49 exits.
+Thread 7 exits.
+Thread 22 exits.
+Thread 1 exits.
+Thread 8 exits.
+Thread 24 exits.
+Thread 11 exits.
+Thread 13 exits.
+Thread 38 exits.
+Thread 23 exits.
+Thread 30 exits.
+Thread 25 exits.
+Thread 46 exits.
+Thread 47 exits.
+Thread 6 exits.
+Thread 18 exits.
+Thread 10 exits.
+Thread 55 exits.
+Thread 37 exits.
+Thread 55 completes at t=44.892905.
+Thread 15 completes at t=44.892334.
+Thread 35 completes at t=44.892313.
+Thread 42 completes at t=44.892623.
+Thread 62 completes at t=44.892670.
+Thread 4 completes at t=44.892610.
+Thread 36 completes at t=44.892588.
+Thread 17 completes at t=44.892345.
+Thread 24 completes at t=44.892997.
+Thread 25 completes at t=44.893037.
+Thread 30 completes at t=44.892492.
+Thread 8 completes at t=44.892382.
+Thread 59 completes at t=44.892412.
+Thread 63 completes at t=44.891079.
+Thread 23 completes at t=44.891495.
+Thread 53 completes at t=44.890117.
+Thread 9 completes at t=44.892668.
+Thread 10 completes at t=44.891639.
+Thread 22 completes at t=44.892119.
+Thread 49 completes at t=44.892453.
+Thread 38 completes at t=44.892103.
+Thread 46 completes at t=44.891057.
+Thread 34 completes at t=44.892918.
+Thread 19 completes at t=44.892411.
+Thread 48 completes at t=44.892242.
+Thread 2 completes at t=44.892560.
+Thread 6 completes at t=44.892024.
+Thread 28 completes at t=44.892442.
+Thread 3 completes at t=44.892105.
+Thread 61 completes at t=44.890869.
+Thread 52 completes at t=44.892017.
+Thread 45 completes at t=44.892262.
+Thread 13 completes at t=44.892229.
+Thread 14 completes at t=44.892109.
+Thread 40 completes at t=44.892182.
+Thread 18 completes at t=44.892186.
+Thread 57 completes at t=44.891996.
+Thread 43 completes at t=44.892031.
+Thread 56 completes at t=44.892870.
+Thread 60 completes at t=44.890721.
+Thread 33 completes at t=44.892655.
+Thread 20 completes at t=44.892407.
+Thread 31 completes at t=44.890958.
+Thread 16 completes at t=44.892505.
+Thread 44 completes at t=44.892611.
+Thread 0 completes at t=44.892337.
+Thread 39 completes at t=44.892065.
+Thread 47 completes at t=44.892447.
+Thread 1 completes at t=44.892502.
+Thread 51 completes at t=44.891549.
+Thread 54 completes at t=44.892618.
+Thread 7 completes at t=44.891273.
+Thread 41 completes at t=44.891358.
+Thread 27 completes at t=44.892348.
+Thread 50 completes at t=44.892132.
+Thread 12 completes at t=44.893173.
+Thread 11 completes at t=44.892708.
+Thread 29 completes at t=44.892104.
+Thread 37 completes at t=44.891827.
+Thread 58 completes at t=44.892089.
+Thread 21 completes at t=44.891854.
+Thread 5 completes at t=44.892834.
+Thread 32 completes at t=44.892351.
+Thread 26 completes at t=44.891550.
+Thread 15 exits.
+Thread 36 exits.
+Thread 23 exits.
+Thread 25 exits.
+Thread 0 exits.
+Thread 48 exits.
+Thread 12 exits.
+Thread 24 exits.
+Thread 32 exits.
+Thread 42 exits.
+Thread 41 exits.
+Thread 46 exits.
+Thread 22 exits.
+Thread 29 exits.
+Thread 55 exits.
+Thread 38 exits.
+Thread 14 exits.
+Thread 60 exits.
+Thread 7 exits.
+Thread 51 exits.
+Thread 49 exits.
+Thread 37 exits.
+Thread 53 exits.
+Thread 33 exits.
+Thread 45 exits.
+Thread 47 exits.
+Thread 52 exits.
+Thread 10 exits.
+Thread 4 exits.
+Thread 40 exits.
+Thread 57 exits.
+Thread 34 exits.
+Thread 16 exits.
+Thread 61 exits.
+Thread 31 exits.
+Thread 20 exits.
+Thread 18 exits.
+Thread 2 exits.
+Thread 30 exits.
+Thread 11 exits.
+Thread 6 exits.
+Thread 17 exits.
+Thread 1 exits.
+Thread 27 exits.
+Thread 28 exits.
+Thread 8 exits.
+Thread 13 exits.
+Thread 21 exits.
+Thread 54 exits.
+Thread 43 exits.
+Thread 3 exits.
+Thread 44 exits.
+Thread 5 exits.
+Thread 26 exits.
+Thread 59 exits.
+Thread 35 exits.
+Thread 9 exits.
+Thread 63 exits.
+Thread 62 exits.
+Thread 56 exits.
+Thread 58 exits.
+Thread 50 exits.
+Thread 39 exits.
+Thread 19 exits.
+Thread 61 completes at t=120.811441.
+Thread 19 completes at t=120.811203.
+Thread 45 completes at t=120.811506.
+Thread 40 completes at t=120.810518.
+Thread 1 completes at t=120.810311.
+Thread 24 completes at t=120.810519.
+Thread 30 completes at t=120.808886.
+Thread 10 completes at t=120.811515.
+Thread 14 completes at t=120.810919.
+Thread 0 completes at t=120.811261.
+Thread 31 completes at t=120.811421.
+Thread 53 completes at t=120.811227.
+Thread 7 completes at t=120.811617.
+Thread 63 completes at t=120.810176.
+Thread 8 completes at t=120.810556.
+Thread 41 completes at t=120.811152.
+Thread 27 completes at t=120.811268.
+Thread 26 completes at t=120.810979.
+Thread 34 completes at t=120.811300.
+Thread 56 completes at t=120.811351.
+Thread 46 completes at t=120.810942.
+Thread 49 completes at t=120.811151.
+Thread 55 completes at t=120.811547.
+Thread 62 completes at t=120.811369.
+Thread 59 completes at t=120.811019.
+Thread 13 completes at t=120.811697.
+Thread 44 completes at t=120.811313.
+Thread 52 completes at t=120.811916.
+Thread 25 completes at t=120.811314.
+Thread 54 completes at t=120.810183.
+Thread 5 completes at t=120.811267.
+Thread 50 completes at t=120.811547.
+Thread 3 completes at t=120.811407.
+Thread 29 completes at t=120.797570.
+Thread 35 completes at t=120.809488.
+Thread 20 completes at t=120.809806.
+Thread 4 completes at t=120.810284.
+Thread 28 completes at t=120.810705.
+Thread 18 completes at t=120.811279.
+Thread 57 completes at t=120.811182.
+Thread 60 completes at t=120.811219.
+Thread 22 completes at t=120.810481.
+Thread 33 completes at t=120.811053.
+Thread 39 completes at t=120.826661.
+Thread 21 completes at t=120.811179.
+Thread 15 completes at t=120.810168.
+Thread 38 completes at t=120.811365.
+Thread 37 completes at t=120.811693.
+Thread 36 completes at t=120.811080.
+Thread 17 completes at t=120.810565.
+Thread 11 completes at t=120.811292.
+Thread 47 completes at t=120.811307.
+Thread 9 completes at t=120.810598.
+Thread 48 completes at t=120.811271.
+Thread 12 completes at t=120.811385.
+Thread 43 completes at t=120.810415.
+Thread 42 completes at t=120.810937.
+Thread 23 completes at t=120.810949.
+Thread 6 completes at t=120.811176.
+Thread 2 completes at t=120.811335.
+Thread 16 completes at t=120.811815.
+Thread 51 completes at t=120.811771.
+Thread 32 completes at t=120.810982.
+Thread 58 completes at t=120.845467.
+Thread 48 exits.
+Thread 0 exits.
+Thread 5 exits.
+Thread 7 exits.
+Thread 38 exits.
+Thread 39 exits.
+Thread 56 exits.
+Thread 33 exits.
+Thread 15 exits.
+Thread 50 exits.
+Thread 52 exits.
+Thread 34 exits.
+Thread 60 exits.
+Thread 49 exits.
+Thread 28 exits.
+Thread 51 exits.
+Thread 2 exits.
+Thread 12 exits.
+Thread 42 exits.
+Thread 1 exits.
+Thread 6 exits.
+Thread 10 exits.
+Thread 40 exits.
+Thread 62 exits.
+Thread 43 exits.
+Thread 23 exits.
+Thread 8 exits.
+Thread 30 exits.
+Thread 19 exits.
+Thread 11 exits.
+Thread 46 exits.
+Thread 22 exits.
+Thread 25 exits.
+Thread 31 exits.
+Thread 4 exits.
+Thread 35 exits.
+Thread 44 exits.
+Thread 21 exits.
+Thread 32 exits.
+Thread 14 exits.
+Thread 59 exits.
+Thread 55 exits.
+Thread 37 exits.
+Thread 53 exits.
+Thread 18 exits.
+Thread 29 exits.
+Thread 45 exits.
+Thread 61 exits.
+Thread 41 exits.
+Thread 26 exits.
+Thread 36 exits.
+Thread 9 exits.
+Thread 57 exits.
+Thread 20 exits.
+Thread 17 exits.
+Thread 3 exits.
+Thread 16 exits.
+Thread 47 exits.
+Thread 13 exits.
+Thread 63 exits.
+Thread 24 exits.
+Thread 54 exits.
+Thread 27 exits.
+Thread 58 exits.
+Thread 4 completes at t=129.372547.
+Thread 52 completes at t=129.373736.
+Thread 56 completes at t=129.373700.
+Thread 25 completes at t=129.373930.
+Thread 22 completes at t=129.373022.
+Thread 2 completes at t=129.373717.
+Thread 50 completes at t=129.371458.
+Thread 51 completes at t=129.373516.
+Thread 59 completes at t=129.372976.
+Thread 61 completes at t=129.372759.
+Thread 62 completes at t=129.373516.
+Thread 8 completes at t=129.373692.
+Thread 30 completes at t=129.373535.
+Thread 32 completes at t=129.373702.
+Thread 35 completes at t=129.374356.
+Thread 55 completes at t=129.374220.
+Thread 3 completes at t=129.373875.
+Thread 44 completes at t=129.373058.
+Thread 15 completes at t=129.373116.
+Thread 49 completes at t=129.372244.
+Thread 21 completes at t=129.230303.
+Thread 13 completes at t=129.373054.
+Thread 24 completes at t=129.372831.
+Thread 17 completes at t=129.373627.
+Thread 5 completes at t=129.373099.
+Thread 39 completes at t=129.373748.
+Thread 1 completes at t=129.373604.
+Thread 10 completes at t=129.371991.
+Thread 37 completes at t=129.372618.
+Thread 7 completes at t=129.374180.
+Thread 12 completes at t=129.373787.
+Thread 29 completes at t=129.372519.
+Thread 34 completes at t=129.373511.
+Thread 40 completes at t=129.374051.
+Thread 33 completes at t=129.373725.
+Thread 31 completes at t=129.373755.
+Thread 47 completes at t=129.373803.
+Thread 57 completes at t=129.373747.
+Thread 23 completes at t=129.373787.
+Thread 16 completes at t=129.373788.
+Thread 9 completes at t=129.373410.
+Thread 18 completes at t=129.311014.
+Thread 36 completes at t=129.373910.
+Thread 48 completes at t=129.373532.
+Thread 38 completes at t=129.373806.
+Thread 63 completes at t=129.372867.
+Thread 60 completes at t=129.373603.
+Thread 45 completes at t=129.372661.
+Thread 53 completes at t=129.372091.
+Thread 6 completes at t=129.379779.
+Thread 20 completes at t=129.374178.
+Thread 11 completes at t=129.374175.
+Thread 28 completes at t=129.372634.
+Thread 46 completes at t=129.373852.
+Thread 42 completes at t=129.374014.
+Thread 41 completes at t=129.373684.
+Thread 27 completes at t=129.373820.
+Thread 14 completes at t=129.374181.
+Thread 0 completes at t=129.373733.
+Thread 58 completes at t=129.373713.
+Thread 43 completes at t=129.373756.
+Thread 54 completes at t=129.372226.
+Thread 19 completes at t=129.373529.
+Thread 26 completes at t=129.378043.
+Thread 16 exits.
+Thread 47 exits.
+Thread 9 exits.
+Thread 22 exits.
+Thread 23 exits.
+Thread 27 exits.
+Thread 36 exits.
+Thread 26 exits.
+Thread 11 exits.
+Thread 0 exits.
+Thread 3 exits.
+Thread 8 exits.
+Thread 12 exits.
+Thread 58 exits.
+Thread 1 exits.
+Thread 41 exits.
+Thread 13 exits.
+Thread 52 exits.
+Thread 21 exits.
+Thread 56 exits.
+Thread 30 exits.
+Thread 14 exits.
+Thread 17 exits.
+Thread 51 exits.
+Thread 34 exits.
+Thread 7 exits.
+Thread 42 exits.
+Thread 31 exits.
+Thread 4 exits.
+Thread 37 exits.
+Thread 43 exits.
+Thread 6 exits.
+Thread 60 exits.
+Thread 39 exits.
+Thread 57 exits.
+Thread 48 exits.
+Thread 63 exits.
+Thread 53 exits.
+Thread 50 exits.
+Thread 19 exits.
+Thread 54 exits.
+Thread 24 exits.
+Thread 33 exits.
+Thread 28 exits.
+Thread 29 exits.
+Thread 49 exits.
+Thread 40 exits.
+Thread 15 exits.
+Thread 44 exits.
+Thread 10 exits.
+Thread 20 exits.
+Thread 18 exits.
+Thread 25 exits.
+Thread 38 exits.
+Thread 2 exits.
+Thread 35 exits.
+Thread 55 exits.
+Thread 32 exits.
+Thread 59 exits.
+Thread 61 exits.
+Thread 46 exits.
+Thread 62 exits.
+Thread 5 exits.
+Thread 45 exits.
+Thread 23 completes at t=51.264331.
+Thread 53 completes at t=51.263469.
+Thread 28 completes at t=51.263708.
+Thread 63 completes at t=51.262659.
+Thread 42 completes at t=51.263890.
+Thread 13 completes at t=51.263348.
+Thread 37 completes at t=51.263783.
+Thread 35 completes at t=51.263686.
+Thread 56 completes at t=51.263528.
+Thread 5 completes at t=51.263267.
+Thread 49 completes at t=51.264077.
+Thread 32 completes at t=51.263578.
+Thread 60 completes at t=51.263229.
+Thread 22 completes at t=51.263003.
+Thread 10 completes at t=51.263002.
+Thread 40 completes at t=51.263236.
+Thread 47 completes at t=51.263791.
+Thread 38 completes at t=51.262611.
+Thread 41 completes at t=51.263656.
+Thread 48 completes at t=51.263661.
+Thread 62 completes at t=51.263424.
+Thread 1 completes at t=51.263383.
+Thread 34 completes at t=51.263737.
+Thread 18 completes at t=51.263920.
+Thread 51 completes at t=51.263983.
+Thread 61 completes at t=51.264039.
+Thread 2 completes at t=51.263967.
+Thread 33 completes at t=51.262552.
+Thread 30 completes at t=51.263899.
+Thread 0 completes at t=51.263282.
+Thread 9 completes at t=51.263828.
+Thread 27 completes at t=51.263843.
+Thread 6 completes at t=51.263637.
+Thread 31 completes at t=51.262903.
+Thread 14 completes at t=51.263621.
+Thread 44 completes at t=51.262495.
+Thread 55 completes at t=51.263374.
+Thread 15 completes at t=51.263814.
+Thread 45 completes at t=51.263505.
+Thread 52 completes at t=51.263483.
+Thread 57 completes at t=51.263498.
+Thread 24 completes at t=51.263018.
+Thread 59 completes at t=51.263622.
+Thread 12 completes at t=51.263822.
+Thread 4 completes at t=51.263982.
+Thread 43 completes at t=51.263482.
+Thread 8 completes at t=51.263424.
+Thread 3 completes at t=51.263534.
+Thread 46 completes at t=51.262782.
+Thread 7 completes at t=51.264330.
+Thread 17 completes at t=51.264332.
+Thread 20 completes at t=51.263281.
+Thread 26 completes at t=51.263203.
+Thread 16 completes at t=51.263649.
+Thread 29 completes at t=51.263184.
+Thread 39 completes at t=51.263503.
+Thread 54 completes at t=51.263473.
+Thread 58 completes at t=51.263939.
+Thread 21 completes at t=51.264205.
+Thread 19 completes at t=51.261829.
+Thread 25 completes at t=51.262591.
+Thread 50 completes at t=51.263298.
+Thread 11 completes at t=51.263942.
+Thread 36 completes at t=51.262596.
+Thread 15 exits.
+Thread 29 exits.
+Thread 35 exits.
+Thread 32 exits.
+Thread 34 exits.
+Thread 44 exits.
+Thread 36 exits.
+Thread 7 exits.
+Thread 57 exits.
+Thread 54 exits.
+Thread 42 exits.
+Thread 30 exits.
+Thread 50 exits.
+Thread 24 exits.
+Thread 11 exits.
+Thread 12 exits.
+Thread 60 exits.
+Thread 1 exits.
+Thread 14 exits.
+Thread 49 exits.
+Thread 21 exits.
+Thread 45 exits.
+Thread 22 exits.
+Thread 28 exits.
+Thread 25 exits.
+Thread 9 exits.
+Thread 59 exits.
+Thread 37 exits.
+Thread 20 exits.
+Thread 56 exits.
+Thread 27 exits.
+Thread 39 exits.
+Thread 61 exits.
+Thread 38 exits.
+Thread 6 exits.
+Thread 13 exits.
+Thread 48 exits.
+Thread 63 exits.
+Thread 46 exits.
+Thread 41 exits.
+Thread 33 exits.
+Thread 58 exits.
+Thread 53 exits.
+Thread 62 exits.
+Thread 51 exits.
+Thread 0 exits.
+Thread 2 exits.
+Thread 17 exits.
+Thread 5 exits.
+Thread 18 exits.
+Thread 40 exits.
+Thread 16 exits.
+Thread 4 exits.
+Thread 52 exits.
+Thread 23 exits.
+Thread 55 exits.
+Thread 3 exits.
+Thread 31 exits.
+Thread 10 exits.
+Thread 26 exits.
+Thread 19 exits.
+Thread 47 exits.
+Thread 8 exits.
+Thread 43 exits.
+Thread 3 completes at t=103.045578.
+Thread 22 completes at t=103.046145.
+Thread 42 completes at t=103.061379.
+Thread 13 completes at t=103.046455.
+Thread 28 completes at t=103.046945.
+Thread 56 completes at t=103.047116.
+Thread 6 completes at t=103.046531.
+Thread 48 completes at t=103.046839.
+Thread 50 completes at t=103.046764.
+Thread 31 completes at t=103.046533.
+Thread 55 completes at t=103.045717.
+Thread 44 completes at t=103.045690.
+Thread 7 completes at t=103.046500.
+Thread 39 completes at t=103.046435.
+Thread 29 completes at t=103.046132.
+Thread 61 completes at t=103.046077.
+Thread 21 completes at t=103.046520.
+Thread 53 completes at t=103.046647.
+Thread 9 completes at t=103.046138.
+Thread 20 completes at t=103.046435.
+Thread 1 completes at t=103.046643.
+Thread 26 completes at t=103.045494.
+Thread 38 completes at t=103.046390.
+Thread 12 completes at t=103.046420.
+Thread 41 completes at t=103.046068.
+Thread 16 completes at t=103.046689.
+Thread 30 completes at t=103.047066.
+Thread 11 completes at t=103.045100.
+Thread 2 completes at t=103.045356.
+Thread 62 completes at t=103.046313.
+Thread 33 completes at t=103.045388.
+Thread 46 completes at t=103.046812.
+Thread 54 completes at t=103.045501.
+Thread 40 completes at t=103.046831.
+Thread 19 completes at t=103.046338.
+Thread 0 completes at t=103.046228.
+Thread 51 completes at t=103.045029.
+Thread 14 completes at t=103.046813.
+Thread 27 completes at t=103.046264.
+Thread 5 completes at t=103.046420.
+Thread 60 completes at t=103.046703.
+Thread 59 completes at t=103.044675.
+Thread 32 completes at t=103.046056.
+Thread 45 completes at t=103.046983.
+Thread 10 completes at t=103.045554.
+Thread 24 completes at t=103.046498.
+Thread 37 completes at t=103.046025.
+Thread 58 completes at t=103.046290.
+Thread 43 completes at t=103.046667.
+Thread 57 completes at t=103.046440.
+Thread 36 completes at t=103.046343.
+Thread 52 completes at t=103.046379.
+Thread 35 completes at t=103.046141.
+Thread 25 completes at t=103.045723.
+Thread 15 completes at t=103.046390.
+Thread 49 completes at t=103.046602.
+Thread 8 completes at t=103.046066.
+Thread 18 completes at t=102.839230.
+Thread 34 completes at t=103.046212.
+Thread 47 completes at t=103.040202.
+Thread 23 completes at t=103.045588.
+Thread 17 completes at t=103.046253.
+Thread 4 completes at t=103.045029.
+Thread 63 completes at t=103.046224.
+Thread 12 exits.
+Thread 22 exits.
+Thread 5 exits.
+Thread 20 exits.
+Thread 24 exits.
+Thread 39 exits.
+Thread 15 exits.
+Thread 16 exits.
+Thread 52 exits.
+Thread 32 exits.
+Thread 17 exits.
+Thread 41 exits.
+Thread 23 exits.
+Thread 13 exits.
+Thread 36 exits.
+Thread 33 exits.
+Thread 29 exits.
+Thread 38 exits.
+Thread 25 exits.
+Thread 40 exits.
+Thread 27 exits.
+Thread 26 exits.
+Thread 60 exits.
+Thread 62 exits.
+Thread 56 exits.
+Thread 18 exits.
+Thread 28 exits.
+Thread 34 exits.
+Thread 2 exits.
+Thread 55 exits.
+Thread 6 exits.
+Thread 48 exits.
+Thread 10 exits.
+Thread 21 exits.
+Thread 37 exits.
+Thread 51 exits.
+Thread 45 exits.
+Thread 1 exits.
+Thread 63 exits.
+Thread 46 exits.
+Thread 50 exits.
+Thread 3 exits.
+Thread 11 exits.
+Thread 14 exits.
+Thread 61 exits.
+Thread 58 exits.
+Thread 7 exits.
+Thread 31 exits.
+Thread 30 exits.
+Thread 59 exits.
+Thread 19 exits.
+Thread 43 exits.
+Thread 42 exits.
+Thread 35 exits.
+Thread 0 exits.
+Thread 9 exits.
+Thread 44 exits.
+Thread 49 exits.
+Thread 54 exits.
+Thread 57 exits.
+Thread 8 exits.
+Thread 4 exits.
+Thread 47 exits.
+Thread 53 exits.
+Thread 62 completes at t=88.741026.
+Thread 15 completes at t=88.740154.
+Thread 5 completes at t=88.745392.
+Thread 29 completes at t=88.741365.
+Thread 8 completes at t=88.740578.
+Thread 26 completes at t=88.740458.
+Thread 23 completes at t=88.741173.
+Thread 4 completes at t=88.741053.
+Thread 63 completes at t=88.741420.
+Thread 32 completes at t=88.741209.
+Thread 35 completes at t=88.741531.
+Thread 30 completes at t=88.741736.
+Thread 19 completes at t=88.740394.
+Thread 28 completes at t=88.740317.
+Thread 57 completes at t=88.740383.
+Thread 24 completes at t=88.741257.
+Thread 18 completes at t=88.740939.
+Thread 17 completes at t=88.740512.
+Thread 27 completes at t=88.740647.
+Thread 49 completes at t=88.741310.
+Thread 52 completes at t=88.741011.
+Thread 42 completes at t=88.741098.
+Thread 43 completes at t=88.742193.
+Thread 34 completes at t=88.741551.
+Thread 58 completes at t=88.742186.
+Thread 59 completes at t=88.742006.
+Thread 1 completes at t=88.740992.
+Thread 37 completes at t=88.741165.
+Thread 56 completes at t=88.740573.
+Thread 14 completes at t=88.740192.
+Thread 41 completes at t=88.741612.
+Thread 7 completes at t=88.740813.
+Thread 46 completes at t=88.741332.
+Thread 36 completes at t=88.741167.
+Thread 48 completes at t=88.740861.
+Thread 38 completes at t=88.741113.
+Thread 25 completes at t=88.741469.
+Thread 9 completes at t=88.741204.
+Thread 22 completes at t=88.740841.
+Thread 60 completes at t=88.741457.
+Thread 3 completes at t=88.740472.
+Thread 11 completes at t=88.740665.
+Thread 31 completes at t=88.739290.
+Thread 45 completes at t=88.741256.
+Thread 40 completes at t=88.740964.
+Thread 44 completes at t=88.741459.
+Thread 10 completes at t=88.741230.
+Thread 39 completes at t=88.741040.
+Thread 13 completes at t=88.732198.
+Thread 0 completes at t=88.741027.
+Thread 6 completes at t=88.741204.
+Thread 16 completes at t=88.741086.
+Thread 33 completes at t=88.741069.
+Thread 12 completes at t=88.692991.
+Thread 55 completes at t=88.741736.
+Thread 2 completes at t=88.742015.
+Thread 54 completes at t=88.741811.
+Thread 20 completes at t=88.742011.
+Thread 53 completes at t=88.741339.
+Thread 21 completes at t=88.741266.
+Thread 50 completes at t=88.740841.
+Thread 47 completes at t=88.741099.
+Thread 61 completes at t=88.741619.
+Thread 51 completes at t=88.756650.
+Thread 40 exits.
+Thread 32 exits.
+Thread 19 exits.
+Thread 9 exits.
+Thread 20 exits.
+Thread 48 exits.
+Thread 2 exits.
+Thread 44 exits.
+Thread 51 exits.
+Thread 61 exits.
+Thread 0 exits.
+Thread 33 exits.
+Thread 54 exits.
+Thread 30 exits.
+Thread 41 exits.
+Thread 10 exits.
+Thread 37 exits.
+Thread 47 exits.
+Thread 11 exits.
+Thread 35 exits.
+Thread 7 exits.
+Thread 39 exits.
+Thread 49 exits.
+Thread 50 exits.
+Thread 34 exits.
+Thread 24 exits.
+Thread 43 exits.
+Thread 58 exits.
+Thread 42 exits.
+Thread 53 exits.
+Thread 1 exits.
+Thread 3 exits.
+Thread 4 exits.
+Thread 22 exits.
+Thread 31 exits.
+Thread 23 exits.
+Thread 18 exits.
+Thread 60 exits.
+Thread 36 exits.
+Thread 15 exits.
+Thread 59 exits.
+Thread 56 exits.
+Thread 21 exits.
+Thread 27 exits.
+Thread 6 exits.
+Thread 52 exits.
+Thread 28 exits.
+Thread 25 exits.
+Thread 63 exits.
+Thread 57 exits.
+Thread 8 exits.
+Thread 45 exits.
+Thread 38 exits.
+Thread 62 exits.
+Thread 29 exits.
+Thread 46 exits.
+Thread 17 exits.
+Thread 26 exits.
+Thread 55 exits.
+Thread 14 exits.
+Thread 13 exits.
+Thread 16 exits.
+Thread 5 exits.
+Thread 12 exits.
+Thread 1 completes at t=75.160886.
+Thread 11 completes at t=75.161850.
+Thread 22 completes at t=75.161437.
+Thread 25 completes at t=75.162209.
+Thread 61 completes at t=75.162108.
+Thread 13 completes at t=75.146598.
+Thread 33 completes at t=75.161734.
+Thread 46 completes at t=75.160847.
+Thread 49 completes at t=75.161271.
+Thread 20 completes at t=75.161972.
+Thread 39 completes at t=75.160156.
+Thread 12 completes at t=75.161822.
+Thread 42 completes at t=75.161589.
+Thread 28 completes at t=75.161423.
+Thread 30 completes at t=75.162459.
+Thread 10 completes at t=75.162330.
+Thread 7 completes at t=75.161868.
+Thread 0 completes at t=75.161869.
+Thread 32 completes at t=75.160094.
+Thread 35 completes at t=75.161741.
+Thread 23 completes at t=75.159633.
+Thread 5 completes at t=75.161802.
+Thread 38 completes at t=75.161635.
+Thread 59 completes at t=75.162204.
+Thread 54 completes at t=75.162306.
+Thread 17 completes at t=75.162069.
+Thread 40 completes at t=75.161531.
+Thread 41 completes at t=75.160442.
+Thread 18 completes at t=75.161819.
+Thread 15 completes at t=75.161877.
+Thread 44 completes at t=75.160697.
+Thread 16 completes at t=75.161833.
+Thread 24 completes at t=75.161574.
+Thread 57 completes at t=75.161896.
+Thread 60 completes at t=75.161363.
+Thread 19 completes at t=75.162932.
+Thread 36 completes at t=75.161647.
+Thread 51 completes at t=75.162681.
+Thread 27 completes at t=75.162081.
+Thread 3 completes at t=75.161629.
+Thread 63 completes at t=75.161141.
+Thread 53 completes at t=75.168918.
+Thread 37 completes at t=75.161158.
+Thread 34 completes at t=75.161804.
+Thread 47 completes at t=75.162052.
+Thread 4 completes at t=75.161958.
+Thread 26 completes at t=75.162356.
+Thread 55 completes at t=75.161578.
+Thread 6 completes at t=75.161052.
+Thread 8 completes at t=75.161900.
+Thread 9 completes at t=75.161908.
+Thread 14 completes at t=75.161400.
+Thread 62 completes at t=75.161353.
+Thread 2 completes at t=75.072204.
+Thread 52 completes at t=75.161612.
+Thread 56 completes at t=75.161715.
+Thread 31 completes at t=75.161658.
+Thread 45 completes at t=75.161928.
+Thread 50 completes at t=75.160174.
+Thread 48 completes at t=75.162059.
+Thread 29 completes at t=75.160636.
+Thread 58 completes at t=75.161257.
+Thread 21 completes at t=75.161863.
+Thread 43 completes at t=75.162006.
+Thread 35 exits.
+Thread 8 exits.
+Thread 9 exits.
+Thread 0 exits.
+Thread 2 exits.
+Thread 6 exits.
+Thread 56 exits.
+Thread 50 exits.
+Thread 33 exits.
+Thread 14 exits.
+Thread 55 exits.
+Thread 24 exits.
+Thread 11 exits.
+Thread 54 exits.
+Thread 57 exits.
+Thread 23 exits.
+Thread 1 exits.
+Thread 7 exits.
+Thread 48 exits.
+Thread 36 exits.
+Thread 40 exits.
+Thread 34 exits.
+Thread 61 exits.
+Thread 15 exits.
+Thread 18 exits.
+Thread 52 exits.
+Thread 30 exits.
+Thread 39 exits.
+Thread 20 exits.
+Thread 38 exits.
+Thread 10 exits.
+Thread 27 exits.
+Thread 51 exits.
+Thread 4 exits.
+Thread 21 exits.
+Thread 60 exits.
+Thread 59 exits.
+Thread 53 exits.
+Thread 16 exits.
+Thread 12 exits.
+Thread 63 exits.
+Thread 47 exits.
+Thread 43 exits.
+Thread 13 exits.
+Thread 46 exits.
+Thread 41 exits.
+Thread 5 exits.
+Thread 62 exits.
+Thread 29 exits.
+Thread 28 exits.
+Thread 26 exits.
+Thread 31 exits.
+Thread 22 exits.
+Thread 44 exits.
+Thread 58 exits.
+Thread 32 exits.
+Thread 25 exits.
+Thread 17 exits.
+Thread 42 exits.
+Thread 49 exits.
+Thread 37 exits.
+Thread 3 exits.
+Thread 45 exits.
+Thread 19 exits.
+Thread 47 completes at t=91.898915.
+Thread 24 completes at t=92.137518.
+Thread 25 completes at t=92.139743.
+Thread 59 completes at t=92.140492.
+Thread 56 completes at t=92.139352.
+Thread 30 completes at t=92.141383.
+Thread 33 completes at t=92.140242.
+Thread 15 completes at t=92.139629.
+Thread 22 completes at t=92.140220.
+Thread 45 completes at t=92.140102.
+Thread 42 completes at t=92.140644.
+Thread 61 completes at t=92.140933.
+Thread 60 completes at t=92.141036.
+Thread 18 completes at t=92.145421.
+Thread 20 completes at t=92.140236.
+Thread 12 completes at t=92.140184.
+Thread 6 completes at t=92.140722.
+Thread 63 completes at t=92.139688.
+Thread 54 completes at t=92.140554.
+Thread 14 completes at t=92.140065.
+Thread 17 completes at t=92.139393.
+Thread 62 completes at t=92.140500.
+Thread 32 completes at t=92.140346.
+Thread 28 completes at t=92.140996.
+Thread 4 completes at t=92.139951.
+Thread 52 completes at t=92.140457.
+Thread 49 completes at t=92.140027.
+Thread 13 completes at t=92.140684.
+Thread 10 completes at t=92.140907.
+Thread 23 completes at t=92.140895.
+Thread 39 completes at t=92.139943.
+Thread 38 completes at t=92.140082.
+Thread 16 completes at t=92.140428.
+Thread 53 completes at t=92.140880.
+Thread 40 completes at t=92.140958.
+Thread 3 completes at t=92.139674.
+Thread 44 completes at t=92.140087.
+Thread 1 completes at t=92.106714.
+Thread 34 completes at t=92.140176.
+Thread 0 completes at t=92.140145.
+Thread 27 completes at t=92.139581.
+Thread 57 completes at t=92.140288.
+Thread 9 completes at t=92.140231.
+Thread 46 completes at t=92.139906.
+Thread 21 completes at t=92.140175.
+Thread 43 completes at t=92.140135.
+Thread 55 completes at t=92.140205.
+Thread 31 completes at t=92.140445.
+Thread 41 completes at t=92.158057.
+Thread 36 completes at t=92.140594.
+Thread 29 completes at t=92.140022.
+Thread 8 completes at t=92.140421.
+Thread 51 completes at t=92.140503.
+Thread 48 completes at t=92.140710.
+Thread 2 completes at t=92.140167.
+Thread 35 completes at t=92.139222.
+Thread 7 completes at t=92.140807.
+Thread 58 completes at t=92.140534.
+Thread 11 completes at t=92.140351.
+Thread 19 completes at t=92.140641.
+Thread 26 completes at t=92.140338.
+Thread 5 completes at t=92.139952.
+Thread 50 completes at t=92.085149.
+Thread 37 completes at t=92.529500.
+Thread 48 exits.
+Thread 54 exits.
+Thread 23 exits.
+Thread 60 exits.
+Thread 40 exits.
+Thread 55 exits.
+Thread 28 exits.
+Thread 5 exits.
+Thread 56 exits.
+Thread 35 exits.
+Thread 1 exits.
+Thread 37 exits.
+Thread 57 exits.
+Thread 4 exits.
+Thread 14 exits.
+Thread 59 exits.
+Thread 38 exits.
+Thread 36 exits.
+Thread 17 exits.
+Thread 11 exits.
+Thread 22 exits.
+Thread 8 exits.
+Thread 16 exits.
+Thread 21 exits.
+Thread 31 exits.
+Thread 33 exits.
+Thread 43 exits.
+Thread 2 exits.
+Thread 45 exits.
+Thread 9 exits.
+Thread 6 exits.
+Thread 10 exits.
+Thread 39 exits.
+Thread 58 exits.
+Thread 62 exits.
+Thread 20 exits.
+Thread 30 exits.
+Thread 49 exits.
+Thread 42 exits.
+Thread 41 exits.
+Thread 13 exits.
+Thread 15 exits.
+Thread 0 exits.
+Thread 12 exits.
+Thread 61 exits.
+Thread 51 exits.
+Thread 47 exits.
+Thread 63 exits.
+Thread 29 exits.
+Thread 27 exits.
+Thread 34 exits.
+Thread 24 exits.
+Thread 7 exits.
+Thread 32 exits.
+Thread 19 exits.
+Thread 52 exits.
+Thread 25 exits.
+Thread 53 exits.
+Thread 46 exits.
+Thread 44 exits.
+Thread 26 exits.
+Thread 3 exits.
+Thread 18 exits.
+Thread 50 exits.
+Thread 33 completes at t=59.679355.
+Thread 34 completes at t=59.679749.
+Thread 18 completes at t=59.680078.
+Thread 25 completes at t=59.679392.
+Thread 52 completes at t=59.680209.
+Thread 27 completes at t=59.680074.
+Thread 16 completes at t=59.679364.
+Thread 49 completes at t=59.679636.
+Thread 30 completes at t=59.680070.
+Thread 7 completes at t=59.679495.
+Thread 22 completes at t=59.678362.
+Thread 60 completes at t=59.679533.
+Thread 21 completes at t=59.678547.
+Thread 62 completes at t=59.679415.
+Thread 35 completes at t=59.679446.
+Thread 42 completes at t=59.680327.
+Thread 13 completes at t=59.679695.
+Thread 59 completes at t=59.679999.
+Thread 24 completes at t=59.679455.
+Thread 39 completes at t=59.679894.
+Thread 8 completes at t=59.680115.
+Thread 32 completes at t=59.679570.
+Thread 26 completes at t=59.678924.
+Thread 28 completes at t=59.678929.
+Thread 1 completes at t=59.678927.
+Thread 41 completes at t=59.677841.
+Thread 0 completes at t=59.679383.
+Thread 12 completes at t=59.679389.
+Thread 61 completes at t=59.680354.
+Thread 15 completes at t=59.680185.
+Thread 51 completes at t=59.679314.
+Thread 53 completes at t=59.679695.
+Thread 57 completes at t=59.679438.
+Thread 14 completes at t=59.678382.
+Thread 36 completes at t=59.678483.
+Thread 63 completes at t=59.678376.
+Thread 17 completes at t=59.680066.
+Thread 10 completes at t=59.679222.
+Thread 48 completes at t=59.679426.
+Thread 45 completes at t=59.680098.
+Thread 23 completes at t=59.678687.
+Thread 37 completes at t=59.680090.
+Thread 4 completes at t=59.678929.
+Thread 20 completes at t=59.678044.
+Thread 2 completes at t=59.679482.
+Thread 43 completes at t=59.679548.
+Thread 11 completes at t=59.679820.
+Thread 19 completes at t=59.679396.
+Thread 40 completes at t=59.679194.
+Thread 55 completes at t=59.678682.
+Thread 31 completes at t=59.679140.
+Thread 58 completes at t=59.679888.
+Thread 54 completes at t=59.676944.
+Thread 44 completes at t=59.678998.
+Thread 6 completes at t=59.680060.
+Thread 9 completes at t=59.677377.
+Thread 38 completes at t=59.679238.
+Thread 5 completes at t=59.679563.
+Thread 3 completes at t=59.678213.
+Thread 47 completes at t=59.680031.
+Thread 56 completes at t=59.678067.
+Thread 50 completes at t=59.679623.
+Thread 29 completes at t=59.678718.
+Thread 46 completes at t=59.672897.
+Thread 31 exits.
+Thread 23 exits.
+Thread 57 exits.
+Thread 37 exits.
+Thread 5 exits.
+Thread 50 exits.
+Thread 36 exits.
+Thread 21 exits.
+Thread 10 exits.
+Thread 44 exits.
+Thread 27 exits.
+Thread 42 exits.
+Thread 29 exits.
+Thread 25 exits.
+Thread 47 exits.
+Thread 30 exits.
+Thread 48 exits.
+Thread 45 exits.
+Thread 40 exits.
+Thread 16 exits.
+Thread 18 exits.
+Thread 2 exits.
+Thread 26 exits.
+Thread 20 exits.
+Thread 9 exits.
+Thread 61 exits.
+Thread 24 exits.
+Thread 38 exits.
+Thread 19 exits.
+Thread 55 exits.
+Thread 17 exits.
+Thread 60 exits.
+Thread 58 exits.
+Thread 13 exits.
+Thread 53 exits.
+Thread 12 exits.
+Thread 22 exits.
+Thread 7 exits.
+Thread 59 exits.
+Thread 41 exits.
+Thread 3 exits.
+Thread 51 exits.
+Thread 1 exits.
+Thread 14 exits.
+Thread 52 exits.
+Thread 15 exits.
+Thread 54 exits.
+Thread 56 exits.
+Thread 62 exits.
+Thread 43 exits.
+Thread 6 exits.
+Thread 34 exits.
+Thread 8 exits.
+Thread 4 exits.
+Thread 28 exits.
+Thread 39 exits.
+Thread 63 exits.
+Thread 0 exits.
+Thread 32 exits.
+Thread 11 exits.
+Thread 35 exits.
+Thread 49 exits.
+Thread 46 exits.
+Thread 33 exits.
+Thread 47 completes at t=79.111277.
+Thread 10 completes at t=79.112176.
+Thread 1 completes at t=79.110661.
+Thread 54 completes at t=79.112872.
+Thread 46 completes at t=79.017111.
+Thread 56 completes at t=79.112207.
+Thread 0 completes at t=79.111835.
+Thread 61 completes at t=79.112019.
+Thread 44 completes at t=79.112800.
+Thread 7 completes at t=79.111953.
+Thread 33 completes at t=79.112408.
+Thread 36 completes at t=79.112278.
+Thread 12 completes at t=79.111398.
+Thread 62 completes at t=79.111586.
+Thread 41 completes at t=79.111803.
+Thread 32 completes at t=79.112271.
+Thread 19 completes at t=79.112185.
+Thread 57 completes at t=79.112710.
+Thread 52 completes at t=79.111093.
+Thread 42 completes at t=79.111676.
+Thread 11 completes at t=79.111873.
+Thread 48 completes at t=79.111881.
+Thread 26 completes at t=79.111969.
+Thread 51 completes at t=79.112360.
+Thread 38 completes at t=79.111500.
+Thread 34 completes at t=79.112260.
+Thread 60 completes at t=79.112432.
+Thread 39 completes at t=79.111894.
+Thread 31 completes at t=79.111183.
+Thread 13 completes at t=79.112039.
+Thread 15 completes at t=79.111830.
+Thread 17 completes at t=79.110796.
+Thread 2 completes at t=79.111778.
+Thread 22 completes at t=79.112134.
+Thread 9 completes at t=79.110811.
+Thread 20 completes at t=79.112145.
+Thread 58 completes at t=79.111477.
+Thread 3 completes at t=79.112519.
+Thread 4 completes at t=79.111944.
+Thread 23 completes at t=79.110752.
+Thread 50 completes at t=79.112248.
+Thread 5 completes at t=79.110937.
+Thread 6 completes at t=79.112170.
+Thread 37 completes at t=79.112360.
+Thread 14 completes at t=79.111445.
+Thread 27 completes at t=79.112228.
+Thread 49 completes at t=79.112122.
+Thread 25 completes at t=79.112054.
+Thread 21 completes at t=79.112284.
+Thread 55 completes at t=79.111499.
+Thread 53 completes at t=79.111798.
+Thread 45 completes at t=79.112055.
+Thread 28 completes at t=79.111878.
+Thread 63 completes at t=79.112202.
+Thread 59 completes at t=79.112586.
+Thread 40 completes at t=79.112288.
+Thread 35 completes at t=79.111519.
+Thread 43 completes at t=79.111809.
+Thread 29 completes at t=79.112182.
+Thread 18 completes at t=79.112878.
+Thread 16 completes at t=79.111717.
+Thread 30 completes at t=79.111587.
+Thread 8 completes at t=79.110579.
+Thread 24 completes at t=79.111939.
+Thread 33 exits.
+Thread 20 exits.
+Thread 26 exits.
+Thread 54 exits.
+Thread 53 exits.
+Thread 27 exits.
+Thread 25 exits.
+Thread 63 exits.
+Thread 32 exits.
+Thread 43 exits.
+Thread 44 exits.
+Thread 56 exits.
+Thread 28 exits.
+Thread 60 exits.
+Thread 51 exits.
+Thread 55 exits.
+Thread 12 exits.
+Thread 17 exits.
+Thread 30 exits.
+Thread 45 exits.
+Thread 42 exits.
+Thread 8 exits.
+Thread 7 exits.
+Thread 34 exits.
+Thread 21 exits.
+Thread 22 exits.
+Thread 29 exits.
+Thread 10 exits.
+Thread 0 exits.
+Thread 11 exits.
+Thread 6 exits.
+Thread 39 exits.
+Thread 58 exits.
+Thread 41 exits.
+Thread 37 exits.
+Thread 16 exits.
+Thread 23 exits.
+Thread 38 exits.
+Thread 49 exits.
+Thread 35 exits.
+Thread 50 exits.
+Thread 1 exits.
+Thread 48 exits.
+Thread 2 exits.
+Thread 59 exits.
+Thread 13 exits.
+Thread 61 exits.
+Thread 47 exits.
+Thread 15 exits.
+Thread 19 exits.
+Thread 57 exits.
+Thread 62 exits.
+Thread 5 exits.
+Thread 40 exits.
+Thread 3 exits.
+Thread 36 exits.
+Thread 9 exits.
+Thread 18 exits.
+Thread 14 exits.
+Thread 52 exits.
+Thread 31 exits.
+Thread 4 exits.
+Thread 24 exits.
+Thread 46 exits.

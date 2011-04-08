@@ -1,0 +1,633 @@
+Processors in packed order: {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127}
+Placement cost for {0,1,2,3,4,5,6,7} is 11000000 (oversub 0)
+Placement {1,2,3,4,5,6,7,8} is not acceptable, uses more boards than the minimum
+Placement {2,3,4,5,6,7,8,9} is not acceptable, uses more boards than the minimum
+Placement {3,4,5,6,7,8,9,10} is not acceptable, uses more boards than the minimum
+Placement {4,5,6,7,8,9,10,11} is not acceptable, uses more boards than the minimum
+Placement {5,6,7,8,9,10,11,12} is not acceptable, uses more boards than the minimum
+Placement {6,7,8,9,10,11,12,13} is not acceptable, uses more boards than the minimum
+Placement {7,8,9,10,11,12,13,14} is not acceptable, uses more boards than the minimum
+Placement cost for {8,9,10,11,12,13,14,15} is 0 (oversub 0)
+Placement {9,10,11,12,13,14,15,16} is not acceptable, uses more boards than the minimum
+Placement {10,11,12,13,14,15,16,17} is not acceptable, uses more boards than the minimum
+Placement {11,12,13,14,15,16,17,18} is not acceptable, uses more boards than the minimum
+Placement {12,13,14,15,16,17,18,19} is not acceptable, uses more boards than the minimum
+Placement {13,14,15,16,17,18,19,20} is not acceptable, uses more boards than the minimum
+Placement {14,15,16,17,18,19,20,21} is not acceptable, uses more boards than the minimum
+Placement {15,16,17,18,19,20,21,22} is not acceptable, uses more boards than the minimum
+Placement cost for {16,17,18,19,20,21,22,23} is 0 (oversub 0)
+Placement {17,18,19,20,21,22,23,24} is not acceptable, uses more boards than the minimum
+Placement {18,19,20,21,22,23,24,25} is not acceptable, uses more boards than the minimum
+Placement {19,20,21,22,23,24,25,26} is not acceptable, uses more boards than the minimum
+Placement {20,21,22,23,24,25,26,27} is not acceptable, uses more boards than the minimum
+Placement {21,22,23,24,25,26,27,28} is not acceptable, uses more boards than the minimum
+Placement {22,23,24,25,26,27,28,29} is not acceptable, uses more boards than the minimum
+Placement {23,24,25,26,27,28,29,30} is not acceptable, uses more boards than the minimum
+Placement cost for {24,25,26,27,28,29,30,31} is 0 (oversub 0)
+Placement {25,26,27,28,29,30,31,32} is not acceptable, uses more boards than the minimum
+Placement {26,27,28,29,30,31,32,33} is not acceptable, uses more boards than the minimum
+Placement {27,28,29,30,31,32,33,34} is not acceptable, uses more boards than the minimum
+Placement {28,29,30,31,32,33,34,35} is not acceptable, uses more boards than the minimum
+Placement {29,30,31,32,33,34,35,36} is not acceptable, uses more boards than the minimum
+Placement {30,31,32,33,34,35,36,37} is not acceptable, uses more boards than the minimum
+Placement {31,32,33,34,35,36,37,38} is not acceptable, uses more boards than the minimum
+Placement cost for {32,33,34,35,36,37,38,39} is 0 (oversub 0)
+Placement {33,34,35,36,37,38,39,40} is not acceptable, uses more boards than the minimum
+Placement {34,35,36,37,38,39,40,41} is not acceptable, uses more boards than the minimum
+Placement {35,36,37,38,39,40,41,42} is not acceptable, uses more boards than the minimum
+Placement {36,37,38,39,40,41,42,43} is not acceptable, uses more boards than the minimum
+Placement {37,38,39,40,41,42,43,44} is not acceptable, uses more boards than the minimum
+Placement {38,39,40,41,42,43,44,45} is not acceptable, uses more boards than the minimum
+Placement {39,40,41,42,43,44,45,46} is not acceptable, uses more boards than the minimum
+Placement cost for {40,41,42,43,44,45,46,47} is 0 (oversub 0)
+Placement {41,42,43,44,45,46,47,48} is not acceptable, uses more boards than the minimum
+Placement {42,43,44,45,46,47,48,49} is not acceptable, uses more boards than the minimum
+Placement {43,44,45,46,47,48,49,50} is not acceptable, uses more boards than the minimum
+Placement {44,45,46,47,48,49,50,51} is not acceptable, uses more boards than the minimum
+Placement {45,46,47,48,49,50,51,52} is not acceptable, uses more boards than the minimum
+Placement {46,47,48,49,50,51,52,53} is not acceptable, uses more boards than the minimum
+Placement {47,48,49,50,51,52,53,54} is not acceptable, uses more boards than the minimum
+Placement cost for {48,49,50,51,52,53,54,55} is 0 (oversub 0)
+Placement {49,50,51,52,53,54,55,56} is not acceptable, uses more boards than the minimum
+Placement {50,51,52,53,54,55,56,57} is not acceptable, uses more boards than the minimum
+Placement {51,52,53,54,55,56,57,58} is not acceptable, uses more boards than the minimum
+Placement {52,53,54,55,56,57,58,59} is not acceptable, uses more boards than the minimum
+Placement {53,54,55,56,57,58,59,60} is not acceptable, uses more boards than the minimum
+Placement {54,55,56,57,58,59,60,61} is not acceptable, uses more boards than the minimum
+Placement {55,56,57,58,59,60,61,62} is not acceptable, uses more boards than the minimum
+Placement cost for {56,57,58,59,60,61,62,63} is 0 (oversub 0)
+Placement {57,58,59,60,61,62,63,64} is not acceptable, uses more boards than the minimum
+Placement {58,59,60,61,62,63,64,65} is not acceptable, uses more boards than the minimum
+Placement {59,60,61,62,63,64,65,66} is not acceptable, uses more boards than the minimum
+Placement {60,61,62,63,64,65,66,67} is not acceptable, uses more boards than the minimum
+Placement {61,62,63,64,65,66,67,68} is not acceptable, uses more boards than the minimum
+Placement {62,63,64,65,66,67,68,69} is not acceptable, uses more boards than the minimum
+Placement {63,64,65,66,67,68,69,70} is not acceptable, uses more boards than the minimum
+Placement cost for {64,65,66,67,68,69,70,71} is 0 (oversub 0)
+Placement {65,66,67,68,69,70,71,72} is not acceptable, uses more boards than the minimum
+Placement {66,67,68,69,70,71,72,73} is not acceptable, uses more boards than the minimum
+Placement {67,68,69,70,71,72,73,74} is not acceptable, uses more boards than the minimum
+Placement {68,69,70,71,72,73,74,75} is not acceptable, uses more boards than the minimum
+Placement {69,70,71,72,73,74,75,76} is not acceptable, uses more boards than the minimum
+Placement {70,71,72,73,74,75,76,77} is not acceptable, uses more boards than the minimum
+Placement {71,72,73,74,75,76,77,78} is not acceptable, uses more boards than the minimum
+Placement cost for {72,73,74,75,76,77,78,79} is 0 (oversub 0)
+Placement {73,74,75,76,77,78,79,80} is not acceptable, uses more boards than the minimum
+Placement {74,75,76,77,78,79,80,81} is not acceptable, uses more boards than the minimum
+Placement {75,76,77,78,79,80,81,82} is not acceptable, uses more boards than the minimum
+Placement {76,77,78,79,80,81,82,83} is not acceptable, uses more boards than the minimum
+Placement {77,78,79,80,81,82,83,84} is not acceptable, uses more boards than the minimum
+Placement {78,79,80,81,82,83,84,85} is not acceptable, uses more boards than the minimum
+Placement {79,80,81,82,83,84,85,86} is not acceptable, uses more boards than the minimum
+Placement cost for {80,81,82,83,84,85,86,87} is 0 (oversub 0)
+Placement {81,82,83,84,85,86,87,88} is not acceptable, uses more boards than the minimum
+Placement {82,83,84,85,86,87,88,89} is not acceptable, uses more boards than the minimum
+Placement {83,84,85,86,87,88,89,90} is not acceptable, uses more boards than the minimum
+Placement {84,85,86,87,88,89,90,91} is not acceptable, uses more boards than the minimum
+Placement {85,86,87,88,89,90,91,92} is not acceptable, uses more boards than the minimum
+Placement {86,87,88,89,90,91,92,93} is not acceptable, uses more boards than the minimum
+Placement {87,88,89,90,91,92,93,94} is not acceptable, uses more boards than the minimum
+Placement cost for {88,89,90,91,92,93,94,95} is 0 (oversub 0)
+Placement {89,90,91,92,93,94,95,96} is not acceptable, uses more boards than the minimum
+Placement {90,91,92,93,94,95,96,97} is not acceptable, uses more boards than the minimum
+Placement {91,92,93,94,95,96,97,98} is not acceptable, uses more boards than the minimum
+Placement {92,93,94,95,96,97,98,99} is not acceptable, uses more boards than the minimum
+Placement {93,94,95,96,97,98,99,100} is not acceptable, uses more boards than the minimum
+Placement {94,95,96,97,98,99,100,101} is not acceptable, uses more boards than the minimum
+Placement {95,96,97,98,99,100,101,102} is not acceptable, uses more boards than the minimum
+Placement cost for {96,97,98,99,100,101,102,103} is 0 (oversub 0)
+Placement {97,98,99,100,101,102,103,104} is not acceptable, uses more boards than the minimum
+Placement {98,99,100,101,102,103,104,105} is not acceptable, uses more boards than the minimum
+Placement {99,100,101,102,103,104,105,106} is not acceptable, uses more boards than the minimum
+Placement {100,101,102,103,104,105,106,107} is not acceptable, uses more boards than the minimum
+Placement {101,102,103,104,105,106,107,108} is not acceptable, uses more boards than the minimum
+Placement {102,103,104,105,106,107,108,109} is not acceptable, uses more boards than the minimum
+Placement {103,104,105,106,107,108,109,110} is not acceptable, uses more boards than the minimum
+Placement cost for {104,105,106,107,108,109,110,111} is 0 (oversub 0)
+Placement {105,106,107,108,109,110,111,112} is not acceptable, uses more boards than the minimum
+Placement {106,107,108,109,110,111,112,113} is not acceptable, uses more boards than the minimum
+Placement {107,108,109,110,111,112,113,114} is not acceptable, uses more boards than the minimum
+Placement {108,109,110,111,112,113,114,115} is not acceptable, uses more boards than the minimum
+Placement {109,110,111,112,113,114,115,116} is not acceptable, uses more boards than the minimum
+Placement {110,111,112,113,114,115,116,117} is not acceptable, uses more boards than the minimum
+Placement {111,112,113,114,115,116,117,118} is not acceptable, uses more boards than the minimum
+Placement cost for {112,113,114,115,116,117,118,119} is 0 (oversub 0)
+Placement {113,114,115,116,117,118,119,120} is not acceptable, uses more boards than the minimum
+Placement {114,115,116,117,118,119,120,121} is not acceptable, uses more boards than the minimum
+Placement {115,116,117,118,119,120,121,122} is not acceptable, uses more boards than the minimum
+Placement {116,117,118,119,120,121,122,123} is not acceptable, uses more boards than the minimum
+Placement {117,118,119,120,121,122,123,124} is not acceptable, uses more boards than the minimum
+Placement {118,119,120,121,122,123,124,125} is not acceptable, uses more boards than the minimum
+Placement {119,120,121,122,123,124,125,126} is not acceptable, uses more boards than the minimum
+Placement cost for {120,121,122,123,124,125,126,127} is 1189060000 (oversub 0)
+Best placement is {112,113,114,115,116,117,118,119}
+Using tournament barrier with 4k alignment.
+Thread 5 completes at t=1.992892.
+Thread 0 completes at t=1.992978.
+Thread 1 completes at t=1.993052.
+Thread 2 completes at t=1.992895.
+Thread 6 completes at t=1.993052.
+Thread 7 completes at t=1.992890.
+Thread 3 completes at t=1.992896.
+Thread 4 completes at t=1.993051.
+Thread 1 exits.
+Thread 6 exits.
+Thread 0 exits.
+Thread 5 exits.
+Thread 7 exits.
+Thread 3 exits.
+Thread 2 exits.
+Thread 4 exits.
+Using tournament barrier with 4k alignment.
+Thread 1 completes at t=1.865117.
+Thread 7 completes at t=1.865118.
+Thread 5 completes at t=1.865065.
+Thread 0 completes at t=1.865022.
+Thread 4 completes at t=1.865065.
+Thread 6 completes at t=1.865038.
+Thread 3 completes at t=1.865068.
+Thread 2 completes at t=1.865066.
+Thread 0 exits.
+Thread 7 exits.
+Thread 1 exits.
+Thread 6 exits.
+Thread 2 exits.
+Thread 3 exits.
+Thread 4 exits.
+Thread 5 exits.
+Using tournament barrier with 4k alignment.
+Thread 6 completes at t=2.332061.
+Thread 3 completes at t=2.331964.
+Thread 4 completes at t=2.332062.
+Thread 2 completes at t=2.331972.
+Thread 5 completes at t=2.332065.
+Thread 0 completes at t=2.332149.
+Thread 7 completes at t=2.332200.
+Thread 1 completes at t=2.332214.
+Thread 1 exits.
+Thread 6 exits.
+Thread 5 exits.
+Thread 7 exits.
+Thread 0 exits.
+Thread 4 exits.
+Thread 3 exits.
+Thread 2 exits.
+Using tournament barrier with 4k alignment.
+Thread 3 completes at t=2.210000.
+Thread 2 completes at t=2.210159.
+Thread 6 completes at t=2.210168.
+Thread 1 completes at t=2.210154.
+Thread 4 completes at t=2.210001.
+Thread 5 completes at t=2.210061.
+Thread 7 completes at t=2.210071.
+Thread 0 completes at t=2.210158.
+Thread 5 exits.
+Thread 3 exits.
+Thread 4 exits.
+Thread 2 exits.
+Thread 0 exits.
+Thread 1 exits.
+Thread 6 exits.
+Thread 7 exits.
+Using tournament barrier with 4k alignment.
+Thread 4 completes at t=2.025897.
+Thread 7 completes at t=2.026089.
+Thread 5 completes at t=2.025908.
+Thread 2 completes at t=2.026089.
+Thread 6 completes at t=2.025902.
+Thread 1 completes at t=2.026089.
+Thread 3 completes at t=2.026091.
+Thread 0 completes at t=2.026028.
+Thread 0 exits.
+Thread 4 exits.
+Thread 1 exits.
+Thread 7 exits.
+Thread 2 exits.
+Thread 3 exits.
+Thread 5 exits.
+Thread 6 exits.
+Using tournament barrier with 4k alignment.
+Thread 5 completes at t=1.910607.
+Thread 1 completes at t=1.910819.
+Thread 7 completes at t=1.910622.
+Thread 4 completes at t=1.910628.
+Thread 2 completes at t=1.910602.
+Thread 3 completes at t=1.910621.
+Thread 6 completes at t=1.910796.
+Thread 0 completes at t=1.910698.
+Thread 0 exits.
+Thread 1 exits.
+Thread 6 exits.
+Thread 4 exits.
+Thread 3 exits.
+Thread 5 exits.
+Thread 7 exits.
+Thread 2 exits.
+Using tournament barrier with 4k alignment.
+Thread 5 completes at t=1.996611.
+Thread 3 completes at t=1.996727.
+Thread 6 completes at t=1.996804.
+Thread 1 completes at t=1.996790.
+Thread 2 completes at t=1.996794.
+Thread 0 completes at t=1.996798.
+Thread 4 completes at t=1.996698.
+Thread 7 completes at t=1.996854.
+Thread 0 exits.
+Thread 3 exits.
+Thread 5 exits.
+Thread 4 exits.
+Thread 7 exits.
+Thread 1 exits.
+Thread 2 exits.
+Thread 6 exits.
+Using tournament barrier with 4k alignment.
+Thread 4 completes at t=2.059740.
+Thread 0 completes at t=2.060081.
+Thread 2 completes at t=2.060092.
+Thread 6 completes at t=2.059740.
+Thread 7 completes at t=2.060141.
+Thread 1 completes at t=2.060167.
+Thread 5 completes at t=2.059773.
+Thread 3 completes at t=2.059776.
+Thread 0 exits.
+Thread 1 exits.
+Thread 7 exits.
+Thread 5 exits.
+Thread 6 exits.
+Thread 4 exits.
+Thread 2 exits.
+Thread 3 exits.
+Using tournament barrier with 4k alignment.
+Thread 1 completes at t=1.888416.
+Thread 7 completes at t=1.888407.
+Thread 6 completes at t=1.888329.
+Thread 5 completes at t=1.888275.
+Thread 4 completes at t=1.888271.
+Thread 2 completes at t=1.888414.
+Thread 0 completes at t=1.888344.
+Thread 3 completes at t=1.888411.
+Thread 7 exits.
+Thread 0 exits.
+Thread 2 exits.
+Thread 5 exits.
+Thread 6 exits.
+Thread 4 exits.
+Thread 1 exits.
+Thread 3 exits.
+Using tournament barrier with 4k alignment.
+Thread 6 completes at t=1.866750.
+Thread 1 completes at t=1.866797.
+Thread 5 completes at t=1.866781.
+Thread 2 completes at t=1.866746.
+Thread 4 completes at t=1.866688.
+Thread 3 completes at t=1.866750.
+Thread 0 completes at t=1.866746.
+Thread 7 completes at t=1.866727.
+Thread 1 exits.
+Thread 5 exits.
+Thread 4 exits.
+Thread 7 exits.
+Thread 6 exits.
+Thread 0 exits.
+Thread 2 exits.
+Thread 3 exits.
+Using tournament barrier with 4k alignment.
+Thread 0 completes at t=2.066517.
+Thread 3 completes at t=2.066367.
+Thread 1 completes at t=2.066440.
+Thread 6 completes at t=2.066465.
+Thread 4 completes at t=2.066377.
+Thread 5 completes at t=2.066370.
+Thread 7 completes at t=2.066426.
+Thread 2 completes at t=2.066442.
+Thread 0 exits.
+Thread 6 exits.
+Thread 2 exits.
+Thread 5 exits.
+Thread 1 exits.
+Thread 3 exits.
+Thread 4 exits.
+Thread 7 exits.
+Using tournament barrier with 4k alignment.
+Thread 6 completes at t=1.852751.
+Thread 0 completes at t=1.852899.
+Thread 4 completes at t=1.852741.
+Thread 2 completes at t=1.852762.
+Thread 3 completes at t=1.852763.
+Thread 1 completes at t=1.852979.
+Thread 7 completes at t=1.853014.
+Thread 5 completes at t=1.852742.
+Thread 0 exits.
+Thread 1 exits.
+Thread 7 exits.
+Thread 6 exits.
+Thread 4 exits.
+Thread 5 exits.
+Thread 2 exits.
+Thread 3 exits.
+Using tournament barrier with 4k alignment.
+Thread 0 completes at t=1.905738.
+Thread 7 completes at t=1.905726.
+Thread 2 completes at t=1.905579.
+Thread 5 completes at t=1.905555.
+Thread 4 completes at t=1.905545.
+Thread 1 completes at t=1.905721.
+Thread 6 completes at t=1.905608.
+Thread 3 completes at t=1.905580.
+Thread 1 exits.
+Thread 7 exits.
+Thread 0 exits.
+Thread 6 exits.
+Thread 2 exits.
+Thread 4 exits.
+Thread 5 exits.
+Thread 3 exits.
+Using tournament barrier with 4k alignment.
+Thread 1 completes at t=2.210614.
+Thread 7 completes at t=2.210597.
+Thread 6 completes at t=2.210551.
+Thread 0 completes at t=2.210698.
+Thread 5 completes at t=2.210549.
+Thread 2 completes at t=2.210595.
+Thread 4 completes at t=2.210595.
+Thread 3 completes at t=2.210594.
+Thread 0 exits.
+Thread 1 exits.
+Thread 6 exits.
+Thread 5 exits.
+Thread 3 exits.
+Thread 7 exits.
+Thread 2 exits.
+Thread 4 exits.
+Using tournament barrier with 4k alignment.
+Thread 1 completes at t=2.093441.
+Thread 2 completes at t=2.093479.
+Thread 7 completes at t=2.093454.
+Thread 4 completes at t=2.093477.
+Thread 6 completes at t=2.093479.
+Thread 0 completes at t=2.093474.
+Thread 3 completes at t=2.093484.
+Thread 5 completes at t=2.093493.
+Thread 7 exits.
+Thread 5 exits.
+Thread 0 exits.
+Thread 6 exits.
+Thread 4 exits.
+Thread 2 exits.
+Thread 3 exits.
+Thread 1 exits.
+Using tournament barrier with 4k alignment.
+Thread 5 completes at t=15.385112.
+Thread 0 completes at t=15.385154.
+Thread 3 completes at t=15.385088.
+Thread 6 completes at t=15.384981.
+Thread 4 completes at t=15.384977.
+Thread 2 completes at t=15.385086.
+Thread 1 completes at t=15.385154.
+Thread 7 completes at t=15.384979.
+Thread 1 exits.
+Thread 0 exits.
+Thread 6 exits.
+Thread 4 exits.
+Thread 5 exits.
+Thread 3 exits.
+Thread 2 exits.
+Thread 7 exits.
+Using tournament barrier with 4k alignment.
+Thread 5 completes at t=15.436353.
+Thread 6 completes at t=15.436317.
+Thread 2 completes at t=15.436297.
+Thread 4 completes at t=15.436430.
+Thread 1 completes at t=15.436432.
+Thread 3 completes at t=15.436337.
+Thread 0 completes at t=15.436431.
+Thread 7 completes at t=15.436376.
+Thread 0 exits.
+Thread 1 exits.
+Thread 4 exits.
+Thread 2 exits.
+Thread 3 exits.
+Thread 6 exits.
+Thread 5 exits.
+Thread 7 exits.
+Using tournament barrier with 4k alignment.
+Thread 3 completes at t=15.018952.
+Thread 0 completes at t=15.019073.
+Thread 4 completes at t=15.019064.
+Thread 6 completes at t=15.018965.
+Thread 2 completes at t=15.019073.
+Thread 7 completes at t=15.018985.
+Thread 5 completes at t=15.018985.
+Thread 1 completes at t=15.019073.
+Thread 0 exits.
+Thread 2 exits.
+Thread 1 exits.
+Thread 4 exits.
+Thread 5 exits.
+Thread 3 exits.
+Thread 6 exits.
+Thread 7 exits.
+Using tournament barrier with 4k alignment.
+Thread 0 completes at t=15.141973.
+Thread 7 completes at t=15.141929.
+Thread 4 completes at t=15.141876.
+Thread 6 completes at t=15.141877.
+Thread 1 completes at t=15.142022.
+Thread 2 completes at t=15.142022.
+Thread 3 completes at t=15.142025.
+Thread 5 completes at t=15.142023.
+Thread 0 exits.
+Thread 6 exits.
+Thread 3 exits.
+Thread 2 exits.
+Thread 5 exits.
+Thread 1 exits.
+Thread 7 exits.
+Thread 4 exits.
+Using tournament barrier with 4k alignment.
+Thread 7 completes at t=13.885496.
+Thread 5 completes at t=13.885596.
+Thread 2 completes at t=13.885511.
+Thread 3 completes at t=13.885516.
+Thread 4 completes at t=13.885441.
+Thread 6 completes at t=13.885441.
+Thread 0 completes at t=13.885590.
+Thread 1 completes at t=13.885615.
+Thread 1 exits.
+Thread 0 exits.
+Thread 5 exits.
+Thread 6 exits.
+Thread 4 exits.
+Thread 7 exits.
+Thread 2 exits.
+Thread 3 exits.
+Using tournament barrier with 4k alignment.
+Thread 2 completes at t=14.969823.
+Thread 1 completes at t=14.969897.
+Thread 5 completes at t=14.969813.
+Thread 7 completes at t=14.969821.
+Thread 0 completes at t=14.969898.
+Thread 6 completes at t=14.969825.
+Thread 4 completes at t=14.969822.
+Thread 3 completes at t=14.969823.
+Thread 1 exits.
+Thread 0 exits.
+Thread 5 exits.
+Thread 7 exits.
+Thread 4 exits.
+Thread 2 exits.
+Thread 3 exits.
+Thread 6 exits.
+Using tournament barrier with 4k alignment.
+Thread 0 completes at t=13.918166.
+Thread 6 completes at t=13.918010.
+Thread 4 completes at t=13.917978.
+Thread 3 completes at t=13.917972.
+Thread 5 completes at t=13.918144.
+Thread 1 completes at t=13.918141.
+Thread 7 completes at t=13.918160.
+Thread 2 completes at t=13.918159.
+Thread 0 exits.
+Thread 6 exits.
+Thread 4 exits.
+Thread 3 exits.
+Thread 1 exits.
+Thread 2 exits.
+Thread 5 exits.
+Thread 7 exits.
+Using tournament barrier with 4k alignment.
+Thread 4 completes at t=15.628701.
+Thread 0 completes at t=15.628866.
+Thread 7 completes at t=15.628846.
+Thread 2 completes at t=15.628836.
+Thread 5 completes at t=15.628844.
+Thread 1 completes at t=15.628829.
+Thread 3 completes at t=15.628822.
+Thread 6 completes at t=15.628755.
+Thread 0 exits.
+Thread 7 exits.
+Thread 6 exits.
+Thread 5 exits.
+Thread 2 exits.
+Thread 4 exits.
+Thread 3 exits.
+Thread 1 exits.
+Using tournament barrier with 4k alignment.
+Thread 7 completes at t=21.531216.
+Thread 6 completes at t=21.531438.
+Thread 4 completes at t=21.531438.
+Thread 5 completes at t=21.531425.
+Thread 1 completes at t=21.531430.
+Thread 0 completes at t=21.531416.
+Thread 2 completes at t=21.531372.
+Thread 3 completes at t=21.531165.
+Thread 3 exits.
+Thread 7 exits.
+Thread 2 exits.
+Thread 5 exits.
+Thread 4 exits.
+Thread 1 exits.
+Thread 6 exits.
+Thread 0 exits.
+Using tournament barrier with 4k alignment.
+Thread 0 completes at t=17.195312.
+Thread 6 completes at t=17.195258.
+Thread 7 completes at t=17.195377.
+Thread 5 completes at t=17.195181.
+Thread 4 completes at t=17.195245.
+Thread 1 completes at t=17.195274.
+Thread 2 completes at t=17.195287.
+Thread 3 completes at t=17.195309.
+Thread 0 exits.
+Thread 5 exits.
+Thread 6 exits.
+Thread 3 exits.
+Thread 1 exits.
+Thread 2 exits.
+Thread 7 exits.
+Thread 4 exits.
+Using tournament barrier with 4k alignment.
+Thread 5 completes at t=16.447303.
+Thread 4 completes at t=16.447308.
+Thread 1 completes at t=16.447452.
+Thread 0 completes at t=16.447476.
+Thread 6 completes at t=16.447389.
+Thread 3 completes at t=16.447426.
+Thread 2 completes at t=16.447429.
+Thread 7 completes at t=16.447443.
+Thread 1 exits.
+Thread 7 exits.
+Thread 6 exits.
+Thread 3 exits.
+Thread 5 exits.
+Thread 4 exits.
+Thread 2 exits.
+Thread 0 exits.
+Using tournament barrier with 4k alignment.
+Thread 0 completes at t=15.785519.
+Thread 1 completes at t=15.785519.
+Thread 5 completes at t=15.785527.
+Thread 7 completes at t=15.785497.
+Thread 3 completes at t=15.785308.
+Thread 2 completes at t=15.785279.
+Thread 4 completes at t=15.785310.
+Thread 6 completes at t=15.785310.
+Thread 0 exits.
+Thread 5 exits.
+Thread 7 exits.
+Thread 1 exits.
+Thread 2 exits.
+Thread 6 exits.
+Thread 4 exits.
+Thread 3 exits.
+Using tournament barrier with 4k alignment.
+Thread 3 completes at t=14.324549.
+Thread 2 completes at t=14.324544.
+Thread 7 completes at t=14.324600.
+Thread 0 completes at t=14.324803.
+Thread 5 completes at t=14.324590.
+Thread 1 completes at t=14.324830.
+Thread 4 completes at t=14.324643.
+Thread 6 completes at t=14.324814.
+Thread 0 exits.
+Thread 1 exits.
+Thread 6 exits.
+Thread 5 exits.
+Thread 4 exits.
+Thread 3 exits.
+Thread 7 exits.
+Thread 2 exits.
+Using tournament barrier with 4k alignment.
+Thread 5 completes at t=21.682458.
+Thread 0 completes at t=21.682403.
+Thread 3 completes at t=21.682258.
+Thread 2 completes at t=21.682256.
+Thread 1 completes at t=21.682452.
+Thread 6 completes at t=21.682457.
+Thread 7 completes at t=21.682412.
+Thread 4 completes at t=21.682368.
+Thread 0 exits.
+Thread 6 exits.
+Thread 5 exits.
+Thread 1 exits.
+Thread 7 exits.
+Thread 4 exits.
+Thread 3 exits.
+Thread 2 exits.
+Using tournament barrier with 4k alignment.
+Thread 2 completes at t=14.726416.
+Thread 7 completes at t=14.726328.
+Thread 3 completes at t=14.726282.
+Thread 4 completes at t=14.726283.
+Thread 5 completes at t=14.726283.
+Thread 1 completes at t=14.726288.
+Thread 6 completes at t=14.726268.
+Thread 0 completes at t=14.726416.
+Thread 0 exits.
+Thread 2 exits.
+Thread 3 exits.
+Thread 6 exits.
+Thread 7 exits.
+Thread 4 exits.
+Thread 5 exits.
+Thread 1 exits.

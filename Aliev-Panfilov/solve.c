@@ -27,8 +27,12 @@ typedef struct thread_args_s
 pthread_t *threads;
 thread_args_t ** thread_args; // Need this to be global in order for threads to access neighboring blocks.
 
-//pthread_barrier_t barr;
+#if BARRIER == BARRIER_TOURNAMENT
 tour_barrier_t tour_barr;
+#elif BARRIER == BARRIER_PTHREAD
+pthread_barrier_t barr;
+#endif
+
 int threadcount;
 int done_count;
 
@@ -92,8 +96,11 @@ void * solve_block(void* _args)
     fflush(stdout);
     #endif
     //Synchronize before starting the timer
-    //pthread_barrier_wait(&barr);
+    #if BARRIER == BARRIER_PTHREAD
+    pthread_barrier_wait(&barr);
+    #elif BARRIER == BARRIER_TOURNAMENT
     tour_barrier(&tour_barr, thread_id);
+    #endif
     
     double t0 = -getTime();
 
@@ -110,8 +117,11 @@ void * solve_block(void* _args)
         
         //Wait until all are initialized and we are sure that the arrays are swapped
 #ifndef DISABLE_SYNC
+        #if BARRIER == BARRIER_PTHREAD
+        pthread_barrier_wait(&barr);
+        #elif BARRIER == BARRIER_TOURNAMENT
         tour_barrier(&tour_barr, thread_id);
-        //pthread_barrier_wait(&barr);
+        #endif
 #endif
 
         //Copy ghost cells
@@ -192,9 +202,13 @@ void * solve_block(void* _args)
         printf("Thread %d waits at barrier.\n", thread_id);
         fflush(stdout);
         #endif
+
 #ifndef DISABLE_SYNC
+        #if BARRIER == BARRIER_PTHREAD
+        pthread_barrier_wait(&barr);
+        #elif BARRIER == BARRIER_TOURNAMENT
         tour_barrier(&tour_barr, thread_id);
-        //pthread_barrier_wait(&barr);
+        #endif
 #endif
         #ifdef DEBUG
         printf("Thread %d past barrier.\n", thread_id);
@@ -210,10 +224,12 @@ void * solve_block(void* _args)
 #endif
     }
     fprintf(stderr, "Thread %d completes at t=%f.\n", thread_id, t0+getTime());
-//#ifndef DISABLE_SYNC
+//Synchronize before stopping timer
+#if BARRIER == BARRIER_PTHREAD
+    pthread_barrier_wait(&barr);
+#elif BARRIER == BARRIER_TOURNAMENT
     tour_barrier(&tour_barr, thread_id);
-    //pthread_barrier_wait(&barr);
-//#endif
+#endif
     t0 += getTime();
     
 
@@ -259,8 +275,12 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
 
     DOUBLE **E = *_E, **E_prev = *_E_prev;
     threadcount = tx*ty;
-    //pthread_barrier_init(&barr, NULL, tx*ty);
+
+#if BARRIER == BARRIER_TOURNAMENT
     tour_barrier_init(&tour_barr, tx*ty);
+#elif BARRIER == BARRIER_PTHREAD
+    pthread_barrier_init(&barr, NULL, tx*ty);
+#endif
 
     //Allocate threads
     threads = (pthread_t*)malloc(sizeof(pthread_t)*tx*ty);
@@ -282,10 +302,14 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
             ta->m = m; ta->n = n;
             ta->T = T; ta->iterations = iterations;
             
+            //The main thread will spawn later
+            if (ti == 0 && tj == 0) continue;
             //Start the threads
             pthread_create(&threads[ti*tx+tj], NULL, &solve_block, thread_args[ti*tx+tj]);
         }
     }
+    //Run computation on main thread
+    solve_block(thread_args[0]);
     
     //Join the threads when we're done
     for (ti = 0; ti < ty; ti++)

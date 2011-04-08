@@ -17,7 +17,16 @@ ifeq ($(CC),icc)
 else
 endif
 
-CFLAGS += $(ARITH) 
+#Barrier type
+#0: tournament barrier
+#1: pthread_barrier
+BARRIER=0
+
+ifeq ($(barrier),pthread)
+BARRIER=1
+endif
+
+CFLAGS += $(ARITH) -DBARRIER=$(BARRIER)
 
 ifdef debug
 CFLAGS += -DDEBUG=${debug} -g

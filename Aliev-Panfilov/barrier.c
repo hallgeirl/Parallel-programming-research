@@ -30,15 +30,15 @@ void tour_barrier_init(tour_barrier_t* barrier, int threads)
         barrier->tree = (tour_barrier_node_t**)malloc(sizeof(tour_barrier_node_t*)*(threads-1));
         for (i = 0; i < threads-1; i++)
         {
-            barrier->tree[i] = (tour_barrier_node_t*)malloc(sizeof(tour_barrier_node_t));
-            memset(barrier->tree[i], 0, sizeof(tour_barrier_node_t));
+            barrier->tree[i] = (tour_barrier_node_t*)allocAligned(sizeof(tour_barrier_node_t));
+            barrier->tree[i]->arrive = false;
         }
 
         //Each thread has its own sense variable, initially true (1)
         barrier->sense = (bool**)malloc(sizeof(bool*)*threads); 
         for (i = 0; i < threads; i++)
         {
-            barrier->sense[i] = (bool*)malloc(sizeof(bool));
+            barrier->sense[i] = (bool*)allocAligned(sizeof(bool));
             *(barrier->sense[i]) = true;
         }
 

@@ -10,6 +10,7 @@
 #include "includes.h"
 #include "apf.h"
 #include "types.h"
+#include "barrier.h"
 
 // Utilities
 // Allocate a 2D array
@@ -145,6 +146,11 @@ int main(int argc, char** argv) {
     #endif
     #ifdef DISABLE_GHOST
     fprintf(stderr, "Ghostcells are DISABLED!\n");
+    #endif
+    #if BARRIER == BARRIER_PTHREAD
+    fprintf(stderr, "Using pthread_barrier.\n");
+    #elif BARRIER == BARRIER_TOURNAMENT
+    fprintf(stderr, "Using tournament barrier with 4k alignment.\n");
     #endif
     // Command line arguments
     // Default value of the domain sizes

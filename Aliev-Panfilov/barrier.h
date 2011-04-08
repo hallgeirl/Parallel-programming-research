@@ -3,6 +3,13 @@
 
 #include <stdbool.h>
 
+#define BARRIER_TOURNAMENT 0
+#define BARRIER_PTHREAD 1
+
+#ifndef BARRIER
+#define BARRIER 0
+#endif
+
 //Tournament barrier
 typedef struct tour_barrier_node_s
 {

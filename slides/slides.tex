@@ -9,7 +9,9 @@
 \maketitle
 
 \begin{frame}
-\frametitle{Dash Specifications}
+\frametitle{Dash}
+A supercomputer at the San Diego Supercomputing Center - a prototype for the Gordon supercomputer scheduled for 2011.
+\pause
 \begin{itemize}
 \item 64 compute nodes total
 \pause
@@ -18,7 +20,6 @@
 \item 512 compute cores, 4.9 TFLOPS
 \pause
 \item 48GB of main memory per node, plus 4TB of shared flash storage
-\pause
 \end{itemize}
 \end{frame}
 
@@ -33,6 +34,8 @@ Dash has a virtual shared memory multiprocessing system, vSMP
 \item Memory of all nodes accessible through a unified address space
 \pause
 \item Parallellization possible using OpenMP and pthreads. Convenient!
+\pause
+\item Little documentation available on the internals of vSMP.
 \end{itemize}
 \end{frame}
 
@@ -122,7 +125,7 @@ This means a lot of wasted bandwidth.
 \begin{frame}
 \frametitle{First implementation of Aliev-Panfilov on Dash (vSMP)}
 \begin{itemize}
-\item Because of this, I used fat partitions spanning the whole matrix.
+\item Because of this, I used fat partitions spanning the whole array.
 \pause
 \item Doesn't scale well (but not that important for as few as 128 cores).
 \pause
@@ -133,16 +136,30 @@ This means a lot of wasted bandwidth.
 \end{frame}
 
 \begin{frame}
-\frametitle{First results - OpenMP}
+\frametitle{First results - OpenMP (Strong scaling)}
 \begin{figure}
 \includegraphics[width=\textwidth]{gfx/padding_strong_scaling_openmp_speedup}
 \end{figure}
 \end{frame}
 
 \begin{frame}
-\frametitle{First results - Pthreads}
+\frametitle{First results - OpenMP (Weak scaling)}
+\begin{figure}
+\includegraphics[width=\textwidth]{gfx/padding_weak_scaling_openmp_runningtime}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{First results - Pthreads (Strong scaling)}
 \begin{figure}
 \includegraphics[width=\textwidth]{gfx/padding_strong_scaling_pthreads_speedup}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{First results - Pthreads (Weak scaling)}
+\begin{figure}
+\includegraphics[width=\textwidth]{gfx/padding_weak_scaling_pthreads_runningtime}
 \end{figure}
 \end{frame}
 
@@ -153,13 +170,15 @@ Both implementations show the same trend.
 \begin{itemize}
 \item Once we go beyond one node, performance drops considerably.
 \pause
-\item Only exception: Mid-sized problems ($n=2048$ and $n=4096$) for OpenMP (though still horrible performance; 0.07 GFLOPS/s per core)
+\item Only exception: Mid-sized problems ($n=2048$ and $n=4096$) for OpenMP (though still horrible performance; 0.09 GFLOPS/s per core)
 \item What's happening?
 \end{itemize}
 
+\pause
 Possible explainations: Mid-sized problems are large enough to speed up slightly without causing too much communication overhead.
 \pause
-$1024^2$ is too small; communication is too expensive (?)
+
+$1024^2$ is too small; For $4096^2$, communication is too expensive (?)
 \end{frame}
 
 \begin{frame}
@@ -168,18 +187,148 @@ I partitioned the data into separate partitions with multiple malloc()s.
 \pause
 I let each processor initialize its own partition. This should cause that processor to "own" the data.
 \pause
+
 More explicit data motion between processors, so it's easier to see what's going on.
 \end{frame}
 
 \begin{frame}
-\frametitle{Second attempt}
-I partitioned the data into separate partitions with multiple malloc()s.
-\pause
-I let each processor initialize its own partition. This should cause that processor to "own" the data.
-\pause
-More explicit data motion between processors, so it's easier to see what's going on.
+\frametitle{Second set of results - OpenMP}
+\begin{figure}
+\includegraphics[width=\textwidth]{gfx/partitions_strong_scaling_openmp_speedup}
+\end{figure}
 \end{frame}
 
+\begin{frame}
+\frametitle{Second set of results - pthreads}
+\begin{figure}
+\includegraphics[width=\textwidth]{gfx/partitions_strong_scaling_pthreads_speedup}
+\end{figure}
+\end{frame}
 
+\begin{frame}
+\frametitle{Second set of results}
+\begin{itemize}
+\item Slightly better speedup for OpenMP
+\pause
+\item Pthreads performance still horrible
+\pause
+\item Still not great (about 0.15 GFLOPS per core)
+\item Communication increases with the problem size 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Next attempt: Eliminating variables}
+\begin{itemize}
+\item There's too many variables: Communication, synchronization,...
+\pause
+\item I set the problem width to a constant and disabled ghost cells and synchronization
+\item No communication.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Finally - near perfect speedup}
+\begin{figure}
+\includegraphics[width=\textwidth]{gfx/partitions_constant_width_nosync_strong_scaling_pthreads_noghost_speedup}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{With only synchronization, no ghost cells}
+\begin{figure}
+\includegraphics[width=\textwidth]{gfx/partitions_constant_width_strong_scaling_pthreads_noghost_speedup}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{With only ghost cells, no synchronization}
+\begin{figure}
+\includegraphics[width=\textwidth]{gfx/partitions_constant_width_nosync_strong_scaling_pthreads_speedup}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Observations}
+\begin{itemize}
+\item Communication is definitely an issue.
+\pause 
+\item Synchronization is a killer. Very fine grained communication, pthreads and openmp barrier not neccesarily NUMA-aware, and certainly not aware of huge page sizes
+\pause
+\item Without synchronization: 0.3 GFLOPS / core (getting there)
+\pause
+\item In short, we need a new barrier.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tournament barrier}
+I implemented the tournament barrier.
+\begin{itemize}
+\item Tree-based barrier.
+\pause 
+\item Each node has two children.
+\pause
+\item Each node represents a round in a "game" where one processor is the "winner" (goes up the tree) and the other one is a "loser" (spins on a global release flag that is set by the winner of the final round).
+\pause
+\item Winner in each round is predetermined.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tournament barrier}
+\begin{figure}
+\includegraphics[width=\textwidth]{gfx/tournament}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tournament barrier}
+This implementation is "Dash aware" (takes large pages into consideration, and is NUMA aware)
+\begin{itemize}
+\item For each barrier call, variables are written to by the same processors.
+\pause
+\item Each processor caches a copy of the release flag. When the release flag is set by the winner, each processor fetches it again.
+\pause
+\item All nodes of the tree are allocated aligned to the 4K boundary to prevent false sharing.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results - speedup (strong scaling)}
+\begin{figure}
+\includegraphics[width=\textwidth]{gfx/partitions_constant_width_tournament_barrier_strong_scaling_pthreads_speedup}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results - running time (weak scaling)}
+\begin{figure}
+\includegraphics[width=\textwidth]{gfx/partitions_constant_width_tournament_barrier_weak_scaling_pthreads_runningtime}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results}
+\begin{itemize}
+\item At 128 processors, it breaks down (still too much communication?)
+\pause
+\item About 0.28 GFLOPS/core for 64 cores. Barrier much less dominant.
+\pause
+\item The performance is (unfortunately) still bad.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\item Synchronization on Dash is seemingly costly.
+\pause
+\item Barriers uses fine grained messages; Dash' pages are 4K.
+\pause
+\item Implementing a new barrier helped but breaks down at 128 cores.
+\end{itemize}
+\end{frame}
 
 \end{document}
+

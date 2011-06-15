@@ -316,6 +316,7 @@ int solve(DOUBLE ***_E, DOUBLE ***_E_prev, DOUBLE **R, int m, int n, DOUBLE T, i
     {
         for (tj = 0; tj < tx; tj++)
         {
+            if (ti == 0 && tj == 0) continue;
             pthread_join(threads[ti*tx+tj], NULL);
         }
     }
